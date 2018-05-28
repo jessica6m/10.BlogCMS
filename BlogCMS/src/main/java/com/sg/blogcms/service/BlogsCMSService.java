@@ -37,4 +37,8 @@ public class BlogsCMSService {
     public List<BlogPost> selectLastTenBlogs() {
         return blogsDao.selectLastTenBlogs();
     }
+    
+    public List<BlogPost> selectAllBlogs() {
+     return blogsDao.selectAllBlogs();
+    }
 }

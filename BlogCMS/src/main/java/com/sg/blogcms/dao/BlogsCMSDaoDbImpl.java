@@ -57,7 +57,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     private static final String SQL_SELECT_LAST_TEN_BLOGPOST
            = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
     
-    
+    private static final String SQL_SELECT_ALL_BLOGS = 
+            "select * from blogs";
     
     
     //==========================================================================
@@ -114,7 +115,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
 
     @Override
     public List<BlogPost> selectAllBlogs() {
-        return null;
+        return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS,
+                new BlogMapper());
     }
     
     @Override
