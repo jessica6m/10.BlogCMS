@@ -6,6 +6,7 @@
 package com.sg.blogcms.dto;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import org.aspectj.apache.bcel.generic.Tag;
@@ -19,9 +20,10 @@ public class BlogPost extends StaticPage  {
     private String title;
     private String content;
     private String author;
-    private LocalDateTime createdDate;
-    private LocalDateTime publishDate;
+    private Date createdDate;
+    private Date publishDate;
     private boolean isApproved;
+    private int catId;
     private List<Tag> tags;
     private List<Category> categories;
 
@@ -57,19 +59,19 @@ public class BlogPost extends StaticPage  {
         this.author = author;
     }
 
-    public LocalDateTime getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public LocalDateTime getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(LocalDateTime publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 
@@ -152,6 +154,14 @@ public class BlogPost extends StaticPage  {
             return false;
         }
         return true;
+    }
+
+    public void setDescription(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setCatId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

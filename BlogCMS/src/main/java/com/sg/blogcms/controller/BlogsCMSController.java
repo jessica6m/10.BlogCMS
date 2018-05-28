@@ -5,12 +5,8 @@
  */
 package com.sg.blogcms.controller;
 
-import com.sg.blogcms.dao.BlogsCMSDao;
-import com.sg.blogcms.dao.CategoryCMSDao;
-import com.sg.blogcms.dao.StaticPageCMSDao;
-import com.sg.blogcms.dao.TagsCMSDao;
-import com.sg.blogcms.dao.UserCMSDao;
 import com.sg.blogcms.dto.BlogPost;
+import com.sg.blogcms.service.BlogsCMSService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -24,29 +20,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 public class BlogsCMSController {
     //BlogCMS service;
-    BlogsCMSDao blogsDao;
-    CategoryCMSDao catDao;
-    TagsCMSDao tagDao;
-    UserCMSDao userDao;
-    StaticPageCMSDao spDao;
+    BlogsCMSService blogsService;
     
     
     
     @Inject
-    public BlogsCMSController(BlogsCMSDao blogsDao, CategoryCMSDao catDao, TagsCMSDao tagDao, UserCMSDao userDao, StaticPageCMSDao spDao ) {
-        this.blogsDao = blogsDao;
-        this.catDao = catDao;
-        this.tagDao = tagDao;
-        this.userDao = userDao;
-        this.spDao = spDao;
+    public BlogsCMSController(BlogsCMSService blogsService) {
+        this.blogsService = blogsService;
         
     }
     
     @RequestMapping(value = {"/", "index", ""}, method = RequestMethod.GET)
     public String landingPage(HttpServletRequest request, Model model) {
         List<BlogPost> blogPosts;
-        //blogPosts = service.getLastTenBlogs();
-        //model.addAttribute("lastTenBlogs", blogPosts);
+        blogPosts = blogsService.selectLastTenBlogs();
+        model.addAttribute("lastTenBlogs", blogPosts);
         return "index";
     }
     

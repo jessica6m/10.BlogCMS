@@ -22,4 +22,5 @@ public interface BlogsCMSDao {
     List<BlogPost> selectAllBlogsByUser(int userID);
     List<BlogPost> selectAllBlogsByCategory(int catID);
     List<BlogPost> selectAllBlogsByTag(int tagID);
+    List<BlogPost> selectLastTenBlogs();
 }

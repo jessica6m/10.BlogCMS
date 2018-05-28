@@ -33,9 +33,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     //==========================================================================
 
     private static final String SQL_INSERT_BLOG
-            = "insert into blogs (tittle, content, author, createdDate," 
-            + "publishedDate, tags, categories ) values(?,?,?,?,?,?,?)";
-    
+            = "insert into blogs (title, description, content, author, createdDate" 
+            + "publishedDate, catId) values(?,?,?,?,?,?,?)";
     
     private static final String SQL_DELETE_BLOG
             = "delete from blogs where blogID = ?";
@@ -115,13 +114,15 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
 
     @Override
     public List<BlogPost> selectAllBlogs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
+    
     @Override
     public List<BlogPost> selectLastTenBlogs() {
        return jdbcTemplate.query(SQL_SELECT_LAST_TEN_BLOGPOST,
                new BlogMapper());
     }
+    
     @Override
     public List<BlogPost> selectAllBlogsByUser(int userID) {
        List<BlogPost> blogByUserList = 
@@ -129,17 +130,18 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                                    new BlogMapper(), 
                                    userID);
         // set the publisher and list of Authors for each book
-        return associateBlogAndUser(blogByUserList);
+       //return associateBlogAndUser(blogByUserList);
+       return null;
     }
 
     @Override
     public List<BlogPost> selectAllBlogsByCategory(int catID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
     public List<BlogPost> selectAllBlogsByTag(int tagID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
     
     
@@ -178,10 +180,12 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             
             bp.setId(rs.getInt("idBlogPost"));
             bp.setTitle(rs.getString("title"));
+            bp.setDescription(rs.getString("description"));
             bp.setContent(rs.getString("content"));
             bp.setAuthor(rs.getString("author"));
             bp.setCreatedDate((rs.getTimestamp("createdDate")));
             bp.setPublishDate((rs.getTimestamp("publishDate")));
+            bp.setCatId(rs.getInt("idCat"));
             return bp;
          }
      }
