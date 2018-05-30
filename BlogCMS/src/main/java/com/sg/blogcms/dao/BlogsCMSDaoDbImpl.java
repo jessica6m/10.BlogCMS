@@ -34,7 +34,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
 
     private static final String SQL_INSERT_BLOG
             = "insert into blogs (title, description, content, author, createdDate" 
-            + "publishedDate, catId) values(?,?,?,?,?,?,?)";
+            + "publishedDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_DELETE_BLOG
             = "delete from blogs where blogID = ?";
@@ -69,18 +69,21 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     public BlogPost createBlog(BlogPost blog) {
         jdbcTemplate.update(SQL_INSERT_BLOG,
                 blog.getTitle(),
+                blog.getDescription(),
                 blog.getContent(),
                 blog.getAuthor(),
                 blog.getCreatedDate(),
                 blog.getPublishDate(),
-                blog.getTags(),
-                blog.getCategories());
+                blog.getExpirationDate(),
+                blog.getIsApproved(),
+                blog.getUserId(),
+                blog.getCatId());
         int blogId = 
                 jdbcTemplate.queryForObject("select LAST_INSERT_ID()", 
                                              Integer.class);
 
         blog.setId(blogId);
-        return blog; //ask JOSE ABOUT THIS ??? 
+        return blog; 
     }
 
     @Override
@@ -92,12 +95,15 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     public BlogPost updateBlog(BlogPost blog) {
          jdbcTemplate.update(SQL_UPDATE_BLOG,
                 blog.getTitle(),
+                blog.getDescription(),
                 blog.getContent(),
                 blog.getAuthor(),
                 blog.getCreatedDate(),
                 blog.getPublishDate(),
-                blog.getTags(),
-                blog.getCategories());
+                blog.getExpirationDate(),
+                blog.getIsApproved(),
+                blog.getUserId(),
+                blog.getCatId());
          return blog;
     }
 
@@ -187,7 +193,10 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             bp.setAuthor(rs.getString("author"));
             bp.setCreatedDate((rs.getTimestamp("createdDate")));
             bp.setPublishDate((rs.getTimestamp("publishDate")));
+            bp.setExpirationDate((rs.getTimestamp("expirationDate")));
+            bp.setIsApproved(rs.getBoolean("isApproved"));
             bp.setCatId(rs.getInt("idCat"));
+            bp.setUserId(rs.getInt("idUser"));
             return bp;
          }
      }
