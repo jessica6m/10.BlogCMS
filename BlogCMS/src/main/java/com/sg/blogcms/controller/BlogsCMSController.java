@@ -10,6 +10,7 @@ import com.sg.blogcms.service.BlogsCMSService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,25 +19,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author josesosa
  */
-public class BlogsCMSController {
-    //BlogCMS service;
-    BlogsCMSService blogsService;
-    
-    
-    
-    @Inject
-    public BlogsCMSController(BlogsCMSService blogsService) {
-        this.blogsService = blogsService;
-        
-    }
-    
-    @RequestMapping(value = {"/", "index", ""}, method = RequestMethod.GET)
-    public String landingPage(HttpServletRequest request, Model model) {
-        List<BlogPost> blogPosts;
-        blogPosts = blogsService.selectLastTenBlogs();
-        model.addAttribute("lastTenBlogs", blogPosts);
-        return "index";
-    }
-    
-    
-}
+
+//public class BlogsCMSController {
+//    //BlogCMS service;
+//    BlogsCMSService blogsService;
+//    
+//    
+//    
+//    @Inject
+//    public BlogsCMSController(BlogsCMSService blogsService) {
+//        this.blogsService = blogsService;
+//        
+//    }
+//    
+//    @RequestMapping(value = {"/", "index", ""}, method = RequestMethod.GET)
+//    public String landingPage(HttpServletRequest request, Model model) {
+//        List<BlogPost> blogPosts;
+//        blogPosts = blogsService.selectLastTenBlogs();
+//        model.addAttribute("lastTenBlogs", blogPosts);
+//        return "index";
+//    }
+//    
+//    
+//}
