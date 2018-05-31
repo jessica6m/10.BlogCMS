@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"> 
         <title>Users</title>
     </head>
     <body>
