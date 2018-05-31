@@ -14,7 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author Brandon Mathura
  */
 @Controller
-public class LoginSignupCMSController {
+public class UserCMSController {
+    
+//    UserCMSService userService;
+//    
+//    
+//    
+//    @Inject
+//    public StaticPageCMSController(UserCMSService userService) {
+//        this.userService = userService;
+//        
+//    }
+    
     @RequestMapping(value= {"/login"}, method = RequestMethod.GET)
     public String login() {
 

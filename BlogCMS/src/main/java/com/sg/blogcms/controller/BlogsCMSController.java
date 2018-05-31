@@ -8,6 +8,7 @@ package com.sg.blogcms.controller;
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.service.BlogsCMSService;
 import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 
@@ -28,12 +29,12 @@ public class BlogsCMSController {
     
     
     
-//    @Inject
-//    public BlogsCMSController(BlogsCMSService blogsService) {
-//        this.blogsService = blogsService;
-//        
-//    }
-//    
+    @Inject
+    public BlogsCMSController(BlogsCMSService blogsService) {
+        this.blogsService = blogsService;
+        
+    }
+    
     @RequestMapping(value = {"/", "index", ""}, method = RequestMethod.GET)
     public String landingPage(HttpServletRequest request, Model model) {
         List<BlogPost> blogPosts;
@@ -41,13 +42,14 @@ public class BlogsCMSController {
         model.addAttribute("lastTenBlogs", blogPosts);
         return "index";
     }
-<<<<<<< HEAD
+
     
     @RequestMapping(value = "/displayUserProfilePage/{blogID}", method = RequestMethod.GET)
     public String getItemSelected(Model model, @PathVariable int blogID) {
 //        userService.selectUserProfile(blogID);
         return "redirect:/";
-=======
+    }
+
 
 //======================= FOR ALL BLOGS ==================================================
 
@@ -57,7 +59,7 @@ public class BlogsCMSController {
 //        blogPosts = blogsService.selectAllBlogs();
 //        model.addAttribute("allBlogs", blogPosts);
         return "blogs";
->>>>>>> 86d318b3c519614d00bbc86d16c2194a758c85bd
+
     }
     
 }
