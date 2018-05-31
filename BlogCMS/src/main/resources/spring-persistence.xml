@@ -37,12 +37,40 @@
          class="org.springframework.jdbc.core.JdbcTemplate">
        <property name="dataSource" ref="dataSource" />
     </bean>
-   
-    <bean id="BlogsCMSDao"
+    
+    <bean id="blogsCMSDao"
          class="com.sg.blogcms.dao.BlogsCMSDaoDbImpl">
        <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
     
-    <bean id="BlogsCMSService"
-              class="com.sg.blogcms.service.BlogCMSService"/>
+    <bean id="categoryCMSDao"
+         class="com.sg.blogcms.dao.CategoryCMSDaoDbImpl">
+       <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="staticPageCMSDao"
+         class="com.sg.blogcms.dao.StaticPageCMSDaoDbImpl">
+       <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="tagsCMSDao"
+         class="com.sg.blogcms.dao.TagsCMSDaoDbImpl">
+       <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="UserCMSDao"
+         class="com.sg.blogcms.dao.UserCMSDaoDbImpl">
+       <property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="blogsCMSService"
+              class="com.sg.blogcms.service.BlogsCMSService">
+        <constructor-arg ref = "blogsCMSDao"/>
+    </bean>
+    
+    <bean id="staticPageCMSService"
+              class="com.sg.blogcms.service.StaticPageCMSService">
+        <constructor-arg ref = "staticPageCMSDao"/>
+    </bean>
+    
 </beans>

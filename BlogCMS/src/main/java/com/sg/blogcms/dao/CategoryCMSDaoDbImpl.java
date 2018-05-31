@@ -5,10 +5,18 @@
  */
 package com.sg.blogcms.dao;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 /**
  *
  * @author svlln
  */
-public class CategoryCMSDaoDbImpl {
+public class CategoryCMSDaoDbImpl implements CategoryCMSDao  {
+    private JdbcTemplate jdbcTemplate;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    
     
 }

@@ -7,6 +7,7 @@
     <head>
         <title>Index Page</title>
         <!-- Bootstrap core CSS -->
+        <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
@@ -15,33 +16,45 @@
         <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
         <button><a href="${pageContext.request.contextPath}/signup">Sign Up</a></button>
         </div>
-  <div class="nav">
-    <ul>
-      <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
-      <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
-      <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-      <li><a href="${pageContext.request.contextPath}/tags"> Tags </a></li>
-      <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
-      <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
-      <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
-    </ul>
-  </div>
+        <div class="nav">
+          <ul>
+            <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
+            <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
+            <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
+            <li><a href="${pageContext.request.contextPath}/tags"> Tags </a></li>
+            <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
+            <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
+            <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
+          </ul>
+        </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="blog-container">
           <div class="blog-side">
             <div class="blog-desc">
-             
-                  <p>10 Latest Blogs</p>
-        <!-- ========== FOR DISPLAYING RECENT BLOGS ==========             
-                    <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
-                                   <div>
-                                       <h1><c:out value="${currentBlog.name}"/></h1>
-                                       <p><c:out value="${currentBlog.desc}"/></p>
-                                   </div>
-                    </c:forEach> 
-        -->          
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th> Title </th>
+                                            <th> Description </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="i" begin="0" end="9">
+                                                <td>
+                                                    <c:out value="${lastTenBlogs[i].title}"></c:out>
+                                                </td>
 
-              
+                                                <td>
+                                                    <c:out value="${lastTenBlogs[i].description}"></c:out>
+                                                </td>
+
+
+                                            
+                                        </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+
             </div>
 
           </div>

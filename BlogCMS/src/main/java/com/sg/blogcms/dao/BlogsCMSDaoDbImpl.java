@@ -194,8 +194,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             bp.setCreatedDate((rs.getTimestamp("createdDate")));
             bp.setPublishDate((rs.getTimestamp("publishDate")));
             bp.setExpirationDate((rs.getTimestamp("expirationDate")));
-            bp.setIsApproved(rs.getBoolean("isApproved"));
-            bp.setCatId(rs.getInt("idCat"));
+            bp.setIsApproved(rs.getBoolean("approved"));
+            bp.setCatId(rs.getInt("idCategories"));
             bp.setUserId(rs.getInt("idUser"));
             return bp;
          }

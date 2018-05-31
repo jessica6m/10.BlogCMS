@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author svlln
  */
-public class UserCMSDaoDbImpl implements UserCMSDao {
+public class TagsCMSDaoDbImpl implements TagsCMSDao {
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {

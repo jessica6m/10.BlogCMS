@@ -37,9 +37,9 @@ public class BlogsCMSController {
     
     @RequestMapping(value = {"/", "index", ""}, method = RequestMethod.GET)
     public String landingPage(HttpServletRequest request, Model model) {
-        List<BlogPost> blogPosts;
-        blogPosts = blogsService.selectLastTenBlogs();
-        model.addAttribute("lastTenBlogs", blogPosts);
+        List<BlogPost> lastTenBlogs;
+        lastTenBlogs = blogsService.selectLastTenBlogs();
+        model.addAttribute("lastTenBlogs", lastTenBlogs);
         return "index";
     }
 
