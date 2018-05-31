@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
+        <title>Static Pages</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Static Pages</h1>
     </body>
 </html>

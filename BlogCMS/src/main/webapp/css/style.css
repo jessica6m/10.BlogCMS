@@ -12,3 +12,57 @@ html {
     background-color: white;
     font-family: 'Calibri', sans-serif;
 }
+body {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.account {
+    text-align: center;
+}
+.account-float {
+    text-align: right;
+}
+ul {
+    list-style: none;
+}
+li {
+    display: inline;
+    border-right: 1px solid #bbb;
+}
+li a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+a:hover {
+}
+.nav {
+    letter-spacing: 2px;
+    font-size: 20px;
+    background-color: black;
+}
+.icons {
+    text-align: center;
+    padding-top: 15%;
+}
+.blog-container {
+    margin: 0 auto;
+}
+.blog-side {
+    max-width: 20%;
+    width: 20%;
+    background-color: #777;
+    float: left;
+    text-align: left;
+}
+.blog-long-desc {
+    width: 78%;
+    background-color: #777;
+    text-align: center;
+    float: right;
+    border-style: solid;
+    border-width: medium;
+}

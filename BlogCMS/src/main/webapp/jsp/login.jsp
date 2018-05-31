@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
+        <title>Login</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="account">
+            <h3><b>Username</b></h3>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <h3><b>Password</b></h3>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button>Login</button>
+        </div>
     </body>
 </html>
