@@ -6,6 +6,8 @@
 package com.sg.blogcms.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,12 +27,12 @@ public class UserCMSController {
 //        this.userService = userService;
 //        
 //    }
-    
-    @RequestMapping(value= {"/login"}, method = RequestMethod.GET)
-    public String login() {
-
-        return "login";
+    @RequestMapping(value = "/displayUserProfilePage/{userID}", method = RequestMethod.GET)
+    public String getItemSelected(Model model, @PathVariable int userID) {
+//        userService.selectUserProfile(userID);
+        return "redirect:/";
     }
+    
 }
 
 // =============== FOR SIGN UP ===========
