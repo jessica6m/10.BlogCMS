@@ -37,22 +37,22 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             + "publishedDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_DELETE_BLOG
-            = "delete from blogs where blogID = ?";
+            = "delete from blogs where idBlog = ?";
     
     private static final String SQL_UPDATE_BLOG
             = "update blogs set title = ?, content = ?, author = ?, ";
     
     private static final String SQL_SELECT_BLOG
-            = "select * from blogs where blogID = ? ";
+            = "select * from blogs where idBlog = ? ";
     
     private static final String SQL_SELECT_BLOG_BY_USER
-            = "select * from blogs where userID =? ";
+            = "select * from blogs where idUser =? ";
     
     private static final String SQL_SELECT_BLOG_BY_CAT
-            = "select * from blogs where catID = ?";
+            = "select * from blogs where idCategories = ?";
     
     private static final String SQL_SELECT_BLOG_BY_TAG
-            = "select * from blogs where tagID = ?";
+            = "select * from blogs where idTag = ?";
     
     private static final String SQL_SELECT_LAST_TEN_BLOGPOST
            = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
