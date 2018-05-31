@@ -39,7 +39,7 @@ public class BlogsCMSController {
         return "index";
     }
     
-    @RequestMapping(value = "/displayUserProfilePage/{itemNumber}", method = RequestMethod.GET)
+    @RequestMapping(value = "/displayUserProfilePage/{blogID}", method = RequestMethod.GET)
     public String getItemSelected(Model model, @PathVariable int blogID) {
 //        userService.selectUserProfile(blogID);
         return "redirect:/";
