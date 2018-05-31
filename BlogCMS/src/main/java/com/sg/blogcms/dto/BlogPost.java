@@ -5,7 +5,6 @@
  */
 package com.sg.blogcms.dto;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -15,17 +14,21 @@ import org.aspectj.apache.bcel.generic.Tag;
  *
  * @author svlln
  */
-public class BlogPost extends StaticPage  {
+public class BlogPost {
     private int id;
     private String title;
+    private String description;
     private String content;
     private String author;
     private Date createdDate;
     private Date publishDate;
+    private Date expirationDate;
     private boolean isApproved;
+    private int userId;
     private int catId;
+    private User user;
+    private Category category;
     private List<Tag> tags;
-    private List<Category> categories;
 
     public int getId() {
         return id;
@@ -41,6 +44,14 @@ public class BlogPost extends StaticPage  {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {
@@ -75,12 +86,52 @@ public class BlogPost extends StaticPage  {
         this.publishDate = publishDate;
     }
 
-    public boolean isIsApproved() {
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    public boolean getIsApproved() {
         return isApproved;
     }
 
     public void setIsApproved(boolean isApproved) {
         this.isApproved = isApproved;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getCatId() {
+        return catId;
+    }
+
+    public void setCatId(int catId) {
+        this.catId = catId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<Tag> getTags() {
@@ -91,26 +142,23 @@ public class BlogPost extends StaticPage  {
         this.tags = tags;
     }
 
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.title);
-        hash = 29 * hash + Objects.hashCode(this.content);
-        hash = 29 * hash + Objects.hashCode(this.author);
-        hash = 29 * hash + Objects.hashCode(this.createdDate);
-        hash = 29 * hash + Objects.hashCode(this.publishDate);
-        hash = 29 * hash + (this.isApproved ? 1 : 0);
-        hash = 29 * hash + Objects.hashCode(this.tags);
-        hash = 29 * hash + Objects.hashCode(this.categories);
+        int hash = 5;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + Objects.hashCode(this.title);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.content);
+        hash = 37 * hash + Objects.hashCode(this.author);
+        hash = 37 * hash + Objects.hashCode(this.createdDate);
+        hash = 37 * hash + Objects.hashCode(this.publishDate);
+        hash = 37 * hash + Objects.hashCode(this.expirationDate);
+        hash = 37 * hash + (this.isApproved ? 1 : 0);
+        hash = 37 * hash + this.userId;
+        hash = 37 * hash + this.catId;
+        hash = 37 * hash + Objects.hashCode(this.user);
+        hash = 37 * hash + Objects.hashCode(this.category);
+        hash = 37 * hash + Objects.hashCode(this.tags);
         return hash;
     }
 
@@ -132,7 +180,16 @@ public class BlogPost extends StaticPage  {
         if (this.isApproved != other.isApproved) {
             return false;
         }
+        if (this.userId != other.userId) {
+            return false;
+        }
+        if (this.catId != other.catId) {
+            return false;
+        }
         if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         if (!Objects.equals(this.content, other.content)) {
@@ -147,22 +204,25 @@ public class BlogPost extends StaticPage  {
         if (!Objects.equals(this.publishDate, other.publishDate)) {
             return false;
         }
-        if (!Objects.equals(this.tags, other.tags)) {
+        if (!Objects.equals(this.expirationDate, other.expirationDate)) {
             return false;
         }
-        if (!Objects.equals(this.categories, other.categories)) {
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        if (!Objects.equals(this.category, other.category)) {
+            return false;
+        }
+        if (!Objects.equals(this.tags, other.tags)) {
             return false;
         }
         return true;
     }
+    
+    
+    
+    
 
-    public void setDescription(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setCatId(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
     

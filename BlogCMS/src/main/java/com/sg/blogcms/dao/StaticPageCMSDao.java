@@ -5,10 +5,19 @@
  */
 package com.sg.blogcms.dao;
 
+import com.sg.blogcms.dto.StaticPage;
+import java.util.List;
+
 /**
  *
  * @author svlln
  */
 public interface StaticPageCMSDao {
+    StaticPage createStaticPage(StaticPage sp);
+    void removeStaticPage(int spId);
+    StaticPage updateStaticPage(StaticPage sp);
+    StaticPage selectStaticPage(int spId);
+    List<StaticPage> selectAllStaticPages();
+    List<StaticPage> selectAllStaticPagesByUser(int userID);
     
 }
