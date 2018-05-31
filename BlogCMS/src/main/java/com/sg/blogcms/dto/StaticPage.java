@@ -20,7 +20,7 @@ public class StaticPage {
     private String author;
     private Date createdDate;
     private Date publishDate;
-    private Date exprirationDate;
+    private Date expirationDate;
     private boolean isActive;
     private int userId;
     private User user;
@@ -81,12 +81,12 @@ public class StaticPage {
         this.publishDate = publishDate;
     }
 
-    public Date getExprirationDate() {
-        return exprirationDate;
+    public Date getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExprirationDate(Date exprirationDate) {
-        this.exprirationDate = exprirationDate;
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
     public boolean isIsActive() {
@@ -123,7 +123,7 @@ public class StaticPage {
         hash = 67 * hash + Objects.hashCode(this.author);
         hash = 67 * hash + Objects.hashCode(this.createdDate);
         hash = 67 * hash + Objects.hashCode(this.publishDate);
-        hash = 67 * hash + Objects.hashCode(this.exprirationDate);
+        hash = 67 * hash + Objects.hashCode(this.expirationDate);
         hash = 67 * hash + (this.isActive ? 1 : 0);
         hash = 67 * hash + this.userId;
         hash = 67 * hash + Objects.hashCode(this.user);
@@ -169,7 +169,7 @@ public class StaticPage {
         if (!Objects.equals(this.publishDate, other.publishDate)) {
             return false;
         }
-        if (!Objects.equals(this.exprirationDate, other.exprirationDate)) {
+        if (!Objects.equals(this.expirationDate, other.expirationDate)) {
             return false;
         }
         if (!Objects.equals(this.user, other.user)) {

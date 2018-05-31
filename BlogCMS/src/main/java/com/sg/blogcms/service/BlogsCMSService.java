@@ -20,18 +20,11 @@ import javax.inject.Inject;
  */
 public class BlogsCMSService {
     BlogsCMSDao blogsDao;
-    CategoryCMSDao catDao;
-    TagsCMSDao tagDao;
-    UserCMSDao userDao;
-    StaticPageCMSDao spDao;
+    
     
     @Inject
-    public BlogsCMSService(BlogsCMSDao blogsDao, CategoryCMSDao catDao, TagsCMSDao tagDao, UserCMSDao userDao, StaticPageCMSDao spDao) {
+    public BlogsCMSService(BlogsCMSDao blogsDao) {
         this.blogsDao = blogsDao;
-        this.catDao = catDao;
-        this.tagDao = tagDao;
-        this.userDao = userDao;
-        this.spDao = spDao;
     }
 
     public List<BlogPost> selectLastTenBlogs() {
