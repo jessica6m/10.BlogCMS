@@ -6,10 +6,6 @@
 package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.BlogsCMSDao;
-import com.sg.blogcms.dao.CategoryCMSDao;
-import com.sg.blogcms.dao.StaticPageCMSDao;
-import com.sg.blogcms.dao.TagsCMSDao;
-import com.sg.blogcms.dao.UserCMSDao;
 import com.sg.blogcms.dto.BlogPost;
 import java.util.List;
 import javax.inject.Inject;

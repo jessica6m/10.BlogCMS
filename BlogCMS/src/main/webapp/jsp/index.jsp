@@ -27,53 +27,34 @@
     </ul>
   </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
-  <div class="blog-container">
-  <div class="blog-side">
-    <div class="blog-desc">
-      <a>
-          <p>10 blogs here</p>
-<!-- ========== FOR DISPLAYING RECENT BLOGS ==========             
-            <c:forEach var="currentBlog" items="${listOfBlogs}">
-                           <div>
-                               <h1><c:out value="${currentBlog.name}"/></h1>
-                               <p><c:out value="${currentBlog.desc}"/></p>
-                           </div>
-        </c:forEach> 
--->          
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-          <h3>blog</h3>
-          <p>blog desc</p>
-      </a>
-    </div>
-    
-  </div>
-  <div class="blog-long-desc">
-      <p>Single long blog here</p>
-  </div>
-  </div>
-  <div class="icons">
-    <button>Instagram</button>
-    <button>FaceBook</button>
-    <button>Twitter</button>
-    <button>YouTube</button>
-  </div>
+        <div class="blog-container">
+          <div class="blog-side">
+            <div class="blog-desc">
+             
+                  <p>10 Latest Blogs</p>
+        <!-- ========== FOR DISPLAYING RECENT BLOGS ==========             
+                    <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
+                                   <div>
+                                       <h1><c:out value="${currentBlog.name}"/></h1>
+                                       <p><c:out value="${currentBlog.desc}"/></p>
+                                   </div>
+                    </c:forEach> 
+        -->          
+
+              
+            </div>
+
+          </div>
+          <div class="blog-long-desc">
+              <p>Single long blog here</p>
+          </div>
+        </div>
+        <div class="icons">
+          <button>Instagram</button>
+          <button>FaceBook</button>
+          <button>Twitter</button>
+          <button>YouTube</button>
+        </div>
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
