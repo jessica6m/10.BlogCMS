@@ -11,6 +11,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,5 +39,10 @@ public class BlogsCMSController {
         return "index";
     }
     
+    @RequestMapping(value = "/displayUserProfilePage/{itemNumber}", method = RequestMethod.GET)
+    public String getItemSelected(Model model, @PathVariable int blogID) {
+//        userService.selectUserProfile(blogID);
+        return "redirect:/";
+    }
     
 }
