@@ -11,59 +11,74 @@
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>My Blog</h1>
         <div class="account-float">
-            <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
-            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage/userID">Edit</a></button>
+            <button><a href="${pageContext.request.contextPath}/login">LOGOUT</a></button>
         </div>
+        
+        
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-            <li><a href="${pageContext.request.contextPath}/tags"> Tags </a></li>
             <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
             <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
+        <h1>${user.lastName}, ${user.firstName}</h1>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 ">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th> Title </th>
-                                <th> Description </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="i" begin="0" end="9">
-                                <tr >
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
-                                    </td>
-
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].description}"></c:out>
-                                    </td>
-                                </tr>
-
-                            </c:forEach>
-
-                        </tbody>
-                    </table>
-    
+                <div class="col-md-6 ">
+                    <c:out value="${user.firstName}"></c:out>
+                    
+                    <br>
+                    
+                    <c:out value="${user.lastName}"></c:out>
+                    
+                    <br>
+                    
+                    <c:out value="${user.userName}"></c:out>
+                    
+                    <br>
+                    
+                    <c:out value="${user.userEmail}"></c:out>
+                    
+                    <br>
+                    
+                    <c:out value="PASSWORD"></c:out>
+                    
+                    <br>
+                    
+                    <c:out value="${user.userBio}"></c:out>
+                    
+                    <br>    
+                    <br>
+                    <button class="btn-danger"> SUBMIT </button>
                 </div>
+                    
                 
-                <div class = "col-md-7>">
-                    <p> TESTING GRID LAYOUT!!!</p>
+                <div class = "col-md-6>">
+                    <button>EDIT</button>
                     
-                    <p> Blog Description Goes Here</p>
+                    <br>
                     
-                    <p> ${lastTenBlogs[0].getUser().firstName}</p>
+                    <button>EDIT</button>
+                    <br>
+                    
+                    <button>EDIT</button>
+                    <br>
+                    
+                    <button>EDIT</button>
+                    <br>
+                    
+                    <button>EDIT</button>
+                    <br>
+                    
+                    <button>EDIT</button>
+                    <br>    
+                    <br>
                 
                 </div>
                 

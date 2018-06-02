@@ -6,6 +6,7 @@
 package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.UserCMSDao;
+import com.sg.blogcms.dto.User;
 import javax.inject.Inject;
 
 /**
@@ -19,6 +20,10 @@ public class UserCMSService {
     @Inject
     public UserCMSService(UserCMSDao userDao) {
         this.userDao = userDao;
+    }
+
+    public User selectUserProfile(int userID) {
+        return userDao.selectUser(userID);
     }
     
 }

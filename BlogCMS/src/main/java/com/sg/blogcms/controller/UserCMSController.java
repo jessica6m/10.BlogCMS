@@ -5,6 +5,9 @@
  */
 package com.sg.blogcms.controller;
 
+import com.sg.blogcms.dto.User;
+import com.sg.blogcms.service.UserCMSService;
+import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,19 +21,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserCMSController {
     
-//    UserCMSService userService;
-//    
-//    
-//    
-//    @Inject
-//    public StaticPageCMSController(UserCMSService userService) {
-//        this.userService = userService;
-//        
-//    }
+    UserCMSService userService;
+    
+    
+    
+    @Inject
+    public UserCMSController(UserCMSService userService) {
+        this.userService = userService;
+        
+    }
     @RequestMapping(value = "/displayUserProfilePage/{userID}", method = RequestMethod.GET)
-    public String getItemSelected(Model model, @PathVariable int userID) {
-//        userService.selectUserProfile(userID);
-        return "redirect:/";
+    public String getUserProfile(Model model, @PathVariable int userID) {
+        User user = userService.selectUserProfile(userID);
+        model.addAttribute("user", user);
+        return "userprofile";
     }
     
 }
