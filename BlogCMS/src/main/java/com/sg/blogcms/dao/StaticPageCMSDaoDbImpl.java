@@ -27,7 +27,7 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
 //    ----------------------------------------------------------------------------
     
     private static final String SQL_SELECT_STATIC_PAGE
-            = "select * from blogs where idStaticPage = ? ";
+            = "select * from StaticPage where idStaticPage = ? ";
     
     private static final String SQL_SELECT_ALL_STATIC_PAGES = 
             "select * from StaticPage";

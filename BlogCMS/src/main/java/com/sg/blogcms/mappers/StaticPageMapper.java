@@ -24,8 +24,8 @@ public class StaticPageMapper implements RowMapper<StaticPage>{
             sp.setDescription(rs.getString("description"));
             sp.setContent(rs.getString("content"));
             sp.setAuthor(rs.getString("author"));
-            sp.setCreatedDate((rs.getTimestamp("createdDate")));
-            sp.setPublishDate((rs.getTimestamp("publishDate")));
+            sp.setCreatedDate((rs.getTimestamp("dateCreated")));
+            sp.setPublishDate((rs.getTimestamp("publishedDate")));
             sp.setExpirationDate((rs.getTimestamp("expirationDate")));
             sp.setIsActive(rs.getBoolean("isActive"));
             sp.setUserId(rs.getInt("idUser"));
