@@ -23,7 +23,7 @@
       <property name="url" 
                 value="jdbc:mysql://localhost:3306/CMS" /> <!-- Using the actual database  -->
       <property name="Username" value="root" />
-      <property name="Password" value="Eulelife0320" /> <!-- Note the value here is the users MySql password  -->
+      <property name="Password" value="Rs3villa2327" /> <!-- Note the value here is the users MySql password  -->
       <property name="initialSize" value="5" />
       <property name="maxTotal" value="10" />
     </bean>
@@ -43,6 +43,7 @@
        <property name="jdbcTemplate" ref="jdbcTemplate" />
     </bean>
     
+<<<<<<< HEAD
     <bean id="categoryCMSDao"
          class="com.sg.blogcms.dao.CategoryCMSDaoDbImpl">
        <property name="jdbcTemplate" ref="jdbcTemplate" />
@@ -73,4 +74,8 @@
         <constructor-arg ref = "staticPageCMSDao"/>
     </bean>
     
+=======
+    <bean id="BlogsCMSService"
+              class="com.sg.blogcms.service.BlogsCMSService"/>
+>>>>>>> f40a4255dfb1ea81bcdb41ac97d85dfe16554fa2
 </beans>
