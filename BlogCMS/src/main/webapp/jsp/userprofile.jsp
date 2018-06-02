@@ -11,17 +11,16 @@
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>My Blog</h1>
         <div class="account-float">
-            <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
-            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage?userID=1">Edit</a></button>
+            <button><a href="${pageContext.request.contextPath}/login">LOGOUT</a></button>
         </div>
+        <h1>${userprofile.lastName}, ${userprofile.firstName}</h1>
+        
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-            <li><a href="${pageContext.request.contextPath}/tags"> Tags </a></li>
             <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
             <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
@@ -31,36 +30,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th> Title </th>
-                                <th> Description </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="i" begin="0" end="9">
-                                <tr >
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
-                                    </td>
-
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].description}"></c:out>
-                                    </td>
-                                </tr>
-
-                            </c:forEach>
-
-                        </tbody>
-                    </table>
+                    
     
                 </div>
                 
                 <div class = "col-md-7>">
-                    <p> TESTING GRID LAYOUT!!!</p>
                     
-                    <p> Blog Description Goes Here</p>
                     
                     <p> ${lastTenBlogs[0].getUser().firstName}</p>
                 

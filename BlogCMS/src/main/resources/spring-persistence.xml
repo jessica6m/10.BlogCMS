@@ -73,4 +73,9 @@
         <constructor-arg ref = "staticPageCMSDao"/>
     </bean>
     
+    <bean id="userCMSService"
+              class="com.sg.blogcms.service.UserCMSService">
+        <constructor-arg ref = "userCMSDao"/>
+    </bean>
+    
 </beans>
