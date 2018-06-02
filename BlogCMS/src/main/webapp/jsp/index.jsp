@@ -13,8 +13,7 @@
     <body>
         <h1>My Blog</h1>
         <div class="account-float">
-        <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
-        <button><a href="${pageContext.request.contextPath}/signup">Sign Up</a></button>
+            <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
         </div>
         <div class="nav">
           <ul>
@@ -28,46 +27,56 @@
           </ul>
         </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
-        <div class="blog-container">
-          <div class="blog-side">
-            <div class="blog-desc">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th> Title </th>
-                                            <th> Description </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="i" begin="0" end="9">
-                                                <td>
-                                                    <c:out value="${lastTenBlogs[i].title}"></c:out>
-                                                </td>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Title </th>
+                                <th> Description </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="i" begin="0" end="9">
+                                <tr >
+                                    <td>
+                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
+                                    </td>
 
-                                                <td>
-                                                    <c:out value="${lastTenBlogs[i].description}"></c:out>
-                                                </td>
+                                    <td>
+                                        <c:out value="${lastTenBlogs[i].description}"></c:out>
+                                    </td>
+                                </tr>
 
+                            </c:forEach>
 
-                                            
-                                        </c:forEach>
-                                        
-                                    </tbody>
-                                </table>
+                        </tbody>
+                    </table>
+    
+                </div>
+                
+                <div class = "col-md-7>">
+                    <p> TESTING GRID LAYOUT!!!</p>
+                    
+                    <p> Blog Description Goes Here</p>
+                    
+                    <p> ${lastTenBlogs[0].getUser().firstName}</p>
+                
+                </div>
+                
 
             </div>
-
-          </div>
-          <div class="blog-long-desc">
-              <p>Single long blog here</p>
-          </div>
+            
+            <div class="icons">
+                <button>Instagram</button>
+                <button>FaceBook</button>
+                <button>Twitter</button>
+                <button>YouTube</button>
+            </div>
+            
         </div>
-        <div class="icons">
-          <button>Instagram</button>
-          <button>FaceBook</button>
-          <button>Twitter</button>
-          <button>YouTube</button>
-        </div>
+        
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

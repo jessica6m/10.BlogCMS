@@ -30,4 +30,10 @@ public class BlogsCMSService {
     public List<BlogPost> selectAllBlogs() {
      return blogsDao.selectAllBlogs();
     }
+
+    public void updateListOfBlogs(List<BlogPost> lastTenBlogs) {
+        for (BlogPost blog: lastTenBlogs){
+            blogsDao.appointUserToBlog(blog);
+        }
+    }
 }

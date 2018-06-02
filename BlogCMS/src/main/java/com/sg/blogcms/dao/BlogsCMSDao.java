@@ -23,4 +23,6 @@ public interface BlogsCMSDao {
     List<BlogPost> selectAllBlogsByCategory(int catID);
     List<BlogPost> selectAllBlogsByTag(int tagID);
     List<BlogPost> selectLastTenBlogs();
+    
+    public BlogPost appointUserToBlog(BlogPost blog);
 }

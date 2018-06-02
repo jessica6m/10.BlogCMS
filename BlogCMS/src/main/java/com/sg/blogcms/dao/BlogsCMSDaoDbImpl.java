@@ -6,12 +6,12 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.sg.blogcms.dto.User;
+import com.sg.blogcms.mappers.BlogMapper;
+import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author svlln
  */
 public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
-   
     
     private JdbcTemplate jdbcTemplate;
 
@@ -60,6 +59,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     private static final String SQL_SELECT_ALL_BLOGS = 
             "select * from blogs";
     
+    private static final String SQL_SELECT_USER_BY_BLOG
+            = "select * from User usr Join BlogPost bp on usr.idUser = bp.idUser where idBlogPost =? ";
     
     //==========================================================================
     //                                 METHODS
@@ -156,48 +157,26 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     //==========================================================================
     //                          HELPER METHODS
     //==========================================================================
-    
-    
-//        private BlogPost findPublisherForBlog(BlogPost blog) {
-//        return jdbcTemplate.queryForObject(SQL_SELECT_PUBLISHER_BY_BOOK_ID, 
-//                                           new BlogMapper(), 
-//                                           blog.getId());
-//    }
-//    
-//     private List<BlogPost> associateBlogAndUser(List<BlogPost> blogList) {
-//        // set the complete list of author ids for each book
-//        for (BlogPost currentBlog : blogList) {
-//            // add Authors to current book
-//            currentBlog.setAuthor(SQL_UPDATE_BLOG);
-//            currentBook.setAuthors(findAuthorsForBook(currentBook));
-//            // add the Publisher to current book
-//            currentBook.setPublisher(
-//                findPublisherForBook(currentBook));
-//        }
-//        return bookList;
-//    }
-    
-    //==========================================================================
-    //                          MAPPERS
-    //==========================================================================
-    
-     private static final class BlogMapper implements RowMapper<BlogPost>{
-         @Override
-         public BlogPost mapRow(ResultSet rs, int rowNum) throws SQLException{
-            BlogPost bp = new BlogPost();
+    @Override
+    public BlogPost appointUserToBlog(BlogPost blog) {
+         try {
+            User user =  jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_BLOG, 
+                                               new UserMapper(), 
+                                               blog.getId());
             
-            bp.setId(rs.getInt("idBlogPost"));
-            bp.setTitle(rs.getString("title"));
-            bp.setDescription(rs.getString("description"));
-            bp.setContent(rs.getString("content"));
-            bp.setAuthor(rs.getString("author"));
-            bp.setCreatedDate((rs.getTimestamp("createdDate")));
-            bp.setPublishDate((rs.getTimestamp("publishDate")));
-            bp.setExpirationDate((rs.getTimestamp("expirationDate")));
-            bp.setIsApproved(rs.getBoolean("approved"));
-            bp.setCatId(rs.getInt("idCategories"));
-            bp.setUserId(rs.getInt("idUser"));
-            return bp;
-         }
-     }
+            blog.setUser(user);
+            return blog;
+            
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+     
+     
+     
+     
+     
+     
+     
+     
 }

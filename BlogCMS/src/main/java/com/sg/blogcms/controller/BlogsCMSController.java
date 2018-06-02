@@ -39,6 +39,7 @@ public class BlogsCMSController {
     public String landingPage(HttpServletRequest request, Model model) {
         List<BlogPost> lastTenBlogs;
         lastTenBlogs = blogsService.selectLastTenBlogs();
+        blogsService.updateListOfBlogs(lastTenBlogs);
         model.addAttribute("lastTenBlogs", lastTenBlogs);
         return "index";
     }
@@ -59,7 +60,7 @@ public class BlogsCMSController {
         blogPosts = blogsService.selectAllBlogs();
         model.addAttribute("allBlogs", blogPosts);
         return "blogs";
-
     }
+    
     
 }
