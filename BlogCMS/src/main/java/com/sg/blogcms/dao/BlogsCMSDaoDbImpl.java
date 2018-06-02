@@ -42,7 +42,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "update blogs set title = ?, content = ?, author = ?, ";
     
     private static final String SQL_SELECT_BLOG
-            = "select * from blogs where idBlog = ? ";
+            = "select * from BlogPost where idBlog = ? ";
     
     private static final String SQL_SELECT_BLOG_BY_USER
             = "select * from blogs where idUser =? ";
@@ -57,7 +57,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
            = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
     
     private static final String SQL_SELECT_ALL_BLOGS = 
-            "select * from blogs";
+            "select * from BlogPost";
     
     private static final String SQL_SELECT_USER_BY_BLOG
             = "select * from User usr Join BlogPost bp on usr.idUser = bp.idUser where idBlogPost =? ";

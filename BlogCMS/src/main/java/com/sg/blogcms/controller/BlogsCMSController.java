@@ -47,9 +47,9 @@ public class BlogsCMSController {
 
     @RequestMapping(value= {"/blogs"}, method = RequestMethod.GET)
     public String blogsPage(HttpServletRequest request, Model model) {
-        List<BlogPost> blogPosts;
-        blogPosts = blogsService.selectAllBlogs();
-        model.addAttribute("allBlogs", blogPosts);
+        List<BlogPost> allBlogs;
+        allBlogs = blogsService.selectAllBlogs();
+        model.addAttribute("allBlogs", allBlogs);
         return "blogs";
     }
     

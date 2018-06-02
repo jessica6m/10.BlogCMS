@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="9">
+                            <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
                                 <tr >
                                     <td>
                                         <c:out value="${lastTenBlogs[i].title}"></c:out>
