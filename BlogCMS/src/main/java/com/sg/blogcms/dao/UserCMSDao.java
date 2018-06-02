@@ -5,10 +5,14 @@
  */
 package com.sg.blogcms.dao;
 
+import com.sg.blogcms.dto.User;
+
 /**
  *
  * @author svlln
  */
 public interface UserCMSDao {
+
+    public User selectUser(int userID);
     
 }

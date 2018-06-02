@@ -14,6 +14,7 @@
         <h1>My Blog</h1>
         <div class="account-float">
             <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
+            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage/userID">Edit</a></button>
         </div>
         <div class="nav">
           <ul>
@@ -39,7 +40,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="9">
+                            <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
                                 <tr >
                                     <td>
                                         <c:out value="${lastTenBlogs[i].title}"></c:out>
