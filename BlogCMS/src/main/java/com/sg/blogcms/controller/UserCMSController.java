@@ -33,6 +33,7 @@ public class UserCMSController {
     @RequestMapping(value = "/displayUserProfilePage/{userID}", method = RequestMethod.GET)
     public String getUserProfile(Model model, @PathVariable int userID) {
         User user = userService.selectUserProfile(userID);
+        model.addAttribute("user", user);
         return "userprofile";
     }
     

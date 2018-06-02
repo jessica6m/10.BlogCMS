@@ -14,7 +14,7 @@
         <h1>My Blog</h1>
         <div class="account-float">
             <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
-            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage?userID=1">Edit</a></button>
+            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage/userID">Edit</a></button>
         </div>
         <div class="nav">
           <ul>
