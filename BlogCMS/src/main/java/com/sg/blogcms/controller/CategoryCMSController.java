@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CategoryCMSController {
     CategoryCMSService catService;
-    
+    Category cate;
     
     
     @Inject
@@ -39,6 +39,7 @@ public class CategoryCMSController {
         List<Category> allCategories;
         allCategories = catService.selectAllCategories();
         model.addAttribute("allCategories", allCategories);
+        model.addAttribute("cate",cate);
         return "categories";
     }
     
@@ -53,8 +54,7 @@ public class CategoryCMSController {
     public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
         int catID = Integer.parseInt(request.getParameter("categoryId"));
         Category cat = catService.selectCatById(catID);
-        model.addAttribute("cat",cat);
-        
+        cate=cat;
         return "redirect:categories";
     }
     

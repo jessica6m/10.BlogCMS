@@ -73,13 +73,13 @@
                             <div class="form-group">
                                 <label for="add-category-name" class="col-sm-3 control-label">Category </label>
                                 <div class="    ">
-                                    <input type="text" name="name" placeholder="Name : ${cat.catName}">
+                                    <input type="text" name="name" placeholder="Name : ${cate.catName}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="add-category-description" class="col-md-2 control-label">Description:</label>
                                 <div class="">
-                                    <textarea type="text" class="form-control" rows="3" name="description" placeholder="Description : ${cat.description}">${cat.description}</textarea>
+                                    <textarea type="text" class="form-control" rows="3" name="description" placeholder="Description : ${cate.description}"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
