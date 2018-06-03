@@ -5,10 +5,18 @@
  */
 package com.sg.blogcms.dao;
 
+import com.sg.blogcms.dto.Tags;
+import java.util.List;
+
 /**
  *
  * @author svlln
  */
 public interface TagsCMSDao {
+    Tags createTag(Tags tag);
+    void removeTag(int tagID);
+    Tags updateTag(Tags tag);
+    Tags SelectTag(int tagID);
+    List<Tags> SelectAllTags();
     
 }
