@@ -6,6 +6,8 @@
 package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.TagsCMSDao;
+import com.sg.blogcms.dto.Tags;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -20,5 +22,13 @@ public class TagsCMSService {
     public TagsCMSService(TagsCMSDao tagDao) {
         this.tagDao = tagDao;
     }
+    
+    public Tags createTag(Tags tag){
+        return tagDao.createTag(tag);
+    }
+    
+    public List<Tags> SelectAllTags(){
+        return tagDao.SelectAllTags();
+    };
     
 }

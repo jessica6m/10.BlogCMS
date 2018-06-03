@@ -7,11 +7,13 @@ package com.sg.blogcms.controller;
 
 import com.sg.blogcms.service.CategoryCMSService;
 import javax.inject.Inject;
+import org.springframework.stereotype.Controller;
 
 /**
  *
  * @author josesosa
  */
+@Controller
 public class CategoryCMSController {
     CategoryCMSService catService;
     

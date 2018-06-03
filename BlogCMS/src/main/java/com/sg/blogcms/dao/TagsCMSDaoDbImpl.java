@@ -6,6 +6,8 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.mappers.BlogMapper;
+import com.sg.blogcms.mappers.TagMapper;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author svlln
  */
+
 public class TagsCMSDaoDbImpl implements TagsCMSDao {
     private JdbcTemplate jdbcTemplate;
 
@@ -26,11 +29,12 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     //                                  SQL TAGS
     //==========================================================================
     
-    private static final String SQL_INSERT_BLOG
+    private static final String SQL_INSERT_TAG
             = "insert into Tag (tagName, tagDescription)"
             + "values(?,?)";
     
-    
+     private static final String SQL_SELECT_ALL_TAGS
+            = "select * from Tag";
     
     //==========================================================================
     //                              METHODS
@@ -39,7 +43,7 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public Tags createTag(Tags tag) {
-        jdbcTemplate.update(SQL_INSERT_BLOG,
+        jdbcTemplate.update(SQL_INSERT_TAG,
                 tag.getTagName(),
                 tag.getDescription());
         int tagID =
@@ -66,7 +70,8 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
 
     @Override
     public List<Tags> SelectAllTags() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return jdbcTemplate.query(SQL_SELECT_ALL_TAGS,
+                new TagMapper());
     }
        
     
