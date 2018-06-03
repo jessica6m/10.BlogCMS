@@ -21,7 +21,6 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-            <li><a href="${pageContext.request.contextPath}/tags"> Tags </a></li>
             <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
             <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
             <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
@@ -39,6 +38,8 @@
                                 <th> Description </th>
                                 <th> Author </th>
                                 <th> Publish Date </th>
+                                <th> EDIT</th>
+                                <th> DELETE </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,6 +59,14 @@
 
                                     <td>
                                         <c:out value="${allBlogs[i].publishDate}"></c:out>
+                                    </td>
+                                    
+                                    <td>
+                                        <button>EDIT</button>
+                                    </td>
+
+                                    <td>
+                                        <button>DELETE</button>
                                     </td>
                                 </tr>
 
