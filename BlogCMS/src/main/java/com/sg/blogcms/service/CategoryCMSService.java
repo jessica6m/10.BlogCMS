@@ -6,6 +6,8 @@
 package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.CategoryCMSDao;
+import com.sg.blogcms.dto.Category;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -21,4 +23,7 @@ public class CategoryCMSService {
         this.catDao = catDao;
     }
     
+    public List<Category> selectAllCategories(){
+       return catDao.selectAllCategories();
+    }
 }
