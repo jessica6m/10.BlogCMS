@@ -15,5 +15,5 @@ import java.util.List;
 public interface CategoryCMSDao {
      
     public List<Category> selectAllCategories();
-    
+    void removeCategory(int catID);
 }
