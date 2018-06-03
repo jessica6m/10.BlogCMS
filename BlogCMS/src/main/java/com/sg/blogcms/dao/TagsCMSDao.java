@@ -13,10 +13,10 @@ import java.util.List;
  * @author svlln
  */
 public interface TagsCMSDao {
-//    Tags createTag(Tags tag);
-//    void removeTag(int tagID);
-//    Tags updateTag(Tags tag);
-//    Tags SelectTag(int tagID);
-//    List<Tags> SelectAllTags();
+    Tags createTag(Tags tag);
+    void removeTag(int tagID);
+    Tags updateTag(Tags tag);
+    Tags SelectTag(int tagID);
+    List<Tags> SelectAllTags();
     
 }

@@ -16,4 +16,7 @@ public interface CategoryCMSDao {
      
     public List<Category> selectAllCategories();
     void removeCategory(int catID);
+    public Category updateCategory(Category cat);
+
+    public Category selectCategory(int catID);
 }
