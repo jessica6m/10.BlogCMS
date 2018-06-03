@@ -30,7 +30,7 @@
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="container">
             <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-md-8 ">
                     <table class="table">
                         <thead>
                             <tr>
@@ -52,7 +52,7 @@
                                     </td>
                                     
                                     <td>
-                                        <button>EDIT</button>
+                                        <a href="${pageContext.request.contextPath}/chooseCategoryToUpdate?categoryId=${allCategories[i].catId}" class = "btn btn-warning">EDIT</a>
                                     </td>
 
                                     <td>
@@ -66,11 +66,35 @@
                     </table>
     
                 </div>
+                <div class="col-md-4 body">
+                        <h2>Add New Category </h2>
+                        <hr>
+                        <form class="form-horizontal" role="form" method="POST" action="newTag">
+                            <div class="form-group">
+                                <label for="add-category-name" class="col-sm-3 control-label">Category </label>
+                                <div class="    ">
+                                    <input type="text" name="name" placeholder="Name : ${cat.catName}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="add-category-description" class="col-md-2 control-label">Description:</label>
+                                <div class="">
+                                    <textarea type="text" class="form-control" rows="3" name="description" placeholder="Description : ${cat.description}">${cat.description}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" class="btn btn-default" value="Submit">
+                                </div>
+                            </div>
+                        </form>
+                </div> <!-- End of column -->
                 
                 
                 
 
             </div>
+            
             
             <div class="icons">
                 <button>Instagram</button>

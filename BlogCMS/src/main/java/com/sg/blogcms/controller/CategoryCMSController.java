@@ -49,4 +49,25 @@ public class CategoryCMSController {
         return "redirect:categories";
     }
     
+    @RequestMapping(value = "/chooseCategoryToUpdate", method = RequestMethod.GET)
+    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+        int catID = Integer.parseInt(request.getParameter("categoryId"));
+        Category cat = catService.selectCatById(catID);
+        model.addAttribute("cat",cat);
+        
+        return "redirect:categories";
+    }
+    
+    @RequestMapping(value = "/submitCategory", method = RequestMethod.GET)
+    public String updateCategory(HttpServletRequest request, Model model) {
+        int catID = Integer.parseInt(request.getParameter("categoryId"));
+        Category cat = catService.selectCatById(catID);
+        cat.setCatName("");
+        cat.setDescription("");
+        catService.updateCategory(cat);
+        
+        catService.updateCategory(cat);
+        return "redirect:categories";
+    }
+    
 }

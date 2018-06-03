@@ -30,4 +30,12 @@ public class CategoryCMSService {
     public void removeCategory(int catID) {
         catDao.removeCategory(catID);
     }
+    
+    public Category updateCategory(Category cat) {
+     return catDao.updateCategory(cat);
+    }
+
+    public Category selectCatById(int catID) {
+        return catDao.selectCategory(catID);
+    }
 }
