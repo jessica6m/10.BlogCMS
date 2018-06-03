@@ -37,11 +37,11 @@
                                 <th> Category Name </th>
                                 <th> Description </th>
                                 <th> EDIT</th>
-                                <th> DELETE </th>
+                                <th> DELETE</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="${allCategories.size()}">
+                            <c:forEach var="i" begin="0" end="${allCategories.size() - 1}">
                                 <tr >
                                     <td>
                                         <c:out value="${allCategories[i].catName}"></c:out>
@@ -56,7 +56,7 @@
                                     </td>
 
                                     <td>
-                                        <button>DELETE</button>
+                                        <a href="${pageContext.request.contextPath}/deleteCategory?categoryId=${allCategories[i].catId}" class = "btn btn-danger">DELETE</a>
                                     </td>
                                 </tr>
 

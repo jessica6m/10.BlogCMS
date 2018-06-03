@@ -42,4 +42,11 @@ public class CategoryCMSController {
         return "categories";
     }
     
+    @RequestMapping(value = "/deleteCategory", method = RequestMethod.GET)
+    public String deleteCategory(HttpServletRequest request, Model model) {
+        int catID = Integer.parseInt(request.getParameter("categoryId"));
+        catService.removeCategory(catID);
+        return "redirect:categories";
+    }
+    
 }

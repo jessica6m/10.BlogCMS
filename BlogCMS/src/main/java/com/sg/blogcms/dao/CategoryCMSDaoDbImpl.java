@@ -27,10 +27,23 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
     //==========================================================================
     private static final String SQL_SELECT_ALL_CATEGORIES
             = "select * from Categories";
+    
+    private static final String SQL_DELETE_CATEGORY
+            = "delete from Categories where idCategories = ?";
 
+    //==========================================================================
+    //                                 METHODS
+    //==========================================================================
+    
     @Override
     public List<Category> selectAllCategories() {
         return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
                 new CategoryMapper());
     }
+
+    @Override
+    public void removeCategory(int catID) {
+         jdbcTemplate.update(SQL_DELETE_CATEGORY, catID);
+    }
+    
 }

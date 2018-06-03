@@ -15,15 +15,19 @@ import javax.inject.Inject;
  * @author josesosa
  */
 public class CategoryCMSService {
+
     CategoryCMSDao catDao;
-    
     
     @Inject
     public CategoryCMSService(CategoryCMSDao catDao) {
         this.catDao = catDao;
     }
     
-    public List<Category> selectAllCategories(){
-       return catDao.selectAllCategories();
+    public List<Category> selectAllCategories() {
+        return catDao.selectAllCategories();
+    }
+    
+    public void removeCategory(int catID) {
+        catDao.removeCategory(catID);
     }
 }
