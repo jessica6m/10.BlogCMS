@@ -50,9 +50,9 @@
                                     <td>
                                         <c:out value="${allCategories[i].description}"></c:out>
                                     </td>
-                                    
+
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/chooseCategoryToUpdate?categoryId=${allCategories[i].catId}" class = "btn btn-warning">EDIT</a>
+                                        <a href="${pageContext.request.contextPath}/chooseCategoryToUpdate?viewType=edit&categoryId=${allCategories[i].catId}" class = "btn btn-warning">EDIT</a>
                                     </td>
 
                                     <td>
@@ -61,33 +61,62 @@
                                 </tr>
 
                             </c:forEach>
-
                         </tbody>
                     </table>
-    
+                        
                 </div>
                 <div class="col-md-4 body">
-                        <h2>Add New Category </h2>
-                        <hr>
-                        <form class="form-horizontal" role="form" method="POST" action="newTag">
-                            <div class="form-group">
-                                <label for="add-category-name" class="col-sm-3 control-label">Category </label>
-                                <div class="    ">
-                                    <input type="text" name="name" placeholder="Name : ${cate.catName}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="add-category-description" class="col-md-2 control-label">Description:</label>
-                                <div class="">
-                                    <textarea type="text" class="form-control" rows="3" name="description" placeholder="Description : ${cate.description}"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" class="btn btn-default" value="Submit">
-                                </div>
-                            </div>
-                        </form>
+                    <c:choose>
+                                <c:when test="${display == 'edit'}">
+                                    <h2>Add New Category </h2>
+                                    <hr>
+                                    <form action="updateCategory" class="form-horizontal" role="form" method="GET" >
+                                        <div class="form-group">
+                                            <label for="add-category-name" class="col-sm-3 control-label">Category </label>
+                                            <div class="    ">
+                                                <input type="text" name="name" placeholder="Name : ${cate.catName}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="add-category-description" class="col-md-2 control-label">Description:</label>
+                                            <div class="">
+                                                <textarea  class="form-control" rows="3" name="description" placeholder="Description : ${cate.description}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" class="btn btn-default" value="Submit">
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                </c:when>
+                                <c:otherwise>
+                                    <h2>Add New Category </h2>
+                                    <hr>
+                                    <form action="createCategory" class="form-horizontal" role="form" method="POST" >
+                                        <div class="form-group">
+                                            <label for="add-category-name" class="col-sm-3 control-label">Category </label>
+                                            <div class="    ">
+                                                <input type="text" name="categoryName" placeholder="Name : ${cate.catName}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="add-category-description" class="col-md-2 control-label">Description:</label>
+                                            <div class="">
+                                                    <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Description : ${cate.description}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" class="btn btn-default" value="Submit">
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </c:otherwise>
+                    </c:choose>
+                        
                 </div> <!-- End of column -->
                 
                 

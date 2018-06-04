@@ -6,11 +6,12 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.Category;
-import com.sg.blogcms.mappers.BlogMapper;
 import com.sg.blogcms.mappers.CategoryMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -29,6 +30,9 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
     //==========================================================================
     private static final String SQL_SELECT_ALL_CATEGORIES
             = "select * from Categories";
+                    
+    private static final String SQL_INSERT_CATEGORY
+            = "insert into Categories (categoryName, categoryDescription) values(?,?)";
     
     private static final String SQL_SELECT_CATEGORIES_BY_ID
             = "select * from Categories where idCategories = ?";
@@ -62,6 +66,7 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
          return cat;
     }
     
+    @Override
     public Category selectCategory(int catID){
         try {
             return jdbcTemplate.queryForObject(SQL_SELECT_CATEGORIES_BY_ID, 
@@ -70,6 +75,21 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public Category createCategory(Category cat) {
+        jdbcTemplate.update(SQL_INSERT_CATEGORY,
+                cat.getCatName(),
+                cat.getDescription());
+               
+        int catId = 
+                jdbcTemplate.queryForObject("select LAST_INSERT_ID()", 
+                                             Integer.class);
+
+        cat.setCatId(catId);
+        return cat; 
     }
     
 }

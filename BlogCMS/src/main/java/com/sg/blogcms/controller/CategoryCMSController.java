@@ -50,15 +50,26 @@ public class CategoryCMSController {
         return "redirect:categories";
     }
     
+    @RequestMapping(value = "/createCategory", method = RequestMethod.POST)
+    public String createCategory(HttpServletRequest request, Model model) {
+        Category cat = new Category();
+        cat.setCatName(request.getParameter("categoryName"));
+        cat.setDescription(request.getParameter("categoryDescription"));
+        catService.createCategory(cat);
+        return "redirect:categories";
+    }
+    
     @RequestMapping(value = "/chooseCategoryToUpdate", method = RequestMethod.GET)
     public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
         int catID = Integer.parseInt(request.getParameter("categoryId"));
+        String display = request.getParameter("viewType");
+        model.addAttribute("display",display);
         Category cat = catService.selectCatById(catID);
         cate=cat;
         return "redirect:categories";
     }
     
-    @RequestMapping(value = "/submitCategory", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateCategory", method = RequestMethod.GET)
     public String updateCategory(HttpServletRequest request, Model model) {
         int catID = Integer.parseInt(request.getParameter("categoryId"));
         Category cat = catService.selectCatById(catID);

@@ -38,4 +38,9 @@ public class CategoryCMSService {
     public Category selectCatById(int catID) {
         return catDao.selectCategory(catID);
     }
+
+    public Category createCategory(Category cat) {
+        return catDao.createCategory(cat);
+    }
+    
 }

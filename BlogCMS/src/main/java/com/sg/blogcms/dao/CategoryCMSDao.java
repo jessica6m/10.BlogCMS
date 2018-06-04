@@ -19,4 +19,6 @@ public interface CategoryCMSDao {
     public Category updateCategory(Category cat);
 
     public Category selectCategory(int catID);
+
+    public Category createCategory(Category cat);
 }
