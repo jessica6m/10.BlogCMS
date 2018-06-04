@@ -51,20 +51,20 @@
                     <div class="col-md-4 ">
                         <h2>Add New Tag </h2>
                         <hr>
-                        <form class="form-horizontal" role="form" method="POST" action="newTag">
+                        <form action="createTag" class="form-horizontal" role="form" method="POST"> 
 
                             <div class="form-group">
-                                <label for="add-tag-name" class="col-sm-2 control-label">Tag Name</label>
+                                <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
                                 <div class="">
-                                    <input type="text" name="name" placeholder="Name">
+                                    <input type="text" name="tagName" placeholder="Name">
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                <label for="add-tag-description" class="col-md-2 control-label">Description:</label>
+                                <label for="tagDescription" class="col-md-2 control-label">Description:</label>
                                 <div class="">
-                                    <textarea type="text" class="form-control" rows="3" name="description" placeholder="Description of tag"></textarea>
+                                    <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
                                 </div>
                             </div>
 

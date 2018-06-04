@@ -33,6 +33,9 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
             = "insert into Tag (tagName, tagDescription)"
             + "values(?,?)";
     
+    private static final String SQL_DELETE_TAG
+            = "delete from Tag where idTag = ? ";
+    
      private static final String SQL_SELECT_ALL_TAGS
             = "select * from Tag";
     
@@ -47,7 +50,7 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
                 tag.getTagName(),
                 tag.getDescription());
         int tagID =
-                jdbcTemplate.queryForObject("select LAST_INSERTED_ID()",
+                jdbcTemplate.queryForObject("select LAST_INSERT_ID()",
                                                 Integer.class);
         tag.setTagId(tagID);
         return tag;
@@ -55,7 +58,7 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
 
     @Override
     public void removeTag(int tagID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jdbcTemplate.update(SQL_DELETE_TAG, tagID);
     }
 
     @Override

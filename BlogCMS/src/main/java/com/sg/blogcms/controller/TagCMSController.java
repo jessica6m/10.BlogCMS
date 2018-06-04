@@ -35,7 +35,7 @@ public class TagCMSController {
     //                              CONTROLLER FOR TAGS
     //==========================================================================
     
-    @RequestMapping(value = "/createTag", method = RequestMethod.GET)
+    @RequestMapping(value = "/createTag", method = RequestMethod.POST)
     public String createTag(HttpServletRequest request, Model model){
         Tags newTag = new Tags();
         newTag.setTagName(request.getParameter("tagName"));
@@ -52,4 +52,12 @@ public class TagCMSController {
         model.addAttribute("allTags", allTags);
         return "about";
     }
+   
+    @RequestMapping(value= {"/deleteTag"}, method = RequestMethod.GET)
+    public String removeTag(HttpServletRequest request, Model model) {
+        int tagID = Integer.parseInt(request.getParameter("tagId"));
+        tagService.removeTag(tagID);
+        return "redirect:about";
+    }
+    
 }

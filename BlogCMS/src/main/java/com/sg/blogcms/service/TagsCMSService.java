@@ -27,6 +27,10 @@ public class TagsCMSService {
         return tagDao.createTag(tag);
     }
     
+    public void removeTag(int tagID){
+        tagDao.removeTag(tagID);
+    }
+    
     public List<Tags> SelectAllTags(){
         return tagDao.SelectAllTags();
     };
