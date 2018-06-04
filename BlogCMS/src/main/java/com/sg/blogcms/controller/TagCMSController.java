@@ -52,6 +52,18 @@ public class TagCMSController {
         model.addAttribute("allTags", allTags);
         return "about";
     }
+    
+    @RequestMapping(value = "/updateTag", method = RequestMethod.GET)
+    public String updateTag(HttpServletRequest request, Model model){
+        Tags updatedTag = new Tags();
+        updatedTag.setTagName(request.getParameter("tagName"));
+        updatedTag.setDescription(request.getParameter("tagDescription"));
+        tagService.updateTag(updatedTag);
+        
+        String display = request.getParameter("viewType");
+        model.addAttribute("display",display);
+        return "redirect:about";
+    }
    
     @RequestMapping(value= {"/deleteTag"}, method = RequestMethod.GET)
     public String removeTag(HttpServletRequest request, Model model) {

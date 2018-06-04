@@ -36,6 +36,9 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     private static final String SQL_DELETE_TAG
             = "delete from Tag where idTag = ? ";
     
+    private static final String SQL_UPDATE_TAG
+            = "update Tag set tagName = ?, tagDescription = ? ";
+    
      private static final String SQL_SELECT_ALL_TAGS
             = "select * from Tag";
     
@@ -63,7 +66,11 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
 
     @Override
     public Tags updateTag(Tags tag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         jdbcTemplate.update(SQL_UPDATE_TAG,
+                 tag.getTagName(),
+                 tag.getDescription()
+                 );
+         return tag;
     }
 
     @Override

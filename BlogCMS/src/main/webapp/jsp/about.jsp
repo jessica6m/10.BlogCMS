@@ -37,7 +37,7 @@
                                         </td>
 
                                         <td>
-                                            <button>EDIT</button>
+                                            <a href="${pageContext.request.contextPath}/updateTag?viewType=edit&tagId=${allTags[i].tagId}" class = "btn btn-danger">EDIT</a>
                                         </td>
                                         <td>
                                             <a href="${pageContext.request.contextPath}/deleteTag?tagId=${allTags[i].tagId}" class = "btn btn-danger">DELETE</a>
@@ -49,32 +49,65 @@
 
                     </div>
                     <div class="col-md-4 ">
-                        <h2>Add New Tag </h2>
-                        <hr>
-                        <form action="createTag" class="form-horizontal" role="form" method="POST"> 
+                        <c:choose>
+                            <c:when test="${display=='edit'}">
+                                <h2>Add New Tag </h2>
+                                <hr>
+                                <form action="updateTag" class="form-horizontal" role="form" method="GET"> 
 
-                            <div class="form-group">
-                                <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
-                                <div class="">
-                                    <input type="text" name="tagName" placeholder="Name">
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
+                                        <div class="">
+                                            <input type="text" name="tagName" placeholder="Name">
+                                        </div>
+                                    </div>
 
 
-                            <div class="form-group">
-                                <label for="tagDescription" class="col-md-2 control-label">Description:</label>
-                                <div class="">
-                                    <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <label for="tagDescription" class="col-md-2 control-label">Description:</label>
+                                        <div class="">
+                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group">
-                                <div class="">
-                                    <input type="submit" class="btn btn-default" value="Submit">
-                                </div>
-                            </div>
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="submit" class="btn btn-default" value="Submit">
+                                        </div>
+                                    </div>
 
-                        </form>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <h2>Add New Tag </h2>
+                                <hr>
+                                <form action="createTag" class="form-horizontal" role="form" method="POST"> 
+
+                                    <div class="form-group">
+                                        <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
+                                        <div class="">
+                                            <input type="text" name="tagName" placeholder="Name">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="tagDescription" class="col-md-2 control-label">Description:</label>
+                                        <div class="">
+                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="submit" class="btn btn-default" value="Submit">
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </c:otherwise>    
+                        </c:choose>
                     </div> <!-- End of column -->
                 </div> <!-- End of row --> 
 
