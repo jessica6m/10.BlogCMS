@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,25 +68,26 @@
                 </div>
                 <div class="col-md-4 body">
                     <c:choose>
-                                <c:when test="${display == 'edit'}">
-                                    <h2>Add New Category </h2>
+                                <c:when test="${viewType == 'edit'}">
+                                    <h2>Update Category </h2>
                                     <hr>
-                                    <form action="updateCategory" class="form-horizontal" role="form" method="GET" >
+                                    <form action="updateCategory"  class="form-horizontal" role="form" method="GET" >
+                                        <input type="hidden" name="categoryId" value="${catID}" />
                                         <div class="form-group">
                                             <label for="add-category-name" class="col-sm-3 control-label">Category </label>
                                             <div class="    ">
-                                                <input type="text" name="name" placeholder="Name : ${cate.catName}">
+                                                <input type="text" name="categoryName" placeholder="Category Name : ${cat.catName}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="add-category-description" class="col-md-2 control-label">Description:</label>
                                             <div class="">
-                                                <textarea  class="form-control" rows="3" name="description" placeholder="Description : ${cate.description}"></textarea>
+                                                <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Category Description : ${cat.description}"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" class="btn btn-default" value="Submit">
+                                                <button type="submit" class="btn btn-default" value="${catID}"></button>
                                             </div>
                                         </div>
                                     </form>
@@ -98,13 +100,13 @@
                                         <div class="form-group">
                                             <label for="add-category-name" class="col-sm-3 control-label">Category </label>
                                             <div class="    ">
-                                                <input type="text" name="categoryName" placeholder="Name : ${cate.catName}">
+                                                <input type="text" name="categoryName" placeholder="Category Name : ">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="add-category-description" class="col-md-2 control-label">Description:</label>
                                             <div class="">
-                                                    <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Description : ${cate.description}"></textarea>
+                                                    <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Category Description : "></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
