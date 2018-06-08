@@ -7,6 +7,8 @@ package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.UserCMSDao;
 import com.sg.blogcms.dto.User;
+import com.sg.blogcms.mappers.UserMapper;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -16,6 +18,13 @@ import javax.inject.Inject;
 public class UserCMSService {
     UserCMSDao userDao;
     
+//    public List<User> selectAllUsers();
+//
+//    void removeUser(int userID);
+//
+//    public User updateUser(User user);
+//
+//    public User createUser(User user);
     
     @Inject
     public UserCMSService(UserCMSDao userDao) {
@@ -26,4 +35,23 @@ public class UserCMSService {
         return userDao.selectUser(userID);
     }
     
+    public List<User> selectAllUsers() {
+        return userDao.selectAllUsers();
+    }
+    
+
+    public void removeUser(int userID) {
+      userDao.removeUser(userID);
+    }
+
+
+    public User updateUser(User user) {
+        return userDao.updateUser(user);
+    }
+
+    public User createUser(User user) {
+        return userDao.createUser(user);
+    }
+
+
 }
