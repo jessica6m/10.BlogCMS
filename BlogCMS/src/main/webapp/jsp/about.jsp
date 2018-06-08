@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <label for="tagDescription" class="col-md-2 control-label">Description:</label>
                                         <div class="">
-                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
+                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description : ${tag.description}"></textarea>
                                         </div>
                                     </div>
 

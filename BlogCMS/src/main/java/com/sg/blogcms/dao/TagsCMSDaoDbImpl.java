@@ -9,6 +9,7 @@ import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.mappers.BlogMapper;
 import com.sg.blogcms.mappers.TagMapper;
 import java.util.List;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +39,9 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     
     private static final String SQL_UPDATE_TAG
             = "update Tag set tagName = ?, tagDescription = ? ";
+    
+    private static final String SQL_SELECT_TAG_BY_ID
+            = "select * from Tag where idTag";
     
      private static final String SQL_SELECT_ALL_TAGS
             = "select * from Tag";
@@ -75,7 +79,13 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
 
     @Override
     public Tags SelectTag(int tagID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try{
+            return jdbcTemplate.queryForObject(SQL_SELECT_TAG_BY_ID, 
+                    new TagMapper(),
+                    tagID);
+        } catch(EmptyResultDataAccessException ex){
+            return null;
+        }
     }
 
     @Override
@@ -91,5 +101,3 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     
 }
 
-
-//uncomment 

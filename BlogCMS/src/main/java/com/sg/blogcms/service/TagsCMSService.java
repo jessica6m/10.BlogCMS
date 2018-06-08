@@ -37,6 +37,10 @@ public class TagsCMSService {
     
     public List<Tags> SelectAllTags(){
         return tagDao.SelectAllTags();
-    };
+    }
+    
+    public Tags SelectTag (int tagID){
+        return tagDao.SelectTag(tagID);
+    } 
     
 }

@@ -6,7 +6,6 @@
 package com.sg.blogcms.controller;
 
 import com.sg.blogcms.dto.Tags;
-import com.sg.blogcms.service.TagsCMSService;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.sg.blogcms.service.TagsCMSService;
 
 /**
  *
@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class TagCMSController {
     TagsCMSService tagService;
-    
+    Tags tag;
     
     
     @Inject
     public TagCMSController(TagsCMSService tagService) {
-        this.tagService = tagService;
+        this.tagService = (TagsCMSService) tagService;
         
     }
     
@@ -46,13 +46,23 @@ public class TagCMSController {
     
     
     @RequestMapping(value= {"/about"}, method = RequestMethod.GET)
-    public String displayAllCategories(HttpServletRequest request, Model model) {
+    public String displayAllTags(HttpServletRequest request, Model model) {
         List<Tags> allTags;
         allTags = tagService.SelectAllTags();
         model.addAttribute("allTags", allTags);
+        model.addAttribute("tag", tag);
         return "about";
     }
     
+    @RequestMapping(value = "/chooseTag", method = RequestMethod.GET)
+    public String chooseTagToUpdate(HttpServletRequest request, Model model) {
+        int tagID = Integer.parseInt(request.getParameter("idTag"));
+        String display = request.getParameter("viewType");
+        model.addAttribute("display",display);
+        Tags tags = tagService.SelectTag(tagID);
+        tag=tags;
+        return "redirect:about";
+    }
     
     
     @RequestMapping(value = "/updateTag", method = RequestMethod.GET)
