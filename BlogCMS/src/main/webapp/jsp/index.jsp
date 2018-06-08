@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -28,6 +29,16 @@
           </ul>
         </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <h4>Hello : ${pageContext.request.userPrincipal.name}
+                | <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+            </h4>
+        </c:if>
+        <sec:authorize access="isAuthenticated()">
+            <p>
+                This is only visible to users who are logged in.
+            </p>
+        </sec:authorize>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 ">

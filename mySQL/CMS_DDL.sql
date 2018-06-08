@@ -8,10 +8,16 @@ CREATE TABLE IF NOT EXISTS `User` (
   `lastName` VARCHAR(45) NOT NULL,
   `userName` VARCHAR(45) NOT NULL,
   `userEmail` VARCHAR(45) NOT NULL,
-  `userPassword` VARCHAR(45) NOT NULL,
+  `userPassword` VARCHAR(100) NOT NULL,
   `bio` VARCHAR(45) NOT NULL,
-  `isAdministrator`BOOLEAN NOT NULL,
-  PRIMARY KEY (`idUser`));
+  `enabled`TINYINT(1) NOT NULL,
+  PRIMARY KEY (`idUser`),
+  KEY(`userName`));
+  
+CREATE TABLE IF NOT EXISTS `Authorities` (
+ `userName` varchar(20) NOT NULL,
+ `authority` varchar(20) NOT NULL,
+ KEY `username` (`username`));
 
 CREATE TABLE IF NOT EXISTS `Categories` (
   `idCategories` INT NOT NULL AUTO_INCREMENT,
@@ -82,3 +88,6 @@ CREATE TABLE IF NOT EXISTS `BlogpostTag` (
     REFERENCES `Tag` (`idTag`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+ALTER TABLE `Authorities`
+ ADD CONSTRAINT `Authorities_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `Users` (`userName`);

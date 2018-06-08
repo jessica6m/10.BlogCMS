@@ -37,6 +37,11 @@ public class UserCMSController {
         return "userprofile";
     }
     
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String showLoginForm() {
+        return "login";
+    }
+    
 }
 
 // =============== FOR SIGN UP ===========

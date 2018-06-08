@@ -21,11 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author josesosa
  */
-
 @Controller
 public class CategoryCMSController {
     CategoryCMSService catService;
-    Category cate;
     
     
     @Inject
@@ -39,7 +37,7 @@ public class CategoryCMSController {
         List<Category> allCategories;
         allCategories = catService.selectAllCategories();
         model.addAttribute("allCategories", allCategories);
-        model.addAttribute("cate",cate);
+        
         return "categories";
     }
     
@@ -62,22 +60,28 @@ public class CategoryCMSController {
     @RequestMapping(value = "/chooseCategoryToUpdate", method = RequestMethod.GET)
     public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
         int catID = Integer.parseInt(request.getParameter("categoryId"));
-        String display = request.getParameter("viewType");
-        model.addAttribute("display",display);
+        String viewType = request.getParameter("viewType");
+        model.addAttribute("viewType",viewType);
         Category cat = catService.selectCatById(catID);
-        cate=cat;
-        return "redirect:categories";
+        model.addAttribute("cat",cat);
+        model.addAttribute("catID",catID);
+        List<Category> allCategories;
+        allCategories = catService.selectAllCategories();
+        model.addAttribute("allCategories", allCategories);
+        return "categories";
     }
     
     @RequestMapping(value = "/updateCategory", method = RequestMethod.GET)
     public String updateCategory(HttpServletRequest request, Model model) {
-        int catID = Integer.parseInt(request.getParameter("categoryId"));
-        Category cat = catService.selectCatById(catID);
-        cat.setCatName("");
-        cat.setDescription("");
-        catService.updateCategory(cat);
         
-        catService.updateCategory(cat);
+            int catID = Integer.parseInt(request.getParameter("categoryId"));
+            Category cat = catService.selectCatById(catID);
+            //model.addAttribute("catID", catID);
+            cat.setCatName(request.getParameter("categoryName"));
+            cat.setDescription(request.getParameter("categoryDescription"));    
+            catService.updateCategory(cat);
+        
+        
         return "redirect:categories";
     }
     

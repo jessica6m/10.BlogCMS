@@ -41,7 +41,7 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
             = "delete from Categories where idCategories = ?";
     
     private static final String SQL_UPDATE_CATEGORY
-            = "update Categories set catName = ?, description = ? where idCategories = ?";
+            = "update Categories set categoryName = ?, categoryDescription = ? where idCategories = ?";
 
     //==========================================================================
     //                                 METHODS
@@ -61,8 +61,9 @@ public class CategoryCMSDaoDbImpl implements CategoryCMSDao {
     @Override
     public Category updateCategory(Category cat) {
          jdbcTemplate.update(SQL_UPDATE_CATEGORY,
-                 cat.getCatId(),
-                 cat.getDescription());
+                 cat.getCatName(),
+                 cat.getDescription(),
+                 cat.getCatId());
          return cat;
     }
     
