@@ -57,23 +57,26 @@ public class TagCMSController {
     @RequestMapping(value = "/chooseTag", method = RequestMethod.GET)
     public String chooseTagToUpdate(HttpServletRequest request, Model model) {
         int tagID = Integer.parseInt(request.getParameter("idTag"));
-        String display = request.getParameter("viewType");
-        model.addAttribute("display",display);
+        String viewType = request.getParameter("viewType");
+        model.addAttribute("viewType", viewType);
         Tags tags = tagService.SelectTag(tagID);
-        tag=tags;
-        return "redirect:about";
+        model.addAttribute("tags",tags);
+        model.addAttribute("tagID", tagID);
+        List<Tags> allTags;
+        allTags = tagService.SelectAllTags();
+        model.addAttribute("allTags", allTags);
+        return "tags";
     }
     
     
     @RequestMapping(value = "/updateTag", method = RequestMethod.GET)
     public String updateTag(HttpServletRequest request, Model model){
-        Tags updatedTag = new Tags();
-        updatedTag.setTagName(request.getParameter("tagName"));
-        updatedTag.setDescription(request.getParameter("tagDescription"));
-        tagService.updateTag(updatedTag);
-        
-        String display = request.getParameter("viewType");
-        model.addAttribute("display",display);
+        int tagID = Integer.parseInt(request.getParameter("idTag"));
+        Tags tag = tagService.SelectTag(tagID);
+        tag.setTagName(request.getParameter("tagName"));        
+        tag.setDescription(request.getParameter("tagDescription"));
+        tagService.updateTag(tag);
+
         return "redirect:about";
     }
    
