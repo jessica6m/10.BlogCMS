@@ -21,11 +21,11 @@ public class UserMapper implements RowMapper<User>{
        user.setUserId(rs.getInt("idUser"));
        user.setFirstName(rs.getString("firstName"));
        user.setLastName(rs.getString("lastName"));
-       user.setUserName(rs.getString("userName"));
+       user.setUserName(rs.getString("username"));
        user.setUserEmail(rs.getString("userEmail"));
-       user.setUserPassword(rs.getString("userPassword"));
+       user.setUserPassword(rs.getString("password"));
        user.setUserBio(rs.getString("bio"));
-       user.setIsAdmin(rs.getBoolean("isAdministrator"));
+       user.setIsAdmin(rs.getBoolean("enabled"));
 
        return user;
     }

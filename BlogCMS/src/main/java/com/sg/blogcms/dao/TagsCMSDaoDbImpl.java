@@ -41,7 +41,7 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
             = "update Tag set tagName = ?, tagDescription = ? ";
     
     private static final String SQL_SELECT_TAG_BY_ID
-            = "select * from Tag where idTag";
+            = "select * from Tag where idTag = ?";
     
      private static final String SQL_SELECT_ALL_TAGS
             = "select * from Tag";

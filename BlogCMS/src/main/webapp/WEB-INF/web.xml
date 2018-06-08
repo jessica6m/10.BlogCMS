@@ -14,9 +14,9 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
     
-    <error-page>
+<!--    <error-page>
         <location>/error</location>
-    </error-page>
+    </error-page>-->
   
     <servlet>
         <servlet-name>spring-dispatcher</servlet-name>            

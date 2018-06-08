@@ -8,6 +8,8 @@
 
     <beans:bean id="webexpressionHandler"
                 class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/> 
+    <beans:bean id="encoder"
+       class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
                 
     <http pattern="/login" security="none" />
     <http pattern="/error" security="none" />
@@ -25,7 +27,7 @@
         <intercept-url pattern="/index.jsp" 
                        access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
-        <intercept-url pattern="/createUser" 
+<!--        <intercept-url pattern="/createUser" 
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/deleteUser" 
                        access="ROLE_ADMIN" />
@@ -41,7 +43,7 @@
         <intercept-url pattern="/users"
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/**" 
-                       access="ROLE_USER" />
+                       access="ROLE_USER" />-->
     </http>
     <authentication-manager>
         <authentication-provider>
