@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author josesosa
  */
-
 @Controller
 public class CategoryCMSController {
     CategoryCMSService catService;
