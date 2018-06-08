@@ -14,10 +14,8 @@
             <h1>BLOG USERS</h1>
             <hr/>
             <h2>Login Page</h2>
-
-            <c:if test="${param.login_error == 1}">
-                <h3>Wrong id or password!</h3>
-            </c:if>
+            
+            
             <form class="form-horizontal" 
                   role="form" 
                   method="post" 
