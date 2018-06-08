@@ -1,21 +1,17 @@
-<%-- 
-    Document   : login
-    Created on : May 30, 2018, 9:06:41 PM
-    Author     : Brandon Mathura
---%>
-
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hello Security: Login</title>
+        <title>Company Contacts: Login</title>
         <!-- Bootstrap core CSS -->
-        <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"> 
+        <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">        
     </head>
     <body>
         <div class="container">
-            <h1>Hello Security</h1>
+            <h1>BLOG USERS</h1>
             <hr/>
             <h2>Login Page</h2>
 
@@ -27,7 +23,8 @@
                   method="post" 
                    action="j_spring_security_check">
                 <div class="form-group">
-                    <label for="j_username" class="col-md-4 control-label">Username:</label>
+                    <label for="j_username" 
+                           class="col-md-4 control-label">Username:</label>
                     <div class="col-md-8">
                         <input type="text" 
                                class="form-control" 
@@ -36,9 +33,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="j_password" class="col-md-4 control-label">Password:</label>
+                    <label for="j_password" 
+                           class="col-md-4 control-label">Password:</label>
                     <div class="col-md-8">
-                        <input type="text" 
+                        <input type="password" 
                                class="form-control" 
                                name="j_password" 
                                placeholder="Password"/>

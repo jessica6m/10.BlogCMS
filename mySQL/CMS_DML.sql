@@ -1,6 +1,6 @@
 USE `CMS`;
 
-INSERT INTO `User`(firstName, lastName, userName, userEmail, userPassword,bio, isAdministrator)
+INSERT INTO `User`(firstName, lastName, userName, userEmail, userPassword,bio, enabled)
 Values
 ('Jose', 'Sosa', 'jsosa', 'jys5219@gmail.com', 'Eulelife0320','studious individual', True),
 ('Jess', 'Gross', 'jgross', 'jgross1989@gmail.com', 'JesseG0320','codeLife', True),
@@ -9,22 +9,14 @@ Values
 ('Stephen', 'Sanchez', 'ssanchez', 'ssanchez445@gmail.com', 'ssanchez445','dentist', True),
 ('Daniel', 'Domingo', 'ddomingo', 'ddomingo453@yahoo.com', 'ddmingo453',' nurse', True),
 ('Stanley', 'Pitt', 'spitt', 'spitt123@yahoo.com', 'spitt123','Java Programmer', True),
-('Micheal', 'Donovan', 'mdonovan', 'mdonovan123@yahoo.com', 'mdonovan123', 'C++ Programmer', True);
+('Micheal', 'Donovan', 'mdonovan', 'mdonovan123@yahoo.com', 'mdonovan123', 'C++ Programmer', True),
+('empty','empty','admin','admin@mail.com','password','the admin',1),
+('empty','empty','user','user@mail.com','password','the user',1);
 
-INSERT INTO `BlogPost` (title, description, content, author, createdDate,publishDate, `expirationDate`, approved, idUser,idCategories)
-VALUES 
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1');
+INSERT INTO `authorities` (`userName`, `authority`) VALUES
+('admin', 'ROLE_ADMIN'),
+('admin', 'ROLE_USER'),
+('user', 'ROLE_USER');
 
 INSERT INTO `Categories` (categoryName, categoryDescription)
 Values
@@ -59,6 +51,23 @@ Values
 ('#Choclate', 'Best Brands'),
 ('#Video Games', 'Favorite Games'),
 ('#Java', 'Spring MVC');
+
+INSERT INTO `BlogPost` (title, description, content, author, createdDate,publishDate, `expirationDate`, approved, idUser,idCategories)
+VALUES 
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1');
+
+
 
 INSERT INTO `StaticPage`( title, description, content, author, dateCreated, publishedDate, expirationDate, isActive, idUser)
 VALUES
