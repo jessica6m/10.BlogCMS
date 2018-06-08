@@ -1,6 +1,6 @@
 USE `CMS`;
 
-INSERT INTO `User`(firstName, lastName, userName, userEmail, userPassword,bio, enabled)
+INSERT INTO `User`(firstName, lastName, username, userEmail, `password`,bio, enabled)
 Values
 ('Jose', 'Sosa', 'jsosa', 'jys5219@gmail.com', 'Eulelife0320','studious individual', 1),
 ('Jess', 'Gross', 'jgross', 'jgross1989@gmail.com', 'JesseG0320','codeLife', 1),

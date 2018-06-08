@@ -6,16 +6,16 @@ CREATE TABLE IF NOT EXISTS `User` (
   `idUser` INT NOT NULL AUTO_INCREMENT,
   `firstName` VARCHAR(45) NOT NULL,
   `lastName` VARCHAR(45) NOT NULL,
-  `userName` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
   `userEmail` VARCHAR(45) NOT NULL,
-  `userPassword` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
   `bio` VARCHAR(45) NOT NULL,
   `enabled`TINYINT(1) NOT NULL,
   PRIMARY KEY (`idUser`),
   KEY(`userName`));
   
 CREATE TABLE IF NOT EXISTS `Authorities` (
- `userName` varchar(20) NOT NULL,
+ `username` varchar(20) NOT NULL,
  `authority` varchar(20) NOT NULL,
  KEY `username` (`username`));
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `BlogPost` (
   CONSTRAINT `fk_BlogPost_Categories`
     FOREIGN KEY (`idCategories`)
     REFERENCES `Categories` (`idCategories`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 CREATE TABLE IF NOT EXISTS `StaticPage` (
   `idStaticPage` INT NOT NULL AUTO_INCREMENT,
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `StaticPage` (
   CONSTRAINT `fk_StaticPage_User`
     FOREIGN KEY (`idUser`)
     REFERENCES `User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 CREATE TABLE IF NOT EXISTS `Tag` (
   `idTag` INT NOT NULL AUTO_INCREMENT,
@@ -86,8 +86,8 @@ CREATE TABLE IF NOT EXISTS `BlogpostTag` (
   CONSTRAINT `fk_BlogpostTag_Tag`
     FOREIGN KEY (`idTag`)
     REFERENCES `Tag` (`idTag`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 ALTER TABLE `Authorities`
- ADD CONSTRAINT `Authorities_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `Users` (`userName`);
+ ADD CONSTRAINT `Authorities_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `User` (`userName`);

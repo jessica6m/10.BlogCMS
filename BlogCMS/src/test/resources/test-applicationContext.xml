@@ -23,11 +23,7 @@
       <property name="url" 
                 value="jdbc:mysql://localhost:3306/CMSTest" /> <!-- Using the actual database  -->
       <property name="Username" value="root" />
-<<<<<<< HEAD
-      <property name="Password" value="Rs3villa2327" /> <!-- Note the value here is the users MySql password  -->
-=======
       <property name="Password" value="Eulelife0320" /> <!-- Note the value here is the users MySql password  -->
->>>>>>> 227f77a8621cde10e559ee18906b79515eb9872a
       <property name="initialSize" value="5" />
       <property name="maxTotal" value="10" />
     </bean>
