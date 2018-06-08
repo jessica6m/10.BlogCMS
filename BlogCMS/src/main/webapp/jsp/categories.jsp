@@ -127,7 +127,7 @@
             </div>
             
             
-            <div class="icons">
+            <div class="footer">
                 <button>Instagram</button>
                 <button>FaceBook</button>
                 <button>Twitter</button>
