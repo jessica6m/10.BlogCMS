@@ -13,7 +13,7 @@ Values
 ('empty','empty','admin','admin@mail.com','password','the admin',1),
 ('empty','empty','user','user@mail.com','password','the user',1);
 
-INSERT INTO `authorities` (`userName`, `authority`) VALUES
+INSERT INTO `authorities` (`username`, `authority`) VALUES
 ('admin', 'ROLE_ADMIN'),
 ('admin', 'ROLE_USER'),
 ('user', 'ROLE_USER');

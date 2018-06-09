@@ -31,7 +31,7 @@ public class UserCMSService {
         this.userDao = userDao;
     }
 
-    public User selectUserProfile(int userID) {
+    public User selectUser(int userID) {
         return userDao.selectUser(userID);
     }
     
@@ -51,6 +51,10 @@ public class UserCMSService {
 
     public User createUser(User user) {
         return userDao.createUser(user);
+    }
+
+    public User selectUserByUsername(String username) {
+        return userDao.selectUserByUsername(username);
     }
 
 

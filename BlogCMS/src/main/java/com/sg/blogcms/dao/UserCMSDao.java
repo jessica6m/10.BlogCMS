@@ -23,5 +23,9 @@ public interface UserCMSDao {
     public User updateUser(User user);
 
     public User createUser(User user);
+    
+    void deleteUser(String username);
+
+    public User selectUserByUsername(String username);
 
 }

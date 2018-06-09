@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -22,42 +23,127 @@
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
             <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
-            <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
+            <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <p>Hello : ${pageContext.request.userPrincipal.name} 
+                |<a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&username=${pageContext.request.userPrincipal.name}" /> Edit</a> |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
+            </p>
+        </c:if>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <h1>${user.lastName}, ${user.firstName}</h1>
         <div class="container">
-            <div class="col-md-4 ">
+            <div class="col-md-10 ">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th> First Name </th>
                                 <th> Last Name </th>
                                 <th> Username </th>
+                                <th> Email </th>
                                 <th> Password </th>
-                                <th> Title </th>
-                                <th> Description </th>
+                                <th> Bio </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
-                                <tr >
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
-                                    </td>
+                            <tr >
+                                <td>
+                                    <c:out value="${user.firstName}"></c:out>
+                                </td>
 
-                                    <td>
-                                        <c:out value="${lastTenBlogs[i].description}"></c:out>
-                                    </td>
-                                </tr>
+                                <td>
+                                    <c:out value="${user.lastName}"></c:out>
+                                </td>
 
-                            </c:forEach>
+                                <td>
+                                    <c:out value="${user.username}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${user.userEmail}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value=" Password "></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${user.userBio}"></c:out>
+                                </td>
+                            </tr>
 
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&userId=${user.userId}" class = "btn btn-warning">EDIT</a>
+                                </td>
+
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/deleteUser?userId=${users.userId}" class = "btn btn-danger">DELETE</a>
+                                </td> 
+                            </tr>
+                            
+                        </tfoot>
                     </table>
     
+                </div>
+                <div class = "col-md-10">
+                    <c:choose>
+                            <c:when test="${viewType == 'edit'}">
+                                <h2>Update User </h2>
+                                <hr>
+                                <form action="updateUser"  class="form-horizontal" role="form" method="GET" >
+                                    <input type="hidden" name="userId" value="${userId}" />
+                                    <div class="form-group">
+                                        <label for="add-user-firstname" class="col-sm-3 control-label">First Name: </label>
+                                        <div class="    ">
+                                            <input type="text" name="userFirstName" placeholder="User's First Name : ${user.firstName}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add-user-lastname" class="col-md-2 control-label">Last Name:</label>
+                                        <div class="">
+                                            <input type="text" name="userLastName" placeholder="User's Last Name : ${user.lastName}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add-user-username" class="col-sm-3 control-label">Username </label>
+                                        <div class="    ">
+                                            <input type="text" name="username" placeholder="User's Username : ${user.username}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add-user-useremail" class="col-sm-3 control-label">Email </label>
+                                        <div class="    ">
+                                            <input type="text" name="email" placeholder="User's Email : ${user.userEmail}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add-user-password" class="col-sm-3 control-label">Password </label>
+                                        <div class="    ">
+                                            <input type="text" name="password" placeholder="User's Password : ${user.password}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="add-user-bio" class="col-md-2 control-label">Bio:</label>
+                                        <div class="">
+                                            <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : ${user.userBio}"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+
+                            </c:when>
+                    </c:choose>
                 </div>
             
             <div class="icons">

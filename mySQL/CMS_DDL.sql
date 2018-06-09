@@ -90,4 +90,4 @@ CREATE TABLE IF NOT EXISTS `BlogpostTag` (
     ON UPDATE CASCADE);
 
 ALTER TABLE `Authorities`
- ADD CONSTRAINT `Authorities_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `User` (`userName`);
+ ADD CONSTRAINT `Authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `User` (`username`);

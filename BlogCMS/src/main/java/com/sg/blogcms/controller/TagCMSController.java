@@ -41,17 +41,17 @@ public class TagCMSController {
         newTag.setTagName(request.getParameter("tagName"));
         newTag.setDescription(request.getParameter("tagDescription"));
         tagService.createTag(newTag);
-        return "redirect:about";
+        return "redirect:tags";
     }
     
     
-    @RequestMapping(value= {"/about"}, method = RequestMethod.GET)
+    @RequestMapping(value= {"/tags"}, method = RequestMethod.GET)
     public String displayAllTags(HttpServletRequest request, Model model) {
         List<Tags> allTags;
         allTags = tagService.SelectAllTags();
         model.addAttribute("allTags", allTags);
         model.addAttribute("tag", tag);
-        return "about";
+        return "tags";
     }
     
     @RequestMapping(value = "/chooseTag", method = RequestMethod.GET)
@@ -65,7 +65,7 @@ public class TagCMSController {
         List<Tags> allTags;
         allTags = tagService.SelectAllTags();
         model.addAttribute("allTags", allTags);
-        return "about";
+        return "tags";
     }
     
     
@@ -77,14 +77,14 @@ public class TagCMSController {
         tag.setDescription(request.getParameter("tagDescription"));
         tagService.updateTag(tag);
 
-        return "redirect:about";
+        return "redirect:tags";
     }
    
     @RequestMapping(value= {"/deleteTag"}, method = RequestMethod.GET)
     public String removeTag(HttpServletRequest request, Model model) {
         int tagID = Integer.parseInt(request.getParameter("tagId"));
         tagService.removeTag(tagID);
-        return "redirect:about";
+        return "redirect:tags";
     }
     
 }

@@ -13,23 +13,24 @@
     </head>
     <body>
         <h1>My Blog</h1>
-        <div class="account-float">
-            <button><a href="${pageContext.request.contextPath}/login">Login</a></button>
-            <button><a href="${pageContext.request.contextPath}/displayUserProfilePage/userID">View Profile</a></button>
-        </div>
+        
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
             <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
-            <li><a href="${pageContext.request.contextPath}/about"> About</a></li>
+            <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
-        
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <p>Hello : ${pageContext.request.userPrincipal.name} 
+                |<a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&username=${pageContext.request.userPrincipal.name}" /> Edit</a> |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
+            </p>
+        </c:if>
         <sec:authorize access="isAuthenticated()">
             <p>
                 This is only visible to users who are logged in.
@@ -37,7 +38,7 @@
         </sec:authorize>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 ">
+                <div class="col-md-6 ">
                     <table class="table">
                         <thead>
                             <tr>
@@ -64,7 +65,7 @@
     
                 </div>
                 
-                <div class = "col-md-7>">
+                <div class = "col-md-6>">
                     <p> TESTING GRID LAYOUT!!!</p>
                     
                     <p> Blog Description Goes Here</p>

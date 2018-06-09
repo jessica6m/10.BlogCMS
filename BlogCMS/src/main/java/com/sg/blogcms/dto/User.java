@@ -16,14 +16,15 @@ public class User {
     private int userId;
     private String firstName;
     private String lastName;
-    private String userName;
+    private String username;
     private String userEmail;
-    private String userPassword;
+    private String password;
     private String userBio;
-    private Boolean isAdmin;
+    private Boolean isEnabled;
     private List<BlogPost> associatedBlogs;
     private List<StaticPage> associatedStaticPages;
     private List<Category> associatedCategories;
+    private List<String> authorityList;
 
     public int getUserId() {
         return userId;
@@ -49,12 +50,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUserEmail() {
@@ -65,12 +66,12 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUserBio() {
@@ -81,12 +82,12 @@ public class User {
         this.userBio = userBio;
     }
 
-    public Boolean getIsAdmin() {
-        return isAdmin;
+    public Boolean getIsEnabled() {
+        return isEnabled;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setIsEnabled(Boolean isEnabled) {
+        this.isEnabled = isEnabled;
     }
 
     public List<BlogPost> getAssociatedBlogs() {
@@ -113,20 +114,33 @@ public class User {
         this.associatedCategories = associatedCategories;
     }
 
+    public List<String> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<String> authorityList) {
+        this.authorityList = authorityList;
+    }
+    
+    public void addAuthority(String role){
+        authorityList.add(role);
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + this.userId;
-        hash = 37 * hash + Objects.hashCode(this.firstName);
-        hash = 37 * hash + Objects.hashCode(this.lastName);
-        hash = 37 * hash + Objects.hashCode(this.userName);
-        hash = 37 * hash + Objects.hashCode(this.userEmail);
-        hash = 37 * hash + Objects.hashCode(this.userPassword);
-        hash = 37 * hash + Objects.hashCode(this.userBio);
-        hash = 37 * hash + Objects.hashCode(this.isAdmin);
-        hash = 37 * hash + Objects.hashCode(this.associatedBlogs);
-        hash = 37 * hash + Objects.hashCode(this.associatedStaticPages);
-        hash = 37 * hash + Objects.hashCode(this.associatedCategories);
+        int hash = 7;
+        hash = 67 * hash + this.userId;
+        hash = 67 * hash + Objects.hashCode(this.firstName);
+        hash = 67 * hash + Objects.hashCode(this.lastName);
+        hash = 67 * hash + Objects.hashCode(this.username);
+        hash = 67 * hash + Objects.hashCode(this.userEmail);
+        hash = 67 * hash + Objects.hashCode(this.password);
+        hash = 67 * hash + Objects.hashCode(this.userBio);
+        hash = 67 * hash + Objects.hashCode(this.isEnabled);
+        hash = 67 * hash + Objects.hashCode(this.associatedBlogs);
+        hash = 67 * hash + Objects.hashCode(this.associatedStaticPages);
+        hash = 67 * hash + Objects.hashCode(this.associatedCategories);
+        hash = 67 * hash + Objects.hashCode(this.authorityList);
         return hash;
     }
 
@@ -151,19 +165,19 @@ public class User {
         if (!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
-        if (!Objects.equals(this.userName, other.userName)) {
+        if (!Objects.equals(this.username, other.username)) {
             return false;
         }
         if (!Objects.equals(this.userEmail, other.userEmail)) {
             return false;
         }
-        if (!Objects.equals(this.userPassword, other.userPassword)) {
+        if (!Objects.equals(this.password, other.password)) {
             return false;
         }
         if (!Objects.equals(this.userBio, other.userBio)) {
             return false;
         }
-        if (!Objects.equals(this.isAdmin, other.isAdmin)) {
+        if (!Objects.equals(this.isEnabled, other.isEnabled)) {
             return false;
         }
         if (!Objects.equals(this.associatedBlogs, other.associatedBlogs)) {
@@ -175,13 +189,11 @@ public class User {
         if (!Objects.equals(this.associatedCategories, other.associatedCategories)) {
             return false;
         }
+        if (!Objects.equals(this.authorityList, other.authorityList)) {
+            return false;
+        }
         return true;
     }
-    
-    
-    
-    
-    
     
     
 }
