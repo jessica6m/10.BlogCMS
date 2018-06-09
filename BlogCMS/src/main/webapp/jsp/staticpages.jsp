@@ -51,6 +51,10 @@
                 </div>
             </div>
         </div>
+<!--                            1. add the code that gives me a drop down menu here
+                            2. should cycle through a list of categories and tags respectively
+                            3. lastly it should end with a link for creating categories and tags respectively
+                            4. this should return an array to the controller.. either an array of strings or id's-->
             
         <div class="icons">
             <button>Instagram</button>
