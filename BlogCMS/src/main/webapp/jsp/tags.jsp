@@ -52,7 +52,7 @@
                                         </td>
 
                                         <td>
-                                            <a href="${pageContext.request.contextPath}/chooseTag?viewType=edit&tagId=${allTags[i].tagId}" class = "btn btn-danger">EDIT</a>
+                                            <a href="${pageContext.request.contextPath}/chooseTag?viewType=edit&tagId=${allTags[i].tagId}" class = "btn btn-warning">EDIT</a>
                                         </td>
                                         <td>
                                             <a href="${pageContext.request.contextPath}/deleteTag?tagId=${allTags[i].tagId}" class = "btn btn-danger">DELETE</a>
@@ -70,12 +70,12 @@
                                 <h2>Update Tag </h2>
                                 <hr>
                                 <form action="updateTag" class="form-horizontal" role="form" method="GET"> 
-                                    <input type="hidden" name="categoryId" value="${tagID}" />
+                                    <input type="hidden" name="tagId" value="${tagID}" />
 
                                     <div class="form-group">
                                         <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
                                         <div class="">
-                                            <input type="text" name="tagName" placeholder="Tag Name : ${tags.tagName}" >
+                                            <input type="text" name="tagName" placeholder="Tag Name : ${tag.tagName}" >
                                         </div>
                                     </div>
 
@@ -83,7 +83,7 @@
                                     <div class="form-group">
                                         <label for="tagDescription" class="col-md-2 control-label">Description:</label>
                                         <div class="">
-                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description : ${tags.description}"></textarea>
+                                            <textarea class="form-control" rows="3" name="tagDescription" placeholder="Description : ${tag.description}"></textarea>
                                         </div>
                                     </div>
 
@@ -111,7 +111,7 @@
                                     <div class="form-group">
                                         <label for="tagDescription" class="col-md-2 control-label">Description:</label>
                                         <div class="">
-                                            <textarea type="text" class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
+                                            <textarea class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
                                         </div>
                                     </div>
 

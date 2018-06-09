@@ -31,8 +31,8 @@ public class TagsCMSService {
         tagDao.removeTag(tagID);
     }
     
-    public Tags updateTag(Tags tagID){
-        return tagDao.updateTag(tagID);
+    public Tags updateTag(Tags tag){
+        return tagDao.updateTag(tag);
     }
     
     public List<Tags> SelectAllTags(){

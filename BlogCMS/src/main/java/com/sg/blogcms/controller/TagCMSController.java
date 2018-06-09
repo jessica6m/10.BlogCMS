@@ -59,8 +59,8 @@ public class TagCMSController {
         int tagID = Integer.parseInt(request.getParameter("tagId"));
         String viewType = request.getParameter("viewType");
         model.addAttribute("viewType", viewType);
-        Tags tags = tagService.SelectTag(tagID);
-        model.addAttribute("tags",tags);
+        Tags tag = tagService.SelectTag(tagID);
+        model.addAttribute("tag",tag);
         model.addAttribute("tagID", tagID);
         List<Tags> allTags;
         allTags = tagService.SelectAllTags();
@@ -71,13 +71,16 @@ public class TagCMSController {
     
     @RequestMapping(value = "/updateTag", method = RequestMethod.GET)
     public String updateTag(HttpServletRequest request, Model model){
-        int tagID = Integer.parseInt(request.getParameter("tagID"));
-        Tags tag = tagService.SelectTag(tagID);
-        tag.setTagName(request.getParameter("tagName"));        
-        tag.setDescription(request.getParameter("tagDescription"));
-        tagService.updateTag(tag);
+        int tagID = Integer.parseInt(request.getParameter("tagId"));
+        Tags tempTag = tagService.SelectTag(tagID);
+        tempTag.setTagName(request.getParameter("tagName"));        
+        tempTag.setDescription(request.getParameter("tagDescription"));
+        tagService.updateTag(tempTag);
+        List<Tags> allTags;
+        allTags = tagService.SelectAllTags();
+        model.addAttribute("allTags", allTags);
 
-        return "redirect:tags";
+        return "tags";
     }
    
     @RequestMapping(value= {"/deleteTag"}, method = RequestMethod.GET)

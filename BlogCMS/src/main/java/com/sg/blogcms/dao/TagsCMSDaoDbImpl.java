@@ -38,7 +38,7 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
             = "delete from Tag where idTag = ? ";
     
     private static final String SQL_UPDATE_TAG
-            = "update Tag set tagName = ?, tagDescription = ? ";
+            = "update Tag set tagName = ?, tagDescription = ? where idTag=? ";
     
     private static final String SQL_SELECT_TAG_BY_ID
             = "select * from Tag where idTag = ?";
@@ -72,8 +72,9 @@ public class TagsCMSDaoDbImpl implements TagsCMSDao {
     public Tags updateTag(Tags tag) {
          jdbcTemplate.update(SQL_UPDATE_TAG,
                  tag.getTagName(),
-                 tag.getDescription()
-                 );
+                 tag.getDescription(),
+                 tag.getTagId());
+                 
          return tag;
     }
 
