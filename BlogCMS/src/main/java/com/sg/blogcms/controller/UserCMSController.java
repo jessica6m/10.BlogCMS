@@ -132,9 +132,9 @@ public class UserCMSController {
         }
 
         userService.createUser(user);
+        
 
         return "redirect:users";
     }
-    
 }
     

@@ -21,7 +21,7 @@
         <form-login login-processing-url="/j_spring_security_check"
                     login-page="/login"
                     authentication-failure-url="/login?login_error=1"
-                    default-target-url="/categories"/>
+                    default-target-url="/index"/>
        
         <intercept-url pattern="/" 
                        access="IS_AUTHENTICATED_ANONYMOUSLY" />

@@ -7,6 +7,8 @@ package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.BlogsCMSDao;
 import com.sg.blogcms.dto.BlogPost;
+import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.Tags;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -22,6 +24,11 @@ public class BlogsCMSService {
     public BlogsCMSService(BlogsCMSDao blogsDao) {
         this.blogsDao = blogsDao;
     }
+    
+    public BlogPost createBlog(BlogPost bp){
+        
+        return blogsDao.createBlog(bp);
+    }
 
     public List<BlogPost> selectLastTenBlogs() {
         return blogsDao.selectLastTenBlogs();
@@ -35,5 +42,17 @@ public class BlogsCMSService {
         for (BlogPost blog: lastTenBlogs){
             blogsDao.appointUserToBlog(blog);
         }
+    }
+
+    public BlogPost selectBlog(int blogId) {
+        return blogsDao.selectBlog(blogId);
+    }
+    
+    public List<Tags> selectAllTags() {
+     return blogsDao.selectAllTags();
+    }
+    
+    public List<Category> selectAllCategories() {
+       return blogsDao.selectAllCategories();
     }
 }

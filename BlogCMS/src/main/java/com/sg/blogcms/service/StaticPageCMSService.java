@@ -6,7 +6,9 @@
 package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.StaticPageCMSDao;
+import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
+import com.sg.blogcms.dto.Tags;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -29,6 +31,14 @@ public class StaticPageCMSService {
     
     public StaticPage selectStaticPage(int spId) {
      return spDao.selectStaticPage(spId);
+    }
+    
+    public List<Tags> selectAllTags() {
+     return spDao.selectAllTags();
+    }
+    
+    public List<Category> selectAllCategories() {
+       return spDao.selectAllCategories();
     }
     
 }

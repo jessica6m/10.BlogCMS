@@ -44,6 +44,16 @@ public class TagCMSController {
         return "redirect:tags";
     }
     
+//    @RequestMapping(value = "/createTagForBlog", method = RequestMethod.POST)
+//    public String createTags(HttpServletRequest request, Model model){
+//        Tags newTag = new Tags();
+//        
+//        newTag.setTagName(request.getParameter("tagName"));
+//        newTag.setDescription(request.getParameter("tagDescription"));
+//        
+//        tagService.createTag(newTag);
+//        return "createBlogPost";
+//    }
     
     @RequestMapping(value= {"/tags"}, method = RequestMethod.GET)
     public String displayAllTags(HttpServletRequest request, Model model) {

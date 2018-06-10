@@ -65,3 +65,9 @@ a:hover {
     border-style: solid;
     border-width: medium;
 }
+
+.login-btn{
+    text-align:right;
+    background-color:pink;
+    font:black;
+}

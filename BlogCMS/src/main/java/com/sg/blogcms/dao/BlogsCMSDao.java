@@ -6,6 +6,8 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
+import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.Tags;
 import java.util.List;
 
 /**
@@ -25,4 +27,7 @@ public interface BlogsCMSDao {
     List<BlogPost> selectLastTenBlogs();
     
     public BlogPost appointUserToBlog(BlogPost blog);
+    
+    public List<Tags> selectAllTags();    
+    public List<Category> selectAllCategories();
 }

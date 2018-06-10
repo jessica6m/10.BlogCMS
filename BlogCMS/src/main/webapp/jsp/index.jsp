@@ -13,14 +13,18 @@
     </head>
     <body>
         <h1>My Blog</h1>
-        
+        <sec:authorize access="isAnonymous()">
+            <a href="${pageContext.request.contextPath}/login" class="login-btn ">Login</a>
+        </sec:authorize>
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
-            <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-            <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
-            <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
+                <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
+                <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
+            </sec:authorize>
             <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
@@ -31,11 +35,6 @@
                 |<a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&username=${pageContext.request.userPrincipal.name}" /> Edit</a> |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
             </p>
         </c:if>
-        <sec:authorize access="isAuthenticated()">
-            <p>
-                This is only visible to users who are logged in.
-            </p>
-        </sec:authorize>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 ">

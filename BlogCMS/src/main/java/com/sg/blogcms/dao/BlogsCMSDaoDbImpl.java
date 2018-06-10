@@ -6,8 +6,12 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
+import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.mappers.BlogMapper;
+import com.sg.blogcms.mappers.CategoryMapper;
+import com.sg.blogcms.mappers.TagMapper;
 import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -32,26 +36,26 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     //==========================================================================
 
     private static final String SQL_INSERT_BLOG
-            = "insert into blogs (title, description, content, author, createdDate" 
-            + "publishedDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
+            = "insert into BlogPost (title, description, content, author, createdDate, " 
+            + "publishDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_DELETE_BLOG
-            = "delete from blogs where idBlog = ?";
+            = "delete from BlogPost where idBlog = ?";
     
     private static final String SQL_UPDATE_BLOG
-            = "update blogs set title = ?, content = ?, author = ?, ";
+            = "update BlogPost set title = ?, content = ?, author = ?, ";
     
     private static final String SQL_SELECT_BLOG
             = "select * from BlogPost where idBlog = ? ";
     
     private static final String SQL_SELECT_BLOG_BY_USER
-            = "select * from blogs where idUser =? ";
+            = "select * from BlogPost where idUser =? ";
     
     private static final String SQL_SELECT_BLOG_BY_CAT
-            = "select * from blogs where idCategories = ?";
+            = "select * from BlogPost where idCategories = ?";
     
     private static final String SQL_SELECT_BLOG_BY_TAG
-            = "select * from blogs where idTag = ?";
+            = "select * from BlogPost where idTag = ?";
     
     private static final String SQL_SELECT_LAST_TEN_BLOGPOST
            = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
@@ -61,6 +65,12 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     
     private static final String SQL_SELECT_USER_BY_BLOG
             = "select * from User usr Join BlogPost bp on usr.idUser = bp.idUser where idBlogPost =? ";
+    
+    private static final String SQL_SELECT_ALL_TAGS
+            = "select * from Tag";
+
+    private static final String SQL_SELECT_ALL_CATEGORIES
+            = "select * from Categories";
     
     //==========================================================================
     //                                 METHODS
@@ -151,6 +161,18 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     @Override
     public List<BlogPost> selectAllBlogsByTag(int tagID) {
         return null;
+    }
+    
+    @Override
+    public List<Tags> selectAllTags(){
+        return jdbcTemplate.query(SQL_SELECT_ALL_TAGS,
+                new TagMapper());
+        
+    }
+    @Override
+    public List<Category> selectAllCategories() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
+                new CategoryMapper());
     }
     
     

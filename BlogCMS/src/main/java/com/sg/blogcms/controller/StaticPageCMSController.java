@@ -5,9 +5,11 @@
  */
 package com.sg.blogcms.controller;
 
+import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
+import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.service.StaticPageCMSService;
-import static java.lang.System.console;
+import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -38,6 +40,29 @@ public class StaticPageCMSController {
         model.addAttribute("selectStaticPage", selectStaticPage);
         return "staticpages";
     }
+    
+//    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)
+//    public String StaticPageAddCategory(HttpServletRequest request, Model model,@PathVariable String viewType2) {
+//        
+//        List<Category> allCategories = spService.selectAllCategories();
+//
+//        model.addAttribute("viewType2",viewType2);
+//        model.addAttribute("allCategories",allCategories);
+//        return "createBlogPost";
+//    }
+//    
+//    @RequestMapping(value = {"/createBlogPost/{viewType}"}, method = RequestMethod.GET)
+//    public String StaticPageAddTag(HttpServletRequest request, Model model,@PathVariable String viewType) {
+//        
+//        List<Tags> allTags = spService.selectAllTags();
+//        
+//        
+//        
+//        
+//        model.addAttribute("viewType",viewType);
+//        model.addAttribute("allTags",allTags);
+//        return "createBlogPost";
+//    }
     
 //    @RequestMapping(value = { "/","staticPage", ""}, method = RequestMethod.GET)
 //    public String StaticPages(HttpServletRequest request, Model model){

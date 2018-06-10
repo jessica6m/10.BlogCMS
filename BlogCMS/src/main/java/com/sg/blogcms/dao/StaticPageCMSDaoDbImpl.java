@@ -5,8 +5,12 @@
  */
 package com.sg.blogcms.dao;
 
+import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
+import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.mappers.CategoryMapper;
 import com.sg.blogcms.mappers.StaticPageMapper;
+import com.sg.blogcms.mappers.TagMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,7 +20,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * @author svlln
  */
 public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
-    
+
     private JdbcTemplate jdbcTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
@@ -25,17 +29,22 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
 //    ----------------------------------------------------------------------------
 //    **********************PREPARED STATEMENTS **********************************
 //    ----------------------------------------------------------------------------
-    
+
     private static final String SQL_SELECT_STATIC_PAGE
             = "select * from StaticPage where idStaticPage = ? ";
     
     private static final String SQL_SELECT_ALL_STATIC_PAGES = 
             "select * from StaticPage";
     
+    private static final String SQL_SELECT_ALL_TAGS
+            = "select * from Tag";
+
+    private static final String SQL_SELECT_ALL_CATEGORIES
+            = "select * from Categories";
+
 //    ----------------------------------------------------------------------------
 //    *******************INTERFACE METHODS****************************************
 //    ----------------------------------------------------------------------------
-
     @Override
     public StaticPage createStaticPage(StaticPage sp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -54,9 +63,9 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     @Override
     public StaticPage selectStaticPage(int spId) {
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_STATIC_PAGE, 
-                                               new StaticPageMapper(), 
-                                               spId);
+            return jdbcTemplate.queryForObject(SQL_SELECT_STATIC_PAGE,
+                    new StaticPageMapper(),
+                    spId);
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
@@ -73,11 +82,23 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    @Override
+    public List<Tags> selectAllTags(){
+        return jdbcTemplate.query(SQL_SELECT_ALL_TAGS,
+                new TagMapper());
+        
+    }
+    @Override
+    public List<Category> selectAllCategories() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
+                new CategoryMapper());
+    }
+    
+    
     
 //    ----------------------------------------------------------------------------
 //    ********************HELPER METHODS*********************************************
 //    ----------------------------------------------------------------------------
-    
-   
-    
+
+
 }
