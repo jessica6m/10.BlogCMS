@@ -28,8 +28,8 @@
         <intercept-url pattern="/index.jsp" 
                        access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
-        <intercept-url pattern="/categories" 
-                               access="ROLE_ADMIN" />
+<!--        <intercept-url pattern="/categories" 
+                               access="ROLE_ADMIN" />-->
         <!--        <intercept-url pattern="/deleteUser" 
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/displayEditUserForm" 
