@@ -103,51 +103,51 @@
                                 <form action="updateUser"  class="form-horizontal" role="form" method="GET" >
                                     <input type="hidden" name="userId" value="${userId}" />
                                     <div class="form-group">
-                                        <label for="add-user-firstname" class="col-sm-3 control-label">First Name: </label>
+                                        <label for="add-user-firstname" class=" control-label">First Name: </label>
                                         <div class="    ">
                                             <input type="text" name="userFirstName" placeholder="User's First Name : ${user.firstName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-lastname" class="col-md-2 control-label">Last Name:</label>
+                                        <label for="add-user-lastname" class=" control-label">Last Name:</label>
                                         <div class="">
                                             <input type="text" name="userLastName" placeholder="User's Last Name : ${user.lastName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-username" class="col-sm-3 control-label">Username </label>
+                                        <label for="add-user-username" class=" control-label">Username </label>
                                         <div class="    ">
                                             <input type="text" name="username" placeholder="User's Username : ${user.username}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-useremail" class="col-sm-3 control-label">Email </label>
+                                        <label for="add-user-useremail" class=" control-label">Email </label>
                                         <div class="    ">
                                             <input type="text" name="email" placeholder="User's Email : ${user.userEmail}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-password" class="col-sm-3 control-label">Password </label>
+                                        <label for="add-user-password" class=" control-label">Password </label>
                                         <div class="    ">
                                             <input type="text" name="password" placeholder="User's Password : ${user.password}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-bio" class="col-md-2 control-label">Bio:</label>
+                                        <label for="add-user-bio" class=" control-label">Bio:</label>
                                         <div class="">
                                             <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : ${user.userBio}"></textarea>
                                         </div>
                                     </div>
                                     <div>
-                                        <input type="checkbox" name="isEnabled" value="yes"/>
+                                        <input class ="enabledAdmin" type="checkbox" name="isEnabled" value="yes"/> : Enable?
                                     </div>
                                     <div>
-                                        <input type="checkbox" name="isAdmin" value="yes"/>
+                                        <input class ="enabledAdmin" type="checkbox" name="isAdmin" value="yes"/> : Admin?
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn btn-default" value="${userId}"></button>
-                                        </div>
+                                        
+                                            <button type="submit" class="btn btn-lg btn-success " value="SUBMIT">SUBMIT</button>
+                                        
                                     </div>
                                     
                                 </form>
@@ -158,51 +158,51 @@
                                 <hr>
                                 <form action="adduser" class="form-horizontal" role="form" method="POST" >
                                     <div class="form-group">
-                                        <label for="add-user-firstname" class="col-sm-3 control-label">First Name: </label>
+                                        <label for="add-user-firstname" class=" control-label">First Name: </label>
                                         <div class="    ">
                                             <input type="text" name="userFirstName" placeholder="User's First Name : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-lastname" class="col-md-2 control-label">Last Name:</label>
+                                        <label for="add-user-lastname" class=" control-label">Last Name:</label>
                                         <div class="">
                                             <input type="text" name="userLastName" placeholder="User's Last Name : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-username" class="col-sm-3 control-label">Username </label>
+                                        <label for="add-user-username" class=" control-label">Username </label>
                                         <div class="    ">
                                             <input type="text" name="username" placeholder="User's Username : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-useremail" class="col-sm-3 control-label">Email </label>
+                                        <label for="add-user-useremail" class="control-label">Email </label>
                                         <div class="    ">
                                             <input type="text" name="email" placeholder="User's Email : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-password" class="col-sm-3 control-label">Password </label>
+                                        <label for="add-user-password" class=" control-label">Password </label>
                                         <div class="    ">
                                             <input type="text" name="password" placeholder="User's Password : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-bio" class="col-md-2 control-label">Bio:</label>
+                                        <label for="add-user-bio" class=" control-label">Bio:</label>
                                         <div class="">
                                             <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : "></textarea>
                                         </div>
                                     </div>
                                     <div>
-                                        Enable? <input type="checkbox" name="isEnabled" value="yes"/>
+                                         <input type="checkbox" name="isEnabled" value="yes"/> : Enable?
                                     </div>
                                     <div>
-                                        Admin? <input type="checkbox" name="isAdmin" value="yes"/>
+                                         <input type="checkbox" name="isAdmin" value="yes"/> : Admin?
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <button type="submit" class="btn btn-default btn-success" value="${userId}">SUBMIT</button>
-                                        </div>
+                                        
+                                            <button type="submit" class="btn btn-lg btn-success" value="${userId}">SUBMIT</button>
+                                        
                                     </div>
                                     
                                 </form>

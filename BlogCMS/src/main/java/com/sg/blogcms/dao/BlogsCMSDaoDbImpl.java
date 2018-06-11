@@ -40,13 +40,13 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             + "publishDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_DELETE_BLOG
-            = "delete from BlogPost where idBlog = ?";
+            = "delete from BlogPost where idBlogPost = ?";
     
     private static final String SQL_UPDATE_BLOG
             = "update BlogPost set title = ?, content = ?, author = ?, ";
     
     private static final String SQL_SELECT_BLOG
-            = "select * from BlogPost where idBlog = ? ";
+            = "select * from BlogPost where idBlogPost = ? ";
     
     private static final String SQL_SELECT_BLOG_BY_USER
             = "select * from BlogPost where idUser =? ";

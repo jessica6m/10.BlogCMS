@@ -75,7 +75,7 @@
                                     <input type="hidden" name="tagId" value="${tagID}" />
 
                                     <div class="form-group">
-                                        <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
+                                        <label for="tagName" class=" control-label">Tag Name</label>
                                         <div class="">
                                             <input type="text" name="tagName" placeholder="Tag Name : ${tag.tagName}" >
                                         </div>
@@ -83,7 +83,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="tagDescription" class="col-md-2 control-label">Description:</label>
+                                        <label for="tagDescription" class=" control-label">Description:</label>
                                         <div class="">
                                             <textarea class="form-control" rows="3" name="tagDescription" placeholder="Description : ${tag.description}"></textarea>
                                         </div>
@@ -103,7 +103,7 @@
                                 <form action="createTag" class="form-horizontal" role="form" method="POST"> 
 
                                     <div class="form-group">
-                                        <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
+                                        <label for="tagName" class=" control-label">Tag Name</label>
                                         <div class="">
                                             <input type="text" name="tagName" placeholder="Name">
                                         </div>
@@ -111,7 +111,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="tagDescription" class="col-md-2 control-label">Description:</label>
+                                        <label for="tagDescription" class=" control-label">Description:</label>
                                         <div class="">
                                             <textarea class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
                                         </div>

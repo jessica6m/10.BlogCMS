@@ -79,13 +79,13 @@
                                     <form action="updateCategory"  class="form-horizontal" role="form" method="GET" >
                                         <input type="hidden" name="categoryId" value="${catID}" />
                                         <div class="form-group">
-                                            <label for="add-category-name" class="col-sm-3 control-label">Category </label>
+                                            <label for="add-category-name" class=" control-label">Category </label>
                                             <div class="    ">
                                                 <input type="text" name="categoryName" placeholder="Category Name : ${cat.catName}">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="add-category-description" class="col-md-2 control-label">Description:</label>
+                                            <label for="add-category-description" class=" control-label">Description:</label>
                                             <div class="">
                                                 <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Category Description : ${cat.description}"></textarea>
                                             </div>
@@ -103,13 +103,13 @@
                                     <hr>
                                     <form action="createCategory" class="form-horizontal" role="form" method="POST" >
                                         <div class="form-group">
-                                            <label for="add-category-name" class="col-sm-3 control-label">Category </label>
+                                            <label for="add-category-name" class=" control-label">Category </label>
                                             <div class="">
                                                 <input type="text" name="categoryName" placeholder="Category Name : ">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="add-category-description" class="col-md-2 control-label">Description:</label>
+                                            <label for="add-category-description" class=" control-label">Description:</label>
                                             <div class="">
                                                     <textarea  class="form-control" rows="3" name="categoryDescription" placeholder="Category Description : "></textarea>
                                             </div>

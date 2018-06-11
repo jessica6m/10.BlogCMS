@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,10 @@ public class BlogsCMSController {
     public String landingPage(HttpServletRequest request, Model model) {
         List<BlogPost> lastTenBlogs;
         lastTenBlogs = blogsService.selectLastTenBlogs();
+        lastTenBlogs = lastTenBlogs
+                .stream()
+                .filter(s -> s.getIsApproved() == true)
+                .collect(Collectors.toList());
         blogsService.updateListOfBlogs(lastTenBlogs);
         model.addAttribute("lastTenBlogs", lastTenBlogs);
         return "index";
@@ -54,8 +59,24 @@ public class BlogsCMSController {
     public String blogsPage(HttpServletRequest request, Model model) {
         List<BlogPost> allBlogs;
         allBlogs = blogsService.selectAllBlogs();
+        allBlogs = allBlogs
+                .stream()
+                .filter(s -> s.getIsApproved() == true)
+                .collect(Collectors.toList());
         model.addAttribute("allBlogs", allBlogs);
         return "blogs";
+    }
+    
+    @RequestMapping(value= {"/unapprovedBlogs"}, method = RequestMethod.GET)
+    public String unApprovedBlogs(HttpServletRequest request, Model model) {
+        List<BlogPost> allBlogs;
+        allBlogs = blogsService.selectAllBlogs();
+        allBlogs = allBlogs
+                .stream()
+                .filter(s -> s.getIsApproved() == false)
+                .collect(Collectors.toList());
+        model.addAttribute("allBlogs", allBlogs);
+        return "unapprovedBlogs";
     }
     
     @RequestMapping(value= {"/displayCreateBlogPostPage"}, method = RequestMethod.GET)
@@ -102,27 +123,27 @@ public class BlogsCMSController {
         return "blogpost";
     }
     
-    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)
-    public String blogPostAddCategory(HttpServletRequest request, Model model,@PathVariable String viewType2) {
-        
-        List<Category> allCategories = blogsService.selectAllCategories();
-
-        model.addAttribute("viewType2",viewType2);
-        model.addAttribute("allCategories",allCategories);
-        return "createBlogPost";
-    }
-    
-    @RequestMapping(value = {"/createBlogPost/{viewType}"}, method = RequestMethod.GET)
-    public String blogPostAddTag(HttpServletRequest request, Model model,@PathVariable String viewType) {
-        
-        List<Tags> allTags = blogsService.selectAllTags();
-        
-        
-        
-        
-        model.addAttribute("viewType",viewType);
-        model.addAttribute("allTags",allTags);
-        return "createBlogPost";
-    }
+//    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)
+//    public String blogPostAddCategory(HttpServletRequest request, Model model,@PathVariable String viewType2) {
+//        
+//        List<Category> allCategories = blogsService.selectAllCategories();
+//
+//        model.addAttribute("viewType2",viewType2);
+//        model.addAttribute("allCategories",allCategories);
+//        return "createBlogPost";
+//    }
+//    
+//    @RequestMapping(value = {"/createBlogPost/{viewType}"}, method = RequestMethod.GET)
+//    public String blogPostAddTag(HttpServletRequest request, Model model,@PathVariable String viewType) {
+//        
+//        List<Tags> allTags = blogsService.selectAllTags();
+//        
+//        
+//        
+//        
+//        model.addAttribute("viewType",viewType);
+//        model.addAttribute("allTags",allTags);
+//        return "createBlogPost";
+//    }
     
 }

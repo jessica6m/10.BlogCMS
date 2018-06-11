@@ -38,12 +38,14 @@
         </c:if> 
             
             
-            
-            
-            
-            
-            
-            
+        <div class="container">
+            <div class="row">
+                <div class="md-12"> ${bp.title} </div>
+            <div class="md-12">${bp.content}</div>
+            <div class="md-12">${bp.publishDate}</div>
+            <div></div>
+            </div>
+        </div>    
             
             
             
