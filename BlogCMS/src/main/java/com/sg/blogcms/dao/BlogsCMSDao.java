@@ -30,4 +30,5 @@ public interface BlogsCMSDao {
     
     public List<Tags> selectAllTags();    
     public List<Category> selectAllCategories();
+    void removeUnapprovedBlog();
 }

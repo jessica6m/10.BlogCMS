@@ -58,7 +58,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "select * from BlogPost where idTag = ?";
     
     private static final String SQL_SELECT_LAST_TEN_BLOGPOST
-           = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
+           = "select * FROM BlogPost where approved = 1 ORDER BY idBlogPost DESC LIMIT 10";
     
     private static final String SQL_SELECT_ALL_BLOGS = 
             "select * from BlogPost";
@@ -192,6 +192,11 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
+    }
+
+    @Override
+    public void removeUnapprovedBlog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
      

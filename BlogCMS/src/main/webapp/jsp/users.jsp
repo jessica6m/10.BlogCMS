@@ -21,6 +21,7 @@
               <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
               <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
               <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -201,7 +202,7 @@
                                     </div>
                                     <div class="form-group">
                                         
-                                            <button type="submit" class="btn btn-lg btn-success" value="${userId}">SUBMIT</button>
+                                            <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
                                         
                                     </div>
                                     

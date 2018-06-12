@@ -15,7 +15,7 @@
     <body>
         <h1>My Blog</h1>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
-            <div class="login-btn"><a href="${pageContext.request.contextPath}/login">Login</a></div>
+            <div class=""><a href="${pageContext.request.contextPath}/login">Login</a></div>
         </c:if>
         
         <div class="nav">
@@ -23,6 +23,7 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -38,8 +39,14 @@
         </c:if>
             
             
-            
-            
+            <div class="container">
+                <div class="row">
+                    <div class="md-12"> ${bp.title}</div>
+                    <div class="md-12">${bp.content}</div>
+                    <div></div>
+                </div>
+            </div>       
+
             
             
             
@@ -50,7 +57,7 @@
             
             
   
-        <div class="icons">
+        <div class="footer">
             <button>Instagram</button>
             <button>FaceBook</button>
             <button>Twitter</button>
