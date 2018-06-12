@@ -6,7 +6,6 @@
 package com.sg.blogcms.mappers;
 
 import com.sg.blogcms.dto.BlogPost;
-import com.sg.blogcms.dto.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;

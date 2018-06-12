@@ -7,7 +7,6 @@ package com.sg.blogcms.service;
 
 import com.sg.blogcms.dao.UserCMSDao;
 import com.sg.blogcms.dto.User;
-import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
 import javax.inject.Inject;
 

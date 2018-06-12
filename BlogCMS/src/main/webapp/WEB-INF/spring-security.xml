@@ -80,13 +80,6 @@
         <intercept-url pattern="/updateUser" 
                        access="ROLE_USER" />
         
-        
-        <intercept-url pattern="/users" 
-                       access="ROLE_ADMIN" />
-        <intercept-url pattern="/users"
-                       access="ROLE_ADMIN" />
-        <intercept-url pattern="/**" 
-                       access="ROLE_USER" />
     </http>
     <authentication-manager>
         <authentication-provider>

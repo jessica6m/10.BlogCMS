@@ -6,7 +6,6 @@
 package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.Tags;
-import com.sg.blogcms.mappers.BlogMapper;
 import com.sg.blogcms.mappers.TagMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;

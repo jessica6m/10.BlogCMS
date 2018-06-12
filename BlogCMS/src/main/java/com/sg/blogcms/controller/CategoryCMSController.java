@@ -10,7 +10,6 @@ import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.service.CategoryCMSService;
 import java.util.List;
 import javax.inject.Inject;
-
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
