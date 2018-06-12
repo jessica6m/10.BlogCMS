@@ -10,6 +10,7 @@
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=8wq1p7ezynjhqroyyo88vmd460hkdl5ihfl6rpr9z1dvmmil"></script>
         
         
@@ -69,7 +70,7 @@
                     <form action="createBlogPost" class="form-horizontal" role="form" method="POST">
                         <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
                         <div class = "form-group">
-                            <label for="add-Title" class="col-md-2 control-label">Title:</label> 
+                            <label for="add-Title" class=" control-label">Title:</label> 
                             <br>
                             <div class="" style="margin-top:10px">
                                 <textarea id="tinymceTitle" name="title" >
@@ -78,12 +79,14 @@
                             </div>
                         </div>
                         <div class = "form-group">
-                            <label for="add-Description" class="col-md-2 control-label">Description: </label> 
-                            <input type="text" name="description" placeholder="Blog Description : ">
+                            <label for="add-Description" class=" control-label">Description: </label> 
+                            <textarea id="" name="description" >
+
+                            </textarea>
                             
                         </div>
                         <div class = "form-group">
-                            <label for="add-Content" class="col-md-2 control-label">Content:</label>
+                            <label for="add-Content" class=" control-label">Content:</label>
                             <br>
                             <div class="" style="margin-top:10px">
                                 <textarea id="tinymce" name="content" >

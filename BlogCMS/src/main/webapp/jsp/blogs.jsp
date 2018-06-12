@@ -9,7 +9,8 @@
         <title>Blogs</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">     
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
         <h1>All Blogs</h1>
@@ -88,7 +89,7 @@
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
 <!--                                    //<button class = "btn-success">CREATE POST</button>-->
-                                        <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
+                                        <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-success">CREATE</a>
                                     
                                 </td>
                             </sec:authorize>

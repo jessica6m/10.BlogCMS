@@ -69,6 +69,9 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     private static final String SQL_SELECT_USER_BY_BLOG
             = "select * from User usr Join BlogPost bp on usr.idUser = bp.idUser where idBlogPost =? ";
     
+    private static final String SQL_SELECT_USER_BY_USERNAME
+            = "select * from User where username = ? ";
+    
     private static final String SQL_SELECT_ALL_TAGS
             = "select * from Tag";
 
@@ -182,6 +185,17 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     public List<Category> selectAllCategories() {
         return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
                 new CategoryMapper());
+    }
+    
+    @Override
+    public User selectUserByUsername(String username){
+        try {
+            return jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_USERNAME,
+                    new UserMapper(),
+                    username);
+        } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
     }
     
     

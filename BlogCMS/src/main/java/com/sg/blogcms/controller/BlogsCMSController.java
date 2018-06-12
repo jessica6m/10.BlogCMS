@@ -8,6 +8,7 @@ package com.sg.blogcms.controller;
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.BlogsCMSService;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -103,6 +104,8 @@ public class BlogsCMSController {
         BlogPost bp = new BlogPost();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String username = request.getParameter("username");
+        User user = blogsService.selectUserByUsername(username);
+        
         
 	Date date = new Date();
         bp.setTitle(request.getParameter("title"));
@@ -112,8 +115,14 @@ public class BlogsCMSController {
         bp.setCreatedDate(date);
         bp.setPublishDate(date);
         bp.setExpirationDate(date);
-        bp.setIsApproved(true);
-        bp.setUserId(9);
+        
+        if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
+            bp.setIsApproved(true);
+        }else{
+            bp.setIsApproved(false);
+        }
+        
+        bp.setUserId(user.getUserId());
         bp.setCatId(1);
         
         blogsService.createBlog(bp);

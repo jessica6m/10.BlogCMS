@@ -10,7 +10,8 @@
         <title>Categories</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">     
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
         <h1>Categories</h1>
@@ -92,8 +93,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <button type="submit" class="btn btn-default" value="${catID}"></button>
+                                            <div class="col-md-10">
+                                                <button type="submit" class="btn btn-success" value="${catID}">Submit</button>
                                             </div>
                                         </div>
                                     </form>
@@ -104,7 +105,7 @@
                                     <hr>
                                     <form action="createCategory" class="form-horizontal" role="form" method="POST" >
                                         <div class="form-group">
-                                            <label for="add-category-name" class=" control-label">Category </label>
+                                            <label for="add-category-name" class=" control-label">Category: </label>
                                             <div class="">
                                                 <input type="text" name="categoryName" placeholder="Category Name : ">
                                             </div>
@@ -116,8 +117,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" class="btn btn-default" value="Submit">
+                                            <div class="col-md-10">
+                                                <button type="submit" class="btn btn-success" value="${catID}">Submit</button>
                                             </div>
                                         </div>
                                     </form>

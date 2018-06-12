@@ -9,6 +9,7 @@ import com.sg.blogcms.dao.BlogsCMSDao;
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.dto.User;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -62,5 +63,9 @@ public class BlogsCMSService {
 
     public void approveBlog(int bpId) {
          blogsDao.approveBlog(bpId);
+    }
+
+    public User selectUserByUsername(String username) {
+        return blogsDao.selectUserByUsername(username);
     }
 }

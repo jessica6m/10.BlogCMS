@@ -28,23 +28,65 @@
         <intercept-url pattern="/index.jsp" 
                        access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
-<!--        <intercept-url pattern="/categories" 
-                               access="ROLE_ADMIN" />-->
-        <!--        <intercept-url pattern="/deleteUser" 
-                       access="ROLE_ADMIN" />
-        <intercept-url pattern="/displayEditUserForm" 
-                       access="ROLE_ADMIN" />
-        <intercept-url pattern="/editUser" 
-                       access="ROLE_ADMIN" />        
+        <!--LINKS ONLY ADMIN CAN GO TO-->
+        <intercept-url pattern="/categories" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/chooseCategoryToUpdate" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/deleteCategory" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/updateCategory" 
+                               access="ROLE_ADMIN" />
+        
+        <intercept-url pattern="/tags" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/updateTag" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/deleteTags" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/tags" 
+                               access="ROLE_ADMIN" />
+        
+        <intercept-url pattern="/unapprovedBlogs" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/approveBlog" 
+                               access="ROLE_ADMIN" />
+        <intercept-url pattern="/unapprovedBlogs" 
+                               access="ROLE_ADMIN" />
         
         <intercept-url pattern="/users/**" 
                        access="ROLE_ADMIN" />
+        <intercept-url pattern="/deleteUser" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/adduser" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/chooseUser" 
+                       access="ROLE_ADMIN" />
+        
+        <!--PAGES ADMIN AND USER HAVE ACCESS TO-->
+        
+        <intercept-url pattern="/displayUserProfile" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/displayUserProfile" 
+                       access="ROLE_USER" />
+        
+        <intercept-url pattern="/displayCreateBlogPostPage" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/displayCreateBlogPostPage" 
+                       access="ROLE_USER" />
+        
+        <intercept-url pattern="/updateUser" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/updateUser" 
+                       access="ROLE_USER" />
+        
+        
         <intercept-url pattern="/users" 
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/users"
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/**" 
-                       access="ROLE_USER" />-->
+                       access="ROLE_USER" />
     </http>
     <authentication-manager>
         <authentication-provider>
@@ -52,9 +94,9 @@
             <jdbc-user-service id="userService"
                                data-source-ref="dataSource"
                                users-by-username-query=
- "select username, password, enabled from user where username = ?"
+                "select username, password, enabled from user where username = ?"
                                authorities-by-username-query=
- "select username, authority from authorities where username = ?" />
+                "select username, authority from authorities where username = ?" />
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

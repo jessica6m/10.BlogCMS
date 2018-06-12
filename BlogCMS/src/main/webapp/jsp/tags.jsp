@@ -9,6 +9,7 @@
         <title>Tags</title>
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"> 
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
         <h1>My Blog</h1>
@@ -76,7 +77,7 @@
                                     <input type="hidden" name="tagId" value="${tagID}" />
 
                                     <div class="form-group">
-                                        <label for="tagName" class=" control-label">Tag Name</label>
+                                        <label for="tagName" class=" control-label">Tag Name: </label>
                                         <div class="">
                                             <input type="text" name="tagName" placeholder="Tag Name : ${tag.tagName}" >
                                         </div>
@@ -92,7 +93,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <input type="submit" class="btn btn-default" value="${tagID}">
+                                            <input type="submit" class="btn btn-success" value="${tagID}">
                                         </div>
                                     </div>
 
@@ -104,7 +105,7 @@
                                 <form action="createTag" class="form-horizontal" role="form" method="POST"> 
 
                                     <div class="form-group">
-                                        <label for="tagName" class=" control-label">Tag Name</label>
+                                        <label for="tagName" class=" control-label">Tag Name: </label>
                                         <div class="">
                                             <input type="text" name="tagName" placeholder="Name">
                                         </div>
@@ -120,7 +121,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <input type="submit" class="btn btn-default" value="Submit">
+                                            <input type="submit" class="btn btn-success" value="Submit">
                                         </div>
                                     </div>
 
