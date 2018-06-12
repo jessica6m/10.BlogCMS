@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create Blog</title>
+        <title>Create Static Page</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
@@ -37,7 +37,7 @@
         
     </head>
     <body>
-        <h1>Create a Blog</h1>
+        <h1>Create a Static Page</h1>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <div class="login-btn"><a href="${pageContext.request.contextPath}/login">Login</a></div>
             </c:if>
@@ -60,14 +60,13 @@
                 |<a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&username=${pageContext.request.userPrincipal.name}" /> Edit</a> |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
             </p>
         </c:if>
-  <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         
         <div class = "container">
 
             <div class = "row">
                 <div class=" col-md-12">
                     
-                    <form action="createBlogPost" class="form-horizontal" role="form" method="POST">
+                    <form action="createStaticPage" class="form-horizontal" role="form" method="POST">
                         <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
                         <div class = "form-group">
                             <label for="add-Title" class=" control-label">Title:</label> 
@@ -80,7 +79,7 @@
                         </div>
                         <div class = "form-group">
                             <label for="add-Description" class=" control-label">Description: </label> 
-                            <textarea id="" name="description" >
+                            <textarea  name="description" >
 
                             </textarea>
                             

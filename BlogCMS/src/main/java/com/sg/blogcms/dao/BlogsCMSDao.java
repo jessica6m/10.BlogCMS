@@ -35,5 +35,7 @@ public interface BlogsCMSDao {
     public void approveBlog(int bpId);
 
     public User selectUserByUsername(String username);
+
+    public Tags selectTagById(int tagId);
     
 }

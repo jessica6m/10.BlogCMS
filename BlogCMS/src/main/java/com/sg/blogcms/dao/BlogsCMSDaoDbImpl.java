@@ -78,6 +78,9 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     private static final String SQL_SELECT_ALL_CATEGORIES
             = "select * from Categories";
     
+    private static final String SQL_SELECT_TAG_BY_ID
+            = "select * from Tag where idTag = ?";
+    
     //==========================================================================
     //                                 METHODS
     //==========================================================================
@@ -194,6 +197,17 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                     new UserMapper(),
                     username);
         } catch (EmptyResultDataAccessException ex) {
+            return null;
+        }
+    }
+    
+    @Override
+    public Tags selectTagById(int tagID) {
+        try{
+            return jdbcTemplate.queryForObject(SQL_SELECT_TAG_BY_ID, 
+                    new TagMapper(),
+                    tagID);
+        } catch(EmptyResultDataAccessException ex){
             return null;
         }
     }

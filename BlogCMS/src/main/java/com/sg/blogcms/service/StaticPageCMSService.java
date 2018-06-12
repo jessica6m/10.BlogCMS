@@ -9,6 +9,7 @@ import com.sg.blogcms.dao.StaticPageCMSDao;
 import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.dto.User;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -39,6 +40,10 @@ public class StaticPageCMSService {
     
     public List<Category> selectAllCategories() {
        return spDao.selectAllCategories();
+    }
+
+    public User selectUserByUsername(String username) {
+        return spDao.selectUserByUsername(username);
     }
     
 }

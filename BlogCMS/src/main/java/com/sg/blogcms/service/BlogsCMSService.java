@@ -68,4 +68,8 @@ public class BlogsCMSService {
     public User selectUserByUsername(String username) {
         return blogsDao.selectUserByUsername(username);
     }
+    
+    public Tags getTagById (int tagId){
+        return blogsDao.selectTagById(tagId);
+    }
 }

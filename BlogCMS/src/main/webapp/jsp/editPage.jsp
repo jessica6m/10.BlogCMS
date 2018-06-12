@@ -80,10 +80,16 @@
                         </div>
                         <div class = "form-group">
                             <label for="add-Description" class=" control-label">Description: </label> 
-                            <textarea id="" name="description" >
-
+                            <textarea  name="description" >
+                            
                             </textarea>
                             
+                        </div>
+                        <div class = "form-group">
+                            <label for="is-Active" class=" control-label">Description: </label> 
+                                <div>
+                                        <input class ="" type="checkbox" name="isActive" value="yes"/> : Active?
+                                </div>
                         </div>
                         <div class = "form-group">
                             <label for="add-Content" class=" control-label">Content:</label>
