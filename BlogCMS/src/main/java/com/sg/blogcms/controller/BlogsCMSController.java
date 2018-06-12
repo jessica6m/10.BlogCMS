@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -108,13 +107,14 @@ public class BlogsCMSController {
         
         
 	Date date = new Date();
+	Date date2 = new Date("2099/12/31 12:00:00");
         bp.setTitle(request.getParameter("title"));
         bp.setDescription(request.getParameter("description"));
         bp.setContent(request.getParameter("content"));
         bp.setAuthor(username);
         bp.setCreatedDate(date);
         bp.setPublishDate(date);
-        bp.setExpirationDate(date);
+        bp.setExpirationDate(date2);
         
         if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
             bp.setIsApproved(true);
@@ -140,6 +140,61 @@ public class BlogsCMSController {
         model.addAttribute("bp",bp);
         
         return "blogpost";
+    }
+            
+    @RequestMapping(value = "/chooseBlogPostToUpdate", method = RequestMethod.GET)
+    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+        int blogId = Integer.parseInt(request.getParameter("blogId"));
+        BlogPost bp = blogsService.selectBlog(blogId);
+        model.addAttribute("bp", bp);
+        return "editPage";
+    }
+    
+    @RequestMapping(value = "/updateBlogPost", method = RequestMethod.GET)
+    public String updateBlogPost(HttpServletRequest request, Model model) {
+        
+            int blogId = Integer.parseInt(request.getParameter("blogId"));
+            BlogPost bp = blogsService.selectBlog(blogId);
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//            Date date = new Date();
+            
+            String username = request.getParameter("username");
+            User user = blogsService.selectUserByUsername(username);
+
+            bp.setTitle(request.getParameter("title"));
+            bp.setDescription(request.getParameter("description"));
+            bp.setContent(request.getParameter("content"));
+            bp.setAuthor(username);
+//            bp.setCreatedDate(date);
+//            bp.setPublishDate(date);
+//            bp.setExpirationDate(date);
+
+            if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
+                bp.setIsApproved(true);
+            }else{
+                bp.setIsApproved(false);
+            }
+
+            bp.setUserId(user.getUserId());
+            //bp.setCatId(Integer.parseInt(request.getParameter("catId")));
+            bp.setCatId(1);
+            
+//            OPTION ONE FOR TAGS
+//            bp.setTags(null);
+//            for(Integer tagId: tags){
+//                bp.add(blogsService.getTagById(tagId));
+//            }
+
+
+//            OPTION TWO FOR TAGS
+//            bp.setTagIds(null);
+//            for(Integer tagId: tags){
+//                bp.addTagId(tagId);
+//            }
+            
+        
+        
+        return "redirect:blogs";
     }
     
 //    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)

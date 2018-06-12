@@ -6,6 +6,7 @@
 package com.sg.blogcms.controller;
 
 import com.sg.blogcms.dto.StaticPage;
+import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.StaticPageCMSService;
 import java.util.List;
 import javax.inject.Inject;
@@ -48,6 +49,54 @@ public class StaticPageCMSController {
         
         return "staticpages";
     }
+    
+    @RequestMapping(value = "/chooseStaticPageToUpdate", method = RequestMethod.GET)
+    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+        int spId = Integer.parseInt(request.getParameter("spId"));
+        StaticPage sp = spService.selectStaticPage(spId);
+        model.addAttribute("sp", sp);
+        return "editPage";
+    }
+    
+    @RequestMapping(value = "/updateStaticPage", method = RequestMethod.GET)
+    public String updateBlogPost(HttpServletRequest request, Model model) {
+        
+            int spId = Integer.parseInt(request.getParameter("spId"));
+            StaticPage sp = spService.selectStaticPage(spId);
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//            Date date = new Date();
+            
+            String username = request.getParameter("username");
+            User user = spService.selectUserByUsername(username);
+
+            sp.setTitle(request.getParameter("title"));
+            sp.setDescription(request.getParameter("description"));
+            sp.setContent(request.getParameter("content"));
+            sp.setAuthor(username);
+//            sp.setCreatedDate(date);
+//            sp.setPublishDate(date);
+//            sp.setExpirationDate(date);
+
+            if (null != request.getParameter("isActive")) {
+                sp.setIsActive(true);
+            }
+
+            sp.setUserId(user.getUserId());
+            
+        return "redirect:allStaticPages";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public int calculateNearestNthMultiple(int number, int destination){
         

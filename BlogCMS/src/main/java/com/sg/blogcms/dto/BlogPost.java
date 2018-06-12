@@ -29,6 +29,7 @@ public class BlogPost {
     private User user;
     private Category category;
     private List<Tag> tags;
+    private List<Integer> tagIds;
 
     public int getId() {
         return id;
@@ -140,6 +141,22 @@ public class BlogPost {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+    
+    public void addTag(Tag tag){
+        tags.add(tag);
+    }
+
+    public List<Integer> getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(List<Integer> tagIds) {
+        this.tagIds = tagIds;
+    }
+    
+    public void addTagId(int tagId){
+        tagIds.add(tagId);
     }
 
     @Override
