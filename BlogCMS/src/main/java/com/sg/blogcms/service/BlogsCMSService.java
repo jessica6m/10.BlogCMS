@@ -29,6 +29,10 @@ public class BlogsCMSService {
         
         return blogsDao.createBlog(bp);
     }
+    
+    public void removeBlog (int bpId){
+        blogsDao.removeBlogPost(bpId);
+    }
 
     public List<BlogPost> selectLastTenBlogs() {
         return blogsDao.selectLastTenBlogs();

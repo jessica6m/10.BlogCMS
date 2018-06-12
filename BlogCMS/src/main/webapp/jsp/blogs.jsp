@@ -27,7 +27,7 @@
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Other Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
@@ -75,11 +75,11 @@
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                 
                                             <td>
-                                                <button>EDIT</button>
+                                                <a href="${pageContext.request.contextPath}/chooseBlogPostToUpdate?blogId=${allBlogs[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
 
                                             <td>
-                                                <button>DELETE</button>
+                                                <a href="${pageContext.request.contextPath}/deleteBlogPost?blogId=${allBlogs[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>

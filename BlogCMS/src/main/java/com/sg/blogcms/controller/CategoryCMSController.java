@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CategoryCMSController {
     CategoryCMSService catService;
     
-    
     @Inject
     public CategoryCMSController(CategoryCMSService catService) {
         this.catService = catService;
