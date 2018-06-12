@@ -6,15 +6,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Company Contacts: Login</title>
+        <title>BLOG CMS: Login</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">        
     </head>
     <body>
         <div class="container">
-            <h1>BLOG USERS</h1>
-            <hr/>
-            <h2>Login Page</h2>
+            <h1>Login</h1>
             
             
             <form class="form-horizontal" 

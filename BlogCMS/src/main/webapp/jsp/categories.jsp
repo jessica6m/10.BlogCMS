@@ -7,13 +7,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>Categories</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>Categories</h1>
         
         <div class="nav">
           <ul>
@@ -25,7 +25,7 @@
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Other Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>

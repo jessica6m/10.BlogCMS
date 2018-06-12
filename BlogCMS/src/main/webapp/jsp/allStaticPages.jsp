@@ -6,15 +6,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>Additional Pages</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>Additional Pages</h1>
         <sec:authorize access="isAnonymous()">
-            <a href="${pageContext.request.contextPath}/login" class="login-btn ">Login</a>
+            <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
         
         <div class="nav">
@@ -27,7 +27,7 @@
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Other Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
@@ -39,7 +39,7 @@
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="container">
             <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-md-12 "> 
                     <table class="table">
                         <thead>
                             <tr>
@@ -87,15 +87,16 @@
                             </c:forEach>
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
-<!--                                    //<button class = "btn-success">CREATE POST</button>-->
+                                    //<button class = "btn-success">CREATE POST</button>
                                         <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
                                     
                                 </td>
                             </sec:authorize>
                         </tbody>
                     </table>
-    
+                    
                 </div>
+                
                 
                 
                 

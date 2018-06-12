@@ -6,15 +6,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>Unapproved Blogs</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>Unapproved Blogs</h1>
         <sec:authorize access="isAnonymous()">
-            <a href="${pageContext.request.contextPath}/login" class="login-btn ">Login</a>
+            <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
         
         <div class="nav">

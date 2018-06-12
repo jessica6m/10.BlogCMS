@@ -37,7 +37,9 @@ public class StaticPageCMSController {
     public String viewAllStaticPage(HttpServletRequest request, Model model) {
         
         List<StaticPage> sp = spService.selectAllStaticPages();
+        int calc = calculateNearestNthMultiple(sp.size(),3);
         model.addAttribute("sp",sp);
+        model.addAttribute("calc",calc);
         return "allStaticPages";
     }
     
@@ -47,6 +49,22 @@ public class StaticPageCMSController {
         model.addAttribute("sp",sp);
         
         return "staticpages";
+    }
+    
+    public int calculateNearestNthMultiple(int number, int destination){
+        int a = 1;
+        int x = number;
+        while(number != destination ){
+            if(number < destination * a){
+                x = destination;
+            }else{
+                a++;
+            }
+        }
+        
+        
+        
+        return x;
     }
     
 //    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)

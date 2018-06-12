@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>${sp.title}</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
         
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>${sp.title} By: ${sp.author}</h1>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
             <div class=""><a href="${pageContext.request.contextPath}/login">Login</a></div>
         </c:if>
@@ -28,7 +28,7 @@
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Other Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
             
           </ul>
         </div>
@@ -41,9 +41,9 @@
             
         <div class="container">
             <div class="row">
-                <div class="md-12"> ${bp.title} </div>
-                <div class="md-12">${bp.content}</div>
-                <div class="md-12">${bp.publishDate}</div>
+                <div class="md-12"> ${sp.title} </div>
+                <div class="md-12">${sp.content}</div>
+                <div class="md-12">${sp.publishDate}</div>
                 <div></div>
             </div>
         </div>        
