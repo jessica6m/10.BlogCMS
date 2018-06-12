@@ -20,6 +20,7 @@ public class User {
     private String userEmail;
     private String password;
     private String userBio;
+    private Boolean isAdmin;
     private Boolean isEnabled;
     private List<BlogPost> associatedBlogs;
     private List<StaticPage> associatedStaticPages;
@@ -80,6 +81,14 @@ public class User {
 
     public void setUserBio(String userBio) {
         this.userBio = userBio;
+    }
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public Boolean getIsEnabled() {

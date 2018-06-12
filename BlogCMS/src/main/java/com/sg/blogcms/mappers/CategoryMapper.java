@@ -16,15 +16,15 @@ import org.springframework.jdbc.core.RowMapper;
  */
 public class CategoryMapper implements RowMapper<Category> {
     @Override
-         public Category mapRow(ResultSet rs, int rowNum) throws SQLException{
-            Category cat = new Category();
-            
-            cat.setCatId(rs.getInt("idCategories"));
-            cat.setCatName(rs.getString("categoryName"));
-            cat.setDescription(rs.getString("categoryDescription"));
-            
-            return cat;
-         }
+    public Category mapRow(ResultSet rs, int rowNum) throws SQLException{
+       Category cat = new Category();
+
+       cat.setCatId(rs.getInt("idCategories"));
+       cat.setCatName(rs.getString("categoryName"));
+       cat.setDescription(rs.getString("categoryDescription"));
+
+       return cat;
+    }
     
 }
 

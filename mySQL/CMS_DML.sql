@@ -1,17 +1,9 @@
 USE `CMS`;
 
-INSERT INTO `User`(firstName, lastName, username, userEmail, `password`,bio, enabled)
+INSERT INTO `User`(firstName, lastName, username, userEmail, `password`,bio, isAdmin,enabled)
 Values
-('Jose', 'Sosa', 'jsosa', 'jys5219@gmail.com', 'Eulelife0320','studious individual', 1),
-('Jess', 'Gross', 'jgross', 'jgross1989@gmail.com', 'JesseG0320','codeLife', 1),
-('John', 'Smith', 'jsmith', 'jsmith9976@gmail.com', 'jsmith9976','vet', 1),
-('James', 'Ortiz', 'jortiz', 'jjortiz334@gmail.com', 'jortiz334','doctor', 1),
-('Stephen', 'Sanchez', 'ssanchez', 'ssanchez445@gmail.com', 'ssanchez445','dentist', 1),
-('Daniel', 'Domingo', 'ddomingo', 'ddomingo453@yahoo.com', 'ddmingo453',' nurse', 1),
-('Stanley', 'Pitt', 'spitt', 'spitt123@yahoo.com', 'spitt123','Java Programmer', 1),
-('Micheal', 'Donovan', 'mdonovan', 'mdonovan123@yahoo.com', 'mdonovan123', 'C++ Programmer', 1),
-('empty','empty','admin','admin@mail.com','password','the admin',1),
-('empty','empty','user','user@mail.com','password','the user',1);
+('empty','empty','admin','admin@mail.com','password','the admin',1,1),
+('empty','empty','user','user@mail.com','password','the user',0,1);
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
 ('admin', 'ROLE_ADMIN'),

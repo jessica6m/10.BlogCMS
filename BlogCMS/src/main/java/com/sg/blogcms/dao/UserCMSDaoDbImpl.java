@@ -30,7 +30,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     //                          SQL USER
     //==========================================================================
     private static final String SQL_SELECT_USER
-            = "select * from User where idUser = ? ";
+            = "select * from User Join Authorities where idUser = ? ";
     
     private static final String SQL_SELECT_USER_BY_USERNAME
             = "select * from User where username = ? ";
@@ -51,10 +51,13 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
             = "update User set firstName = ?, lastName = ?, username = ?, userEmail = ?, password = ?, bio = ?, enabled = ? where idUser = ?";
 
     private static final String SQL_INSERT_USER
-            = "insert into User (firstName, lastName, username, userEmail, password, bio, enabled) values(?,?,?,?,?,?,?)";
+            = "insert into User (firstName, lastName, username, userEmail, password, bio, isAdmin,enabled) values(?,?,?,?,?,?,?,?)";
     
     private static final String SQL_INSERT_AUTHORITY
         = "insert into authorities (username, authority) values (?, ?)";
+    
+    
+    
     
     
 
@@ -103,6 +106,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
                 user.getUserEmail(),
                 user.getPassword(),
                 user.getUserBio(),
+                user.getIsAdmin(),
                 user.getIsEnabled(),
                 user.getUserId());
         return user;
@@ -118,6 +122,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
                 user.getUserEmail(),
                 user.getPassword(),
                 user.getUserBio(),
+                user.getIsAdmin(),
                 user.getIsEnabled());
 
         int userId

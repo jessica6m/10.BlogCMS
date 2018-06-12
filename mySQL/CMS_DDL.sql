@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `User` (
   `userEmail` VARCHAR(45) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `bio` VARCHAR(45) NOT NULL,
+  `isAdmin`TINYINT(1) NOT NULL,
   `enabled`TINYINT(1) NOT NULL,
   PRIMARY KEY (`idUser`),
   KEY(`userName`));
@@ -54,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `StaticPage` (
   `idStaticPage` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(45) NOT NULL,
+  `content` VARCHAR(1000) NOT NULL,
   `author` VARCHAR(45) NOT NULL,
   `dateCreated` DATETIME NOT NULL,
   `publishedDate` DATETIME NOT NULL,
