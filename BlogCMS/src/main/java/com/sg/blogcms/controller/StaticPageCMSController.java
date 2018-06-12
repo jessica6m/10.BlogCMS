@@ -62,7 +62,7 @@ public class StaticPageCMSController {
     }
     
     @RequestMapping(value = "/updateStaticPage", method = RequestMethod.GET)
-    public String updateBlogPost(HttpServletRequest request, Model model) {
+    public String updateStaticPage(HttpServletRequest request, Model model) {
         
             int spId = Integer.parseInt(request.getParameter("spId"));
             StaticPage sp = spService.selectStaticPage(spId);
@@ -86,7 +86,7 @@ public class StaticPageCMSController {
 
             sp.setUserId(user.getUserId());
             
-        return "redirect:allStaticPages";
+        return "redirect:viewAllStaticPages";
     }
     
     @RequestMapping(value= {"/displayCreateStaticPagePage"}, method = RequestMethod.GET)

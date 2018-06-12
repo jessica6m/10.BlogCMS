@@ -67,9 +67,14 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     @Override
     public User selectUser(int userID) {
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USER,
+            User user = jdbcTemplate.queryForObject(SQL_SELECT_USER,
                     new UserMapper(),
                     userID);
+            user.addAuthority("ROLE_USER");
+            if(user.getIsAdmin()==true){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+            return user;
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
@@ -78,9 +83,14 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     @Override
     public User selectUserByUsername(String username){
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_USERNAME,
+            User user = jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_USERNAME,
                     new UserMapper(),
                     username);
+            user.addAuthority("ROLE_USER");
+            if(user.getIsAdmin()==true){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+            return user;
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
@@ -88,8 +98,15 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
 
     @Override
     public List<User> selectAllUsers() {
-        return jdbcTemplate.query(SQL_SELECT_ALL_USERS,
+        List<User> userList = jdbcTemplate.query(SQL_SELECT_ALL_USERS,
                 new UserMapper());
+        for(User user: userList){
+            user.addAuthority("ROLE_USER");
+            if(user.getIsAdmin()==true){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+        }
+        return userList;
     }
 
     @Override
@@ -147,7 +164,4 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
         // second delete the user
         jdbcTemplate.update(SQL_DELETE_USER, username);
     }
-    
-    
-
 }

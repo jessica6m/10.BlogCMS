@@ -120,7 +120,7 @@ public class BlogsCMSController {
         bp.setPublishDate(date);
         bp.setExpirationDate(date2);
         
-        if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
+        if(user.getIsAdmin()){ 
             bp.setIsApproved(true);
         }else{
             bp.setIsApproved(false);

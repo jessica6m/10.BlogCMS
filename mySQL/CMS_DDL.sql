@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `Categories` (
 
 CREATE TABLE IF NOT EXISTS `BlogPost` (
   `idBlogPost` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(1000) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(45) NOT NULL,
+  `content` LONGTEXT NOT NULL,
   `author` VARCHAR(45) NOT NULL,
   `createdDate` DATETIME NOT NULL,
   `publishDate` VARCHAR(45) NOT NULL,
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `BlogPost` (
 
 CREATE TABLE IF NOT EXISTS `StaticPage` (
   `idStaticPage` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
+  `title` VARCHAR(1000) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
-  `content` VARCHAR(1000) NOT NULL,
+  `content` LONGTEXT NOT NULL,
   `author` VARCHAR(45) NOT NULL,
   `dateCreated` DATETIME NOT NULL,
   `publishedDate` DATETIME NOT NULL,

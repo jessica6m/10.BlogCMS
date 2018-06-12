@@ -46,7 +46,7 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -71,6 +71,7 @@
                         <c:when test="${bp.title != null}">
                             <form action="updateBlogPost" class="form-horizontal" role="form" method="GET">
                                 <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <input type="text" name="bpId" value="${bp.id}" hidden>
                                 <div class = "form-group">
                                     <label for="add-Title" class=" control-label">Title:</label> 
                                     <br>
@@ -107,6 +108,7 @@
                         <c:otherwise>
                             <form action="updateStaticPage" class="form-horizontal" role="form" method="GET">
                                 <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <input type="text" name="spId" value="${sp.id}" hidden>
                                 <div class = "form-group">
                                     <label for="add-Title" class=" control-label">Title:</label> 
                                     <br>

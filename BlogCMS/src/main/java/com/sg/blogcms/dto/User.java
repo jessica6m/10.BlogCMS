@@ -5,6 +5,8 @@
  */
 package com.sg.blogcms.dto;
 
+import java.util.ArrayList;
+import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +27,7 @@ public class User {
     private List<BlogPost> associatedBlogs;
     private List<StaticPage> associatedStaticPages;
     private List<Category> associatedCategories;
-    private List<String> authorityList;
+    private List<String> authorityList = new ArrayList<>(asList(""));
 
     public int getUserId() {
         return userId;
