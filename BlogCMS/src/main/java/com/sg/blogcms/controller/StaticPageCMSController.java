@@ -33,11 +33,19 @@ public class StaticPageCMSController {
         
     }
     
-    @RequestMapping(value = {"/viewStaticPage"}, method = RequestMethod.GET)
-    public String StaticPage(HttpServletRequest request, Model model) {
-        StaticPage selectStaticPage;
-        selectStaticPage = spService.selectStaticPage(3);
-        model.addAttribute("selectStaticPage", selectStaticPage);
+    @RequestMapping(value = {"/viewAllStaticPages"}, method = RequestMethod.GET)
+    public String viewAllStaticPage(HttpServletRequest request, Model model) {
+        
+        List<StaticPage> sp = spService.selectAllStaticPages();
+        model.addAttribute("sp",sp);
+        return "allStaticPages";
+    }
+    
+    @RequestMapping(value="/displayStaticPage/{spId}", method = RequestMethod.GET)
+    public String displayStaticPage(HttpServletRequest request, Model model,@PathVariable int spId){
+        StaticPage sp = spService.selectStaticPage(spId);
+        model.addAttribute("sp",sp);
+        
         return "staticpages";
     }
     

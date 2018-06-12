@@ -18,19 +18,18 @@
         </sec:authorize>
         
         <div class="nav">
-            <ul>
-                <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
-                <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
-                    <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
-                    <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
-                    <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
-                </sec:authorize>
-                <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
-            </ul>
-            
-            
+          <ul>
+            <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
+            <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
+                <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
+                <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
+            </sec:authorize>
+            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Other Pages</a></li>
+            <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
+          </ul>
         </div>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
             <p>Hello : ${pageContext.request.userPrincipal.name}
@@ -49,7 +48,6 @@
                                 <th> Author </th>
                                 <th> Publish Date </th>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                    <th> APPROVE </th>
                                     <th> EDIT</th>
                                     <th> DELETE </th>
                                 </sec:authorize>
@@ -57,39 +55,43 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
+                            <c:forEach var="i" begin="0" end="${sp.size()-1}">
                                 <tr >
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].title}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].title}</a>
                                     </td>
 
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].description}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].description}</a>
                                     </td>
                                     
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].author}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].author}</a>
                                     </td>
 
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].publishDate}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].publishDate}</a>
+                                    </td>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
+                
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/approveBlog?blogId=${allBlogs[i].id}" class = "btn btn-success">APPROVE</a>
-                                            </td>
-                                            
-                                            <td>
-                                                <a href="${pageContext.request.contextPath}/chooseBlogPostToUpdate?blogId=${allBlogs[i].id}" class = "btn btn-warning">EDIT</a>
+                                                <a href="${pageContext.request.contextPath}/chooseBlogPostToUpdate?blogId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/deleteBlogPost?blogId=${allBlogs[i].id}" class = "btn btn-danger">DELETE</a>
+                                                <a href="${pageContext.request.contextPath}/deleteBlogPost?blogId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>
 
                             </c:forEach>
-                            
+                            <sec:authorize access= "isAuthenticated()">
+                                <td>
+<!--                                    //<button class = "btn-success">CREATE POST</button>-->
+                                        <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
+                                    
+                                </td>
+                            </sec:authorize>
                         </tbody>
                     </table>
     
@@ -100,12 +102,13 @@
 
             </div>
             
-        </div>
-        <div class="footer ">
-            <button>Instagram</button>
-            <button>FaceBook</button>
-            <button>Twitter</button>
-            <button>YouTube</button>
+            <div class="footer">
+                <button>Instagram</button>
+                <button>FaceBook</button>
+                <button>Twitter</button>
+                <button>YouTube</button>
+            </div>
+            
         </div>
         
         <!-- Placed at the end of the document so the pages load faster -->
