@@ -6,15 +6,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blogs</title>
+        <title>Additional Pages</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <h1>All Blogs</h1>
+        <h1>Additional Pages</h1>
         <sec:authorize access="isAnonymous()">
-            <a href="${pageContext.request.contextPath}/login" class="">Login</a>
+            <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
         
         <div class="nav">
@@ -39,7 +39,7 @@
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="container">
             <div class="row">
-                <div class="col-md-12 ">
+<!--                <div class="col-md-12 "> 
                     <table class="table">
                         <thead>
                             <tr>
@@ -55,31 +55,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
+                            <c:forEach var="i" begin="0" end="${sp.size()-1}">
                                 <tr >
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].title}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].title}</a>
                                     </td>
 
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].description}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].description}</a>
                                     </td>
                                     
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].author}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].author}</a>
                                     </td>
 
                                     <td>
-                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].publishDate}</a>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].publishDate}</a>
                                     </td>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/chooseBlogPostToUpdate?blogId=${allBlogs[i].id}" class = "btn btn-warning">EDIT</a>
+                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?blogId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/deleteBlogPost?blogId=${allBlogs[i].id}" class = "btn btn-danger">DELETE</a>
+                                                <a href="${pageContext.request.contextPath}/deletePage?blogId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>
@@ -87,19 +87,30 @@
                             </c:forEach>
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
-<!--                                    //<button class = "btn-success">CREATE POST</button>-->
-                                        <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
+                                    //<button class = "btn-success">CREATE STATIC PAGE</button>
+                                        <a href="${pageContext.request.contextPath}/displayCreateStaticPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
                                     
                                 </td>
                             </sec:authorize>
                         </tbody>
                     </table>
-    
-                </div>
-                
-                
-                
-
+                    
+                </div>-->
+                <c:forEach var="i" begin="0" end="${calc -1}">
+                        <c:choose>
+                            <c:when test="${sp[i].title != null}">
+                                <div class="sosa col-md-4">
+                                   ${sp[i].title}, ${sp[i].description}
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="sosa col-md-4">
+                                   MORE MATERIAL CONTENT SOON!!!
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+               
             </div>
             
             <div class="footer">

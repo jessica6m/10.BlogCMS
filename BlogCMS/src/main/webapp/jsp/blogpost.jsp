@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>${sp.title}</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
         
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>${bp.title} By: ${sp.author}</h1>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
             <div class="login-btn"><a href="${pageContext.request.contextPath}/login">Login</a></div>
         </c:if>
@@ -23,11 +23,12 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages </a></li>
             
           </ul>
         </div>
@@ -41,9 +42,9 @@
         <div class="container">
             <div class="row">
                 <div class="md-12"> ${bp.title} </div>
-            <div class="md-12">${bp.content}</div>
-            <div class="md-12">${bp.publishDate}</div>
-            <div></div>
+                <div class="md-12">${bp.content}</div>
+                <div class="md-12">${bp.publishDate}</div>
+                <div></div>
             </div>
         </div>    
             
@@ -53,7 +54,7 @@
             
             
             
-        <div class="icons">
+        <div class="footer">
             <button>Instagram</button>
             <button>FaceBook</button>
             <button>Twitter</button>

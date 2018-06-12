@@ -30,4 +30,7 @@ public interface BlogsCMSDao {
     
     public List<Tags> selectAllTags();    
     public List<Category> selectAllCategories();
+
+    public void approveBlog(int bpId);
+    
 }

@@ -8,24 +8,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Company Contacts</title>
+        <title>All Users</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">              
     </head>
     <body>
         <h1>Users</h1>
-        <hr/>
+        
         <div class="nav">
             <ul>
               <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
               <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
               <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-              <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
+              <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
 
             </ul>
         </div>
@@ -201,7 +202,7 @@
                                     </div>
                                     <div class="form-group">
                                         
-                                            <button type="submit" class="btn btn-lg btn-success" value="${userId}">SUBMIT</button>
+                                            <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
                                         
                                     </div>
                                     

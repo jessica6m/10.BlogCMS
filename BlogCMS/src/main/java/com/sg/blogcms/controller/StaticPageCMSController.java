@@ -5,9 +5,7 @@
  */
 package com.sg.blogcms.controller;
 
-import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
-import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.service.StaticPageCMSService;
 import java.util.List;
 import javax.inject.Inject;
@@ -33,12 +31,36 @@ public class StaticPageCMSController {
         
     }
     
-    @RequestMapping(value = {"/viewStaticPage"}, method = RequestMethod.GET)
-    public String StaticPage(HttpServletRequest request, Model model) {
-        StaticPage selectStaticPage;
-        selectStaticPage = spService.selectStaticPage(3);
-        model.addAttribute("selectStaticPage", selectStaticPage);
+    @RequestMapping(value = {"/viewAllStaticPages"}, method = RequestMethod.GET)
+    public String viewAllStaticPage(HttpServletRequest request, Model model) {
+        
+        List<StaticPage> sp = spService.selectAllStaticPages();
+        int calc = calculateNearestNthMultiple(sp.size(),3);
+        model.addAttribute("sp",sp);
+        model.addAttribute("calc",calc);
+        return "allStaticPages";
+    }
+    
+    @RequestMapping(value="/displayStaticPage/{spId}", method = RequestMethod.GET)
+    public String displayStaticPage(HttpServletRequest request, Model model,@PathVariable int spId){
+        StaticPage sp = spService.selectStaticPage(spId);
+        model.addAttribute("sp",sp);
+        
         return "staticpages";
+    }
+    
+    public int calculateNearestNthMultiple(int number, int destination){
+        
+        int a = destination;
+        while(number > destination ){
+            
+            a+=destination;
+            number-=destination;
+        }
+        
+        
+        
+        return a;
     }
     
 //    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)

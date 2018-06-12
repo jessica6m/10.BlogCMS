@@ -71,3 +71,12 @@ a:hover {
     background-color:pink;
     font:black;
 }
+
+.sosa{
+    height:300px;
+    background-color:gray;
+    border:2px black dotted;
+    font:blue;
+    
+    
+}

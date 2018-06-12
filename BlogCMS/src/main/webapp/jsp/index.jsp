@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>HOME</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
@@ -14,7 +14,7 @@
     <body>
         <h1>My Blog</h1>
         <sec:authorize access="isAnonymous()">
-            <a href="${pageContext.request.contextPath}/login" class="login-btn ">Login</a>
+            <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
         <div class="nav">
           <ul>
@@ -26,7 +26,7 @@
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
             </sec:authorize>
-            <li><a href="${pageContext.request.contextPath}/viewStaticPage"> Static Pages</a></li>
+            <li><a href="${pageContext.request.contextPath}/viewAllStaticPages"> Other Pages</a></li>
             <!-- <li><a>Static Pages</a></li> STATIC PAGES UP FOR DISCUSSION-->
           </ul>
         </div>
@@ -50,7 +50,7 @@
                             <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
                                 <tr >
                                     <td>
-                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
+                                        ${lastTenBlogs[i].title}
                                     </td>
 
                                     <td>
@@ -77,7 +77,7 @@
 
             </div>
             
-            <div class="icons">
+            <div class="footer">
                 <button>Instagram</button>
                 <button>FaceBook</button>
                 <button>Twitter</button>

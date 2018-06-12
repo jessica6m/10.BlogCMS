@@ -44,10 +44,6 @@ public class BlogsCMSController {
     public String landingPage(HttpServletRequest request, Model model) {
         List<BlogPost> lastTenBlogs;
         lastTenBlogs = blogsService.selectLastTenBlogs();
-        lastTenBlogs = lastTenBlogs
-                .stream()
-                .filter(s -> s.getIsApproved() == true)
-                .collect(Collectors.toList());
         blogsService.updateListOfBlogs(lastTenBlogs);
         model.addAttribute("lastTenBlogs", lastTenBlogs);
         return "index";
@@ -77,6 +73,20 @@ public class BlogsCMSController {
                 .collect(Collectors.toList());
         model.addAttribute("allBlogs", allBlogs);
         return "unapprovedBlogs";
+    }
+    
+    @RequestMapping(value = "/deleteBlogPost", method = RequestMethod.GET)
+    public String deleteBlogPost(HttpServletRequest request, Model model) {
+        int bpId = Integer.parseInt(request.getParameter("blogId"));
+        blogsService.removeBlog(bpId);
+        return "redirect:blogs";
+    }
+    
+    @RequestMapping(value = "/approveBlog", method = RequestMethod.GET)
+    public String approveBlog(HttpServletRequest request, Model model) {
+        int bpId = Integer.parseInt(request.getParameter("blogId"));
+        blogsService.approveBlog(bpId);
+        return "redirect:blogs";
     }
     
     @RequestMapping(value= {"/displayCreateBlogPostPage"}, method = RequestMethod.GET)

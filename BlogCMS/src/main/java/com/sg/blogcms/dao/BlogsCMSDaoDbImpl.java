@@ -43,7 +43,10 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "delete from BlogPost where idBlogPost = ?";
     
     private static final String SQL_UPDATE_BLOG
-            = "update BlogPost set title = ?, content = ?, author = ?, ";
+            = "update BlogPost set title = ?, content = ?, author = ? w ";
+    
+    private static final String SQL_APPROVE_BLOG
+            = "update BlogPost set approved = 1 where idBlogPost = ?";
     
     private static final String SQL_SELECT_BLOG
             = "select * from BlogPost where idBlogPost = ? ";
@@ -58,7 +61,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "select * from BlogPost where idTag = ?";
     
     private static final String SQL_SELECT_LAST_TEN_BLOGPOST
-           = "select * FROM BlogPost ORDER BY idBlogPost DESC LIMIT 10";
+           = "select * FROM BlogPost where approved = 1 ORDER BY idBlogPost DESC LIMIT 10";
     
     private static final String SQL_SELECT_ALL_BLOGS = 
             "select * from BlogPost";
@@ -137,6 +140,12 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     }
     
     @Override
+    public void approveBlog(int bpId){
+        jdbcTemplate.update(SQL_APPROVE_BLOG,
+               bpId);
+    }
+    
+    @Override
     public List<BlogPost> selectLastTenBlogs() {
        return jdbcTemplate.query(SQL_SELECT_LAST_TEN_BLOGPOST,
                new BlogMapper());
@@ -193,6 +202,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             return null;
         }
     }
+
+    
      
      
      
