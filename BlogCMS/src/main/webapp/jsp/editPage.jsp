@@ -66,47 +66,86 @@
 
             <div class = "row">
                 <div class=" col-md-12">
-                    
-                    <form action="createBlogPost" class="form-horizontal" role="form" method="POST">
-                        <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
-                        <div class = "form-group">
-                            <label for="add-Title" class=" control-label">Title:</label> 
-                            <br>
-                            <div class="" style="margin-top:10px">
-                                <textarea id="tinymceTitle" name="title" >
-
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class = "form-group">
-                            <label for="add-Description" class=" control-label">Description: </label> 
-                            <textarea  name="description" >
-                            
-                            </textarea>
-                            
-                        </div>
-                        <div class = "form-group">
-                            <label for="is-Active" class=" control-label">Description: </label> 
-                                <div>
-                                        <input class ="" type="checkbox" name="isActive" value="yes"/> : Active?
+                    <c:choose>
+                        
+                        <c:when test="${bp.title != null}">
+                            <form action="updateBlogPost" class="form-horizontal" role="form" method="GET">
+                                <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <div class = "form-group">
+                                    <label for="add-Title" class=" control-label">Title:</label> 
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymceTitle" name="title" >
+                                            ${bp.title}
+                                        </textarea>
+                                    </div>
                                 </div>
-                        </div>
-                        <div class = "form-group">
-                            <label for="add-Content" class=" control-label">Content:</label>
-                            <br>
-                            <div class="" style="margin-top:10px">
-                                <textarea id="tinymce" name="content" >
+                                <div class = "form-group">
+                                    <label for="add-Description" class=" control-label">Description: </label> 
+                                    <textarea  name="description" >
+                                        ${bp.description}
+                                    </textarea>
 
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="">
-                                <input type="submit" class="btn btn-success" value="Submit">
-                            </div>
-                        </div>
-                    </form>
-                    
+                                </div>
+                                
+                                <div class = "form-group">
+                                    <label for="add-Content" class=" control-label">Content:</label>
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymce" name="content" >
+                                            ${bp.content}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="updateStaticPage" class="form-horizontal" role="form" method="GET">
+                                <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <div class = "form-group">
+                                    <label for="add-Title" class=" control-label">Title:</label> 
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymceTitle" name="title" >
+                                            ${sp.title}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for="add-Description" class=" control-label">Description: </label> 
+                                    <textarea  name="description" >
+                                        ${sp.descrpition}
+                                    </textarea>
+
+                                </div>
+                                <div class = "form-group">
+                                    <label for="is-Active" class=" control-label">Leave Blank To Deactivate Page: </label> 
+                                        <div>
+                                                <input class ="" type="checkbox" name="isActive" value="yes"/> : Active?
+                                        </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for="add-Content" class=" control-label">Content:</label>
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymce" name="content" >
+                                            ${sp.content}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 
             </div>

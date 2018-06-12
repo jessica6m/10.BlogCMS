@@ -40,7 +40,7 @@
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="container">
             <div class="row">
-<!--                <div class="col-md-12 "> 
+                <div class="col-md-12 "> 
                     <table class="table">
                         <thead>
                             <tr>
@@ -96,21 +96,21 @@
                         </tbody>
                     </table>
                     
-                </div>-->
-                <c:forEach var="i" begin="0" end="${calc -1}">
-                        <c:choose>
-                            <c:when test="${sp[i].title != null}">
-                                <div class="sosa col-md-4">
-                                   ${sp[i].title}, ${sp[i].description}
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="sosa col-md-4">
-                                   MORE CONTENT SOON!!!
-                                </div>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
+                </div>
+                <%--<c:forEach var="i" begin="0" end="${calc -1}">--%>
+                    <%--<c:choose>--%>
+                        <%--<c:when test="${sp[i].title != null}">--%>
+                            <!--<div class="sosa col-md-4">-->
+                               <!--${sp[i].title}, ${sp[i].description}-->
+                            <!--</div>-->
+                        <%--</c:when>--%>
+                        <%--<c:otherwise>--%>
+                            <!--<div class="sosa col-md-4">-->
+                               <!--MORE CONTENT SOON!!!-->
+                            <!--</div>-->
+                        <%--</c:otherwise>--%>
+                    <%--</c:choose>--%>
+                <%--</c:forEach>--%>
                
             </div>
             

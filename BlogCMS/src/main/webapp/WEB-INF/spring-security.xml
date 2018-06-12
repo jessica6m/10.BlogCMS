@@ -51,8 +51,14 @@
                                access="ROLE_ADMIN" />
         <intercept-url pattern="/approveBlog" 
                                access="ROLE_ADMIN" />
-        <intercept-url pattern="/unapprovedBlogs" 
-                               access="ROLE_ADMIN" />
+        
+        <intercept-url pattern="/updateBlogPost" 
+                       access="ROLE_ADMIN" />  
+        <intercept-url pattern="/deleteBlogPost" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/chooseBlogPostToUpdate" 
+                       access="ROLE_ADMIN" />
+        
         
         <intercept-url pattern="/users/**" 
                        access="ROLE_ADMIN" />
@@ -61,6 +67,18 @@
         <intercept-url pattern="/adduser" 
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/chooseUser" 
+                       access="ROLE_ADMIN" />
+        
+        <intercept-url pattern="/editPage" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/updateStaticPage" 
+                       access="ROLE_ADMIN" />
+        
+        <intercept-url pattern="/updateStaticPage" 
+                       access="ROLE_ADMIN" />  
+        <intercept-url pattern="/deleteStaticPage" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/chooseStaticPageToUpdate" 
                        access="ROLE_ADMIN" />
         
         <!--PAGES ADMIN AND USER HAVE ACCESS TO-->
@@ -73,6 +91,11 @@
         <intercept-url pattern="/displayCreateBlogPostPage" 
                        access="ROLE_ADMIN" />
         <intercept-url pattern="/displayCreateBlogPostPage" 
+                       access="ROLE_USER" />
+        
+        <intercept-url pattern="/displayCreateStaticPagePage" 
+                       access="ROLE_ADMIN" />
+        <intercept-url pattern="/displayStaticPagePage" 
                        access="ROLE_USER" />
         
         <intercept-url pattern="/updateUser" 
