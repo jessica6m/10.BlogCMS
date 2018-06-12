@@ -73,8 +73,9 @@ a:hover {
 }
 
 .sosa{
+    height:300px;
     background-color:gray;
-    border:2px red dotted;
+    border:2px black dotted;
     font:blue;
     
     

@@ -50,7 +50,7 @@
                             <c:forEach var="i" begin="0" end="${lastTenBlogs.size()}">
                                 <tr >
                                     <td>
-                                        <c:out value="${lastTenBlogs[i].title}"></c:out>
+                                        ${lastTenBlogs[i].title}
                                     </td>
 
                                     <td>
