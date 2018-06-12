@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Users</h1>
-        <hr/>
+        
         <div class="nav">
             <ul>
               <li><a href="${pageContext.request.contextPath}/index">Home </a></li>

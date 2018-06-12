@@ -82,6 +82,13 @@ public class BlogsCMSController {
         return "redirect:blogs";
     }
     
+    @RequestMapping(value = "/approveBlog", method = RequestMethod.GET)
+    public String approveBlog(HttpServletRequest request, Model model) {
+        int bpId = Integer.parseInt(request.getParameter("blogId"));
+        blogsService.approveBlog(bpId);
+        return "redirect:blogs";
+    }
+    
     @RequestMapping(value= {"/displayCreateBlogPostPage"}, method = RequestMethod.GET)
     public String displayCreateBlogPostPage(HttpServletRequest request,Model model) {
             List<Category> allCategories = blogsService.selectAllCategories();

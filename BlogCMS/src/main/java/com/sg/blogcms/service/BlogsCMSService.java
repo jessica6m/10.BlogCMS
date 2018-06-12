@@ -59,4 +59,8 @@ public class BlogsCMSService {
     public List<Category> selectAllCategories() {
        return blogsDao.selectAllCategories();
     }
+
+    public void approveBlog(int bpId) {
+         blogsDao.approveBlog(bpId);
+    }
 }

@@ -48,6 +48,7 @@
                                 <th> Author </th>
                                 <th> Publish Date </th>
                                 <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <th> APPROVE </th>
                                     <th> EDIT</th>
                                     <th> DELETE </th>
                                 </sec:authorize>
@@ -58,22 +59,24 @@
                             <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
                                 <tr >
                                     <td>
-                                        ${allBlogs[i].title}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].title}</a>
                                     </td>
 
                                     <td>
-                                        ${allBlogs[i].description}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].description}</a>
                                     </td>
                                     
                                     <td>
-                                        ${allBlogs[i].author}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].author}</a>
                                     </td>
 
                                     <td>
-                                        ${allBlogs[i].publishDate}
-                                    </td>
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].publishDate}</a>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/approveBlog?blogId=${allBlogs[i].id}" class = "btn btn-success">APPROVE</a>
+                                            </td>
+                                            
                                             <td>
                                                 <a href="${pageContext.request.contextPath}/chooseBlogPostToUpdate?blogId=${allBlogs[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
@@ -85,13 +88,7 @@
                                 </tr>
 
                             </c:forEach>
-                            <sec:authorize access= "isAuthenticated()">
-                                <td>
-<!--                                    //<button class = "btn-success">CREATE POST</button>-->
-                                        <a href="${pageContext.request.contextPath}/displayCreateBlogPostPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
-                                    
-                                </td>
-                            </sec:authorize>
+                            
                         </tbody>
                     </table>
     
@@ -102,13 +99,12 @@
 
             </div>
             
-            <div class="footer">
-                <button>Instagram</button>
-                <button>FaceBook</button>
-                <button>Twitter</button>
-                <button>YouTube</button>
-            </div>
-            
+        </div>
+        <div class="footer ">
+            <button>Instagram</button>
+            <button>FaceBook</button>
+            <button>Twitter</button>
+            <button>YouTube</button>
         </div>
         
         <!-- Placed at the end of the document so the pages load faster -->

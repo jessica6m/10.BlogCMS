@@ -43,7 +43,10 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "delete from BlogPost where idBlogPost = ?";
     
     private static final String SQL_UPDATE_BLOG
-            = "update BlogPost set title = ?, content = ?, author = ?, ";
+            = "update BlogPost set title = ?, content = ?, author = ? w ";
+    
+    private static final String SQL_APPROVE_BLOG
+            = "update BlogPost set approved = 1 where idBlogPost = ?";
     
     private static final String SQL_SELECT_BLOG
             = "select * from BlogPost where idBlogPost = ? ";
@@ -134,6 +137,12 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     public List<BlogPost> selectAllBlogs() {
         return jdbcTemplate.query(SQL_SELECT_ALL_BLOGS,
                 new BlogMapper());
+    }
+    
+    @Override
+    public void approveBlog(int bpId){
+        jdbcTemplate.update(SQL_APPROVE_BLOG,
+               bpId);
     }
     
     @Override

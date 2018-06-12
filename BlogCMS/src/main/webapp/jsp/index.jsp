@@ -14,7 +14,7 @@
     <body>
         <h1>My Blog</h1>
         <sec:authorize access="isAnonymous()">
-            <a href="${pageContext.request.contextPath}/login" class="login-btn ">Login</a>
+            <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
         <div class="nav">
           <ul>

@@ -58,19 +58,19 @@
                             <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
                                 <tr >
                                     <td>
-                                        ${allBlogs[i].title}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].title}</a>
                                     </td>
 
                                     <td>
-                                        ${allBlogs[i].description}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].description}</a>
                                     </td>
                                     
                                     <td>
-                                        ${allBlogs[i].author}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].author}</a>
                                     </td>
 
                                     <td>
-                                        ${allBlogs[i].publishDate}
+                                        <a href="${pageContext.request.contextPath}/displayBlog/${allBlogs[i].id}">${allBlogs[i].publishDate}</a>
                                     </td>
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                 

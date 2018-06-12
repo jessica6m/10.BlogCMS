@@ -6,17 +6,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Index Page</title>
+        <title>Edit Profile</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <div class="account-float">
-            <button><a href="${pageContext.request.contextPath}/login">LOGOUT</a></button>
-        </div>
-        
-        
+        <h1>User Profile</h1>
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
@@ -33,7 +29,7 @@
         </div>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
             <p>Hello : ${pageContext.request.userPrincipal.name} 
-                |<a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&username=${pageContext.request.userPrincipal.name}" /> Edit</a> |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
+                |<a href="<c:url value="/j_spring_security_logout" />" > Logout</a> 
             </p>
         </c:if>
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
@@ -79,7 +75,7 @@
                             </tr>
 
                         </tbody>
-                        <tfoot>
+<!--                        <tfoot>
                             <tr>
                                 <td>
                                     <a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&userId=${user.userId}" class = "btn btn-warning">EDIT</a>
@@ -90,7 +86,7 @@
                                 </td> 
                             </tr>
                             
-                        </tfoot>
+                        </tfoot>-->
                     </table>
     
                 </div>
@@ -102,44 +98,44 @@
                                 <form action="updateUser"  class="form-horizontal" role="form" method="GET" >
                                     <input type="hidden" name="userId" value="${userId}" />
                                     <div class="form-group">
-                                        <label for="add-user-firstname" class="col-sm-3 control-label">First Name: </label>
+                                        <label for="add-user-firstname" class="control-label">First Name: </label>
                                         <div class="    ">
                                             <input type="text" name="userFirstName" placeholder="User's First Name : ${user.firstName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-lastname" class="col-md-2 control-label">Last Name:</label>
+                                        <label for="add-user-lastname" class="control-label">Last Name:</label>
                                         <div class="">
                                             <input type="text" name="userLastName" placeholder="User's Last Name : ${user.lastName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-username" class="col-sm-3 control-label">Username </label>
+                                        <label for="add-user-username" class="control-label">Username </label>
                                         <div class="    ">
                                             <input type="text" name="username" placeholder="User's Username : ${user.username}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-useremail" class="col-sm-3 control-label">Email </label>
+                                        <label for="add-user-useremail" class="control-label">Email </label>
                                         <div class="    ">
                                             <input type="text" name="email" placeholder="User's Email : ${user.userEmail}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-password" class="col-sm-3 control-label">Password </label>
+                                        <label for="add-user-password" class="control-label">Password </label>
                                         <div class="    ">
-                                            <input type="text" name="password" placeholder="User's Password : ${user.password}">
+                                            <input type="text" name="password" placeholder="User's Password : Password">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="add-user-bio" class="col-md-2 control-label">Bio:</label>
+                                        <label for="add-user-bio" class="control-label">Bio:</label>
                                         <div class="">
                                             <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : ${user.userBio}"></textarea>
                                         </div>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
+                                        <div class="">
                                             <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
                                         </div>
                                     </div>
@@ -150,13 +146,12 @@
                     </c:choose>
                 </div>
             
-            <div class="icons">
-                <button>Instagram</button>
-                <button>FaceBook</button>
-                <button>Twitter</button>
-                <button>YouTube</button>
-            </div>
-            
+        </div>
+        <div class="footer">
+            <button>Instagram</button>
+            <button>FaceBook</button>
+            <button>Twitter</button>
+            <button>YouTube</button>
         </div>
         
         <!-- Placed at the end of the document so the pages load faster -->
