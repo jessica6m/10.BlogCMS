@@ -7,6 +7,7 @@ package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import java.util.List;
@@ -37,5 +38,7 @@ public interface BlogsCMSDao {
     public User selectUserByUsername(String username);
 
     public Tags selectTagById(int tagId);
+
+    public List<StaticPage> selectAllInactiveStaticPages();
     
 }

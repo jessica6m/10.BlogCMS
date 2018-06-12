@@ -7,10 +7,12 @@ package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.mappers.BlogMapper;
 import com.sg.blogcms.mappers.CategoryMapper;
+import com.sg.blogcms.mappers.StaticPageMapper;
 import com.sg.blogcms.mappers.TagMapper;
 import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
@@ -80,6 +82,9 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     
     private static final String SQL_SELECT_TAG_BY_ID
             = "select * from Tag where idTag = ?";
+    
+    private static final String SQL_SELECT_ALL_INACTIVE_STATIC_PAGES = 
+            "select * from StaticPage where isActive = 0";
     
     //==========================================================================
     //                                 METHODS
@@ -210,6 +215,12 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
         } catch(EmptyResultDataAccessException ex){
             return null;
         }
+    }
+    
+    @Override
+    public List<StaticPage> selectAllInactiveStaticPages() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_INACTIVE_STATIC_PAGES,
+                new StaticPageMapper());
     }
     
     

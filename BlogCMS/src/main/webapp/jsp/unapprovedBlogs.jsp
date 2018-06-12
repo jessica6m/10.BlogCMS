@@ -90,6 +90,40 @@
                                 </tr>
 
                             </c:forEach>
+                            <hr>
+                            <c:forEach var="i" begin="0" end="${inactivePages.size()-1}">
+                                <tr >
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].title}</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].description}</a>
+                                    </td>
+                                    
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].author}</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].publishDate}</a>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/approveStaticPage?spId=${inactivePages[i].id}" class = "btn btn-success">APPROVE</a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${inactivePages[i].id}" class = "btn btn-warning">EDIT</a>
+                                            </td>
+
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${inactivePages[i].id}" class = "btn btn-danger">DELETE</a>
+                                            </td>
+                                    </sec:authorize>
+                                </tr>
+
+                            </c:forEach>
+                            
                             
                         </tbody>
                     </table>

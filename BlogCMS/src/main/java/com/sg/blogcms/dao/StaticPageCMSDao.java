@@ -8,6 +8,7 @@ package com.sg.blogcms.dao;
 import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.dto.User;
 import java.util.List;
 
 /**
@@ -23,5 +24,9 @@ public interface StaticPageCMSDao {
     List<StaticPage> selectAllStaticPagesByUser(int userID);
     public List<Tags> selectAllTags();    
     public List<Category> selectAllCategories();
+
+    public User selectUserByUsername(String username);
+
+    public void approveStaticPage(int spId);
     
 }

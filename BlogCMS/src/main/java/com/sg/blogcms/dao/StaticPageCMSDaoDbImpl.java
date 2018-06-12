@@ -16,6 +16,8 @@ import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -46,13 +48,35 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
 
     private static final String SQL_SELECT_ALL_CATEGORIES
             = "select * from Categories";
+    private static final String SQL_INSERT_STATIC_PAGE
+            = "insert into StaticPage (title, description, content, author, createdDate, " 
+            + "publishDate, expirationDate,isActive,idUser ) values(?,?,?,?,?,?,?,?,?)";
+    
+    private static final String SQL_APPROVE_STATIC_PAGE
+            = "update StaticPage set isActive = 1 where idStaticPage = ?";
 
 //    ----------------------------------------------------------------------------
 //    *******************INTERFACE METHODS****************************************
 //    ----------------------------------------------------------------------------
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public StaticPage createStaticPage(StaticPage sp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        jdbcTemplate.update(SQL_INSERT_STATIC_PAGE,
+                sp.getTitle(),
+                sp.getDescription(),
+                sp.getContent(),
+                sp.getAuthor(),
+                sp.getCreatedDate(),
+                sp.getPublishDate(),
+                sp.getExpirationDate(),
+                sp.getIsActive(),
+                sp.getUserId());
+        int spId = 
+                jdbcTemplate.queryForObject("select LAST_INSERT_ID()", 
+                                             Integer.class);
+
+        sp.setId(spId);
+        return sp; 
     }
     
     @Override
@@ -108,6 +132,12 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     public List<Category> selectAllCategories() {
         return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
                 new CategoryMapper());
+    }
+    
+    @Override
+    public void approveStaticPage(int spId){
+        jdbcTemplate.update(SQL_APPROVE_STATIC_PAGE,
+               spId);
     }
     
     

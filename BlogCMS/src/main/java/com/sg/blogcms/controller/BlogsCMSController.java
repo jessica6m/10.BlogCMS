@@ -7,6 +7,7 @@ package com.sg.blogcms.controller;
 
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.BlogsCMSService;
@@ -71,6 +72,9 @@ public class BlogsCMSController {
                 .stream()
                 .filter(s -> s.getIsApproved() == false)
                 .collect(Collectors.toList());
+        List<StaticPage> inactivePages = blogsService.selectAllInactiveStaticPages();
+        
+        model.addAttribute("inactivePages",inactivePages);
         model.addAttribute("allBlogs", allBlogs);
         return "unapprovedBlogs";
     }
@@ -143,7 +147,7 @@ public class BlogsCMSController {
     }
             
     @RequestMapping(value = "/chooseBlogPostToUpdate", method = RequestMethod.GET)
-    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+    public String chooseBlogPostToUpdate(HttpServletRequest request, Model model) {
         int blogId = Integer.parseInt(request.getParameter("blogId"));
         BlogPost bp = blogsService.selectBlog(blogId);
         model.addAttribute("bp", bp);

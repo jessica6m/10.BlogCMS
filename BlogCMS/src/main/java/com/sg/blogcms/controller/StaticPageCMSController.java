@@ -8,6 +8,9 @@ package com.sg.blogcms.controller;
 import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.StaticPageCMSService;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +54,7 @@ public class StaticPageCMSController {
     }
     
     @RequestMapping(value = "/chooseStaticPageToUpdate", method = RequestMethod.GET)
-    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+    public String chooseStaticPageToUpdate(HttpServletRequest request, Model model) {
         int spId = Integer.parseInt(request.getParameter("spId"));
         StaticPage sp = spService.selectStaticPage(spId);
         model.addAttribute("sp", sp);
@@ -83,6 +86,53 @@ public class StaticPageCMSController {
 
             sp.setUserId(user.getUserId());
             
+        return "redirect:allStaticPages";
+    }
+    
+    @RequestMapping(value= {"/displayCreateStaticPagePage"}, method = RequestMethod.GET)
+    public String displayCreateStaticPagePage(HttpServletRequest request,Model model) {
+            
+            
+        return "createStaticPage";
+    }
+    
+    @RequestMapping(value = "/createStaticPage", method = RequestMethod.POST)
+    public String createStaticPage(HttpServletRequest request ,Model model) {
+        StaticPage sp = new StaticPage();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String username = request.getParameter("username");
+        User user = spService.selectUserByUsername(username);
+        
+        
+	Date date = new Date();
+	Date date2 = new Date("2099/12/31 12:00:00");
+        sp.setTitle(request.getParameter("title"));
+        sp.setDescription(request.getParameter("description"));
+        sp.setContent(request.getParameter("content"));
+        sp.setAuthor(username);
+        sp.setCreatedDate(date);
+        sp.setPublishDate(date);
+        sp.setExpirationDate(date2);
+        
+        if (!user.getAuthorityList().contains("ROLE_ADMIN")) {
+                sp.setIsActive(false);
+        }
+        
+        sp.setUserId(user.getUserId());
+        
+        spService.createStaticPage(sp);
+        
+        List<StaticPage> allStaticPages;
+        allStaticPages = spService.selectAllStaticPages();
+        model.addAttribute("allStaticPages", allStaticPages);
+        
+        return "allStaticPages";
+    }
+    
+    @RequestMapping(value = "/approveStaticPage", method = RequestMethod.GET)
+    public String approveStaticPage(HttpServletRequest request, Model model) {
+        int spId = Integer.parseInt(request.getParameter("spId"));
+        spService.approveStaticPage(spId);
         return "redirect:allStaticPages";
     }
     

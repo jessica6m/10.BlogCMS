@@ -76,11 +76,11 @@
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?blogId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
+                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/deletePage?blogId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
+                                                <a href="${pageContext.request.contextPath}/deletePage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>
@@ -88,9 +88,7 @@
                             </c:forEach>
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
-                                    //<button class = "btn-success">CREATE STATIC PAGE</button>
-                                        <a href="${pageContext.request.contextPath}/displayCreateStaticPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
-                                    
+                                    <a href="${pageContext.request.contextPath}/displayCreateStaticPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
                                 </td>
                             </sec:authorize>
                         </tbody>

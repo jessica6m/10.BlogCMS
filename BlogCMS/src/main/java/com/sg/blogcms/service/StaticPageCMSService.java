@@ -45,5 +45,13 @@ public class StaticPageCMSService {
     public User selectUserByUsername(String username) {
         return spDao.selectUserByUsername(username);
     }
+
+    public StaticPage createStaticPage(StaticPage sp) {
+        return spDao.createStaticPage(sp);
+    }
+
+    public void approveStaticPage(int spId) {
+        spDao.approveStaticPage(spId);
+    }
     
 }
