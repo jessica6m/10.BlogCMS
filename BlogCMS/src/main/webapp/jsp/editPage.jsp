@@ -98,8 +98,22 @@
                                         </textarea>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="">
+                                <div class = " form-group row">
+                                    <div class="col-md-3 dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> CATEGORIES </button>
+                                        <div class="dropdown-menu radio" id="catRest">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-6 dropdown" style="margin-bottom: 10px">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> TAGS </button>
+                                        <div class="dropdown-menu" id="tagRest">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-4 col-md-offset-4">
                                         <input type="submit" class="btn btn-success" value="Submit">
                                     </div>
                                 </div>
