@@ -44,4 +44,6 @@ public interface BlogsCMSDao {
     public void updateBlogAndTag(String[] tagIds, BlogPost bp);
     
     public List<Tags> selectTagsByBlogId(int blogId);
+
+    public void removeTagsFromDB(BlogPost bp);
 }

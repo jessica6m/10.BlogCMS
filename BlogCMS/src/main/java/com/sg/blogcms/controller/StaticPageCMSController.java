@@ -127,7 +127,7 @@ public class StaticPageCMSController {
         int calc = calculateNearestNthMultiple(sp.size(),4);
         model.addAttribute("sp",sp);
         model.addAttribute("calc",calc);
-        
+
         return "allStaticPages";
     }
     
@@ -135,7 +135,14 @@ public class StaticPageCMSController {
     public String approveStaticPage(HttpServletRequest request, Model model) {
         int spId = Integer.parseInt(request.getParameter("spId"));
         spService.approveStaticPage(spId);
-        return "redirect:allStaticPages";
+        return "redirect:viewAllStaticPages";
+    }
+    
+    @RequestMapping(value = "/deleteStaticPage", method = RequestMethod.GET)
+    public String deleteStaticPage(HttpServletRequest request, Model model) {
+        int spId = Integer.parseInt(request.getParameter("spId"));
+        spService.deleteStaticPage(spId);
+        return "redirect:viewAllStaticPages";
     }
     
     

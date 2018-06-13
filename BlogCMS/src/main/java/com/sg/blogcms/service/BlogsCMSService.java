@@ -85,4 +85,12 @@ public class BlogsCMSService {
     public List<Tags> selectTagByBlogId(int blogId) {
         return blogsDao.selectTagsByBlogId(blogId);
     }
+
+    public void updateBlog(BlogPost bp) {
+        blogsDao.updateBlog(bp);
+    }
+
+    public void removeTagsFromDB(BlogPost bp) {
+        blogsDao.removeTagsFromDB(bp);
+    }
 }

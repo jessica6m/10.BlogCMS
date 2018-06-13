@@ -54,6 +54,9 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     
     private static final String SQL_APPROVE_STATIC_PAGE
             = "update StaticPage set isActive = 1 where idStaticPage = ?";
+    
+    private static final String SQL_DELETE_SP
+            = "delete from StaticPage where idStaticPage = ?";
 
 //    ----------------------------------------------------------------------------
 //    *******************INTERFACE METHODS****************************************
@@ -91,8 +94,8 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     }
 
     @Override
-    public void removeStaticPage(int spId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteStaticPage(int spId) {
+        jdbcTemplate.update(SQL_DELETE_SP, spId);
     }
 
     @Override

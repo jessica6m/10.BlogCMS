@@ -76,75 +76,59 @@
                             </tr>
 
                         </tbody>
-<!--                        <tfoot>
-                            <tr>
-                                <td>
-                                    <a href="${pageContext.request.contextPath}/displayUserProfile?viewType=edit&userId=${user.userId}" class = "btn btn-warning">EDIT</a>
-                                </td>
 
-                                <td>
-                                    <a href="${pageContext.request.contextPath}/deleteUser?userId=${users.userId}" class = "btn btn-danger">DELETE</a>
-                                </td> 
-                            </tr>
-                            
-                        </tfoot>-->
                     </table>
     
                 </div>
                 <div class = "col-md-10">
-                    <c:choose>
-                            <c:when test="${viewType == 'edit'}">
-                                <h2>Update User </h2>
-                                <hr>
-                                <form action="updateUser"  class="form-horizontal" role="form" method="GET" >
-                                    <input type="hidden" name="userId" value="${userId}" />
-                                    <div class="form-group">
-                                        <label for="add-user-firstname" class="control-label">First Name: </label>
-                                        <div class="    ">
-                                            <input type="text" name="userFirstName" placeholder="User's First Name : ${user.firstName}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="add-user-lastname" class="control-label">Last Name:</label>
-                                        <div class="">
-                                            <input type="text" name="userLastName" placeholder="User's Last Name : ${user.lastName}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="add-user-username" class="control-label">Username </label>
-                                        <div class="    ">
-                                            <input type="text" name="username" placeholder="User's Username : ${user.username}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="add-user-useremail" class="control-label">Email </label>
-                                        <div class="    ">
-                                            <input type="text" name="email" placeholder="User's Email : ${user.userEmail}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="add-user-password" class="control-label">Password </label>
-                                        <div class="    ">
-                                            <input type="text" name="password" placeholder="User's Password : Password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="add-user-bio" class="control-label">Bio:</label>
-                                        <div class="">
-                                            <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : ${user.userBio}"></textarea>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <div class="">
-                                            <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
+                    <h2>Update User </h2>
+                    <hr>
+                    <form action="updateUser"  class="form-horizontal" role="form" method="GET" >
+                        <input type="hidden" name="userId" value="${userId}" />
+                        <div class="form-group">
+                            <label for="add-firstname" class="control-label">First Name: </label>
+                            <div class="    ">
+                                <input type="text" name="firstName" placeholder="User's First Name : ${user.firstName}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-lastname" class="control-label">Last Name:</label>
+                            <div class="">
+                                <input type="text" name="lastName" placeholder="User's Last Name : ${user.lastName}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-user-username" class="control-label">Username </label>
+                            <div class="    ">
+                                <input type="text" name="username" placeholder="User's Username : ${user.username}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-user-useremail" class="control-label">Email </label>
+                            <div class="    ">
+                                <input type="text" name="email" placeholder="User's Email : ${user.userEmail}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-user-password" class="control-label">Password </label>
+                            <div class="    ">
+                                <input type="text" name="password" placeholder="User's Password : Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-user-bio" class="control-label">Bio:</label>
+                            <div class="">
+                                <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : ${user.userBio}"></textarea>
+                            </div>
+                        </div>
 
-                            </c:when>
-                    </c:choose>
+                        <div class="form-group">
+                            <div class="">
+                                <button type="submit" class="btn btn-success" value="${userId}">SUBMIT</button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             
         </div>

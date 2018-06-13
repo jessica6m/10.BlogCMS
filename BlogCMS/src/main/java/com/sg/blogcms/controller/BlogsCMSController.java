@@ -162,10 +162,9 @@ public class BlogsCMSController {
     @RequestMapping(value = "/updateBlogPost", method = RequestMethod.GET)
     public String updateBlogPost(HttpServletRequest request, Model model) {
         
-            int blogId = Integer.parseInt(request.getParameter("blogId"));
+            int blogId = Integer.parseInt(request.getParameter("bpId"));
             BlogPost bp = blogsService.selectBlog(blogId);
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//            Date date = new Date();
+            blogsService.removeTagsFromDB(bp);
             
             String username = request.getParameter("username");
             User user = blogsService.selectUserByUsername(username);
@@ -174,33 +173,17 @@ public class BlogsCMSController {
             bp.setDescription(request.getParameter("description"));
             bp.setContent(request.getParameter("content"));
             bp.setAuthor(username);
-//            bp.setCreatedDate(date);
-//            bp.setPublishDate(date);
-//            bp.setExpirationDate(date);
 
-            if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
-                bp.setIsApproved(true);
-            }else{
-                bp.setIsApproved(false);
-            }
-
+            
             bp.setUserId(user.getUserId());
             //bp.setCatId(Integer.parseInt(request.getParameter("catId")));
-            bp.setCatId(1);
+            int catId = Integer.parseInt(request.getParameter("cats"));
+            bp.setCatId(catId);
             
-//            OPTION ONE FOR TAGS
-//            bp.setTags(null);
-//            for(Integer tagId: tags){
-//                bp.add(blogsService.getTagById(tagId));
-//            }
-
-
-//            OPTION TWO FOR TAGS
-//            bp.setTagIds(null);
-//            for(Integer tagId: tags){
-//                bp.addTagId(tagId);
-//            }
+            String[] tagIds = request.getParameterValues("tags");
+            blogsService.updateBlogAndTag(tagIds, bp);
             
+            blogsService.updateBlog(bp);
         
         
         return "redirect:blogs";

@@ -56,5 +56,9 @@ public class UserCMSService {
         return userDao.selectUserByUsername(username);
     }
 
+    public void deleteUser(String username) {
+        userDao.deleteUser(username);
+    }
+
 
 }

@@ -47,7 +47,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "delete from BlogPost where idBlogPost = ?";
     
     private static final String SQL_UPDATE_BLOG
-            = "update BlogPost set title = ?, content = ?, author = ? w ";
+            = "update BlogPost set title = ?, description = ?  ,content = ?, author = ?,"
+                + " createdDate = ?, publishDate = ?, expirationDate = ?, approved = ?, idUser = ?, idCategories = ? where idBlogPost =?";
     
     private static final String SQL_APPROVE_BLOG
             = "update BlogPost set approved = 1 where idBlogPost = ?";
@@ -92,6 +93,10 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     private static final String SQL_SELECT_ALL_INACTIVE_STATIC_PAGES = 
             "select * from StaticPage where isActive = 0";
     
+    private static final String SQL_DELETE_TAGS_RELATIONSHIP
+        = "delete from BlogpostTag where idBlogPost = ?";
+    
+    
     //==========================================================================
     //                                 METHODS
     //==========================================================================
@@ -134,7 +139,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                 blog.getExpirationDate(),
                 blog.getIsApproved(),
                 blog.getUserId(),
-                blog.getCatId());
+                blog.getCatId(),
+                blog.getId());
          return blog;
     }
 
@@ -248,6 +254,11 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                     bp.getId(),
                     currentId);
         }
+    }
+    
+    @Override
+    public void removeTagsFromDB(BlogPost bp){
+        jdbcTemplate.update(SQL_DELETE_TAGS_RELATIONSHIP, bp.getId());
     }
     
     //==========================================================================

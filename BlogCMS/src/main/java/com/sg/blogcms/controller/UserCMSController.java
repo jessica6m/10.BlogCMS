@@ -65,14 +65,16 @@ public class UserCMSController {
     }
     
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String deletUser(@RequestParam("userId") int userId,
+    public String deleteUser(@RequestParam("userId") int userId,
             Map<String, Object> model) {
-        userService.removeUser(userId);
+        User user = userService.selectUser(userId);
+        userService.deleteUser(user.getUsername());
+        
         return "redirect:users";
     }
     
     @RequestMapping(value = "/chooseUser", method = RequestMethod.GET)
-    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+    public String chooseUserToUpdate(HttpServletRequest request, Model model) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         String viewType = request.getParameter("viewType");
         model.addAttribute("viewType",viewType);
@@ -86,26 +88,19 @@ public class UserCMSController {
     }
     
     @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
-    public String updateCategory(HttpServletRequest request, Model model) {
+    public String updateUser(HttpServletRequest request, Model model) {
         
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            User user = userService.selectUser(userId);
+            String username = request.getParameter("username")  ;
+            User user = userService.selectUserByUsername(username);
             user.setFirstName(request.getParameter("firstName"));
             user.setLastName(request.getParameter("lastName"));
             user.setUsername(request.getParameter("username"));
             user.setUserEmail(request.getParameter("email"));
             String clearPw = request.getParameter("password");
             String hashPw = encoder.encode(clearPw);
-            user.setPassword(request.getParameter(hashPw));
+            user.setPassword(hashPw);
             user.setUserBio(request.getParameter("userBio"));
             
-            if (null != request.getParameter("isAdmin")) {
-                user.addAuthority("ROLE_ADMIN");
-            }
-            if (null != request.getParameter("isEnabled")) {
-                user.setIsEnabled(true);
-            }
-          
             userService.updateUser(user);
         
         
@@ -122,11 +117,14 @@ public class UserCMSController {
         user.setUserEmail(request.getParameter("email"));
         String clearPw = request.getParameter("password");
         String hashPw = encoder.encode(clearPw);
-        user.setPassword(request.getParameter(hashPw));
+        user.setPassword(hashPw);
         user.setUserBio(request.getParameter("userBio"));
         user.setIsEnabled(true);
         if (null != request.getParameter("isAdmin")) {
             user.addAuthority("ROLE_ADMIN");
+            user.setIsAdmin(true);
+        }else{
+            user.setIsAdmin(false);
         }
 
         userService.createUser(user);

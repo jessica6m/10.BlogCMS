@@ -53,5 +53,9 @@ public class StaticPageCMSService {
     public void approveStaticPage(int spId) {
         spDao.approveStaticPage(spId);
     }
+
+    public void deleteStaticPage(int spId) {
+        spDao.deleteStaticPage(spId);
+    }
     
 }

@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS `CMS`;
+CREATE DATABASE `CMS`;
 USE `CMS`;
 
 CREATE TABLE IF NOT EXISTS `User` (
@@ -27,8 +29,8 @@ CREATE TABLE IF NOT EXISTS `Categories` (
 
 CREATE TABLE IF NOT EXISTS `BlogPost` (
   `idBlogPost` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(1000) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
+  `title` LONGTEXT NOT NULL,
+  `description` LONGTEXT NOT NULL,
   `content` LONGTEXT NOT NULL,
   `author` VARCHAR(45) NOT NULL,
   `createdDate` DATETIME NOT NULL,
@@ -41,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `BlogPost` (
   CONSTRAINT `fk_BlogPost_User`
     FOREIGN KEY (`idUser`)
     REFERENCES `User` (`idUser`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_BlogPost_Categories`
     FOREIGN KEY (`idCategories`)
     REFERENCES `Categories` (`idCategories`)
@@ -51,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `BlogPost` (
 
 CREATE TABLE IF NOT EXISTS `StaticPage` (
   `idStaticPage` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(1000) NOT NULL,
-  `description` VARCHAR(45) NOT NULL,
+  `title` LONGTEXT NOT NULL,
+  `description` LONGTEXT NOT NULL,
   `content` LONGTEXT NOT NULL,
   `author` VARCHAR(45) NOT NULL,
   `dateCreated` DATETIME NOT NULL,
@@ -80,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `BlogpostTag` (
   CONSTRAINT `fk_BlogpostTag_BlogPost`
     FOREIGN KEY (`idBlogPost`)
     REFERENCES `BlogPost` (`idBlogPost`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_BlogpostTag_Tag`
     FOREIGN KEY (`idTag`)
     REFERENCES `Tag` (`idTag`)

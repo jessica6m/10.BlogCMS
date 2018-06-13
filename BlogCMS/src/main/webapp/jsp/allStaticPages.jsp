@@ -80,7 +80,7 @@
                                             </td>
 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/deletePage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
+                                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>
@@ -107,7 +107,7 @@
                                 <br>
                                 <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
                                 <br>
-                                <a href="${pageContext.request.contextPath}/deletePage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
+                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                 <br>     
                                 
                             </div>

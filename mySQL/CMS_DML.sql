@@ -56,8 +56,8 @@ VALUES
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '0'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '0');
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',FALSE,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',FALSE,'1', '1');
 
 
 
@@ -67,9 +67,9 @@ VALUES
 ('How to Code HTML', 'beg html', '<h1></h1> eample of tage', 'Coder123', '2018-03-20 12:30:30', '2018-04-20 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
 ('How to Code Java', 'beg java', 'what is a method?', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
 ('How to Code C++', 'beg c++', 'cout<<"Hello World;', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
-('How to Code JavaScript', 'beg javaScript', 'console.log();', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '0'),
-('How to Code CSS', 'beg css', 'h1 { color: red }', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '0'),
-('How to Make a Cake', 'chocloate cake', 'recipe', 'Baker123', '2018-01-10 11:30:30', '2018-01-01 12:30:30', '2018-04-01 12:30:30', TRUE, '0');
+('How to Code JavaScript', 'beg javaScript', 'console.log();', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', FALSE, '1'),
+('How to Code CSS', 'beg css', 'h1 { color: red }', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', FALSE, '1'),
+('How to Make a Cake', 'chocloate cake', 'recipe', 'Baker123', '2018-01-10 11:30:30', '2018-01-01 12:30:30', '2018-04-01 12:30:30', FALSE, '1');
 
 INSERT INTO `BlogpostTag` (idBlogPost, idTag)
 VALUES

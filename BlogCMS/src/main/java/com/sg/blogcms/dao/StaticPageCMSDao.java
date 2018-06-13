@@ -17,7 +17,6 @@ import java.util.List;
  */
 public interface StaticPageCMSDao {
     StaticPage createStaticPage(StaticPage sp);
-    void removeStaticPage(int spId);
     StaticPage updateStaticPage(StaticPage sp);
     StaticPage selectStaticPage(int spId);
     List<StaticPage> selectAllStaticPages();
@@ -28,5 +27,7 @@ public interface StaticPageCMSDao {
     public User selectUserByUsername(String username);
 
     public void approveStaticPage(int spId);
+
+    public void deleteStaticPage(int spId);
     
 }

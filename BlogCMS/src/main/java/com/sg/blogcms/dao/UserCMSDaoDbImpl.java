@@ -30,7 +30,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     //                          SQL USER
     //==========================================================================
     private static final String SQL_SELECT_USER
-            = "select * from User Join Authorities where idUser = ? ";
+            = "select * from User where idUser = ? ";
     
     private static final String SQL_SELECT_USER_BY_USERNAME
             = "select * from User where username = ? ";
@@ -39,7 +39,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
             = "delete from User where idUser = ?";
     
     private static final String SQL_DELETE_USER
-        = "delete from users where username = ?";
+        = "delete from User where username = ?";
     
     private static final String SQL_DELETE_AUTHORITIES
         = "delete from authorities where username = ?";
@@ -48,13 +48,13 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
             = "select * from User";
 
     private static final String SQL_UPDATE_USER
-            = "update User set firstName = ?, lastName = ?, username = ?, userEmail = ?, password = ?, bio = ?, enabled = ? where idUser = ?";
+            = "update User set firstName = ?, lastName = ?, username = ?, userEmail = ?, password = ?, bio = ?, isAdmin = ? ,enabled = ? where idUser = ?";
 
     private static final String SQL_INSERT_USER
             = "insert into User (firstName, lastName, username, userEmail, password, bio, isAdmin,enabled) values(?,?,?,?,?,?,?,?)";
     
     private static final String SQL_INSERT_AUTHORITY
-        = "insert into authorities (username, authority) values (?, ?)";
+        = "insert into Authorities (username, authority) values (?, ?)";
     
     
     
@@ -111,6 +111,8 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
 
     @Override
     public void removeUser(int userID) {
+        
+        
         jdbcTemplate.update(SQL_DELETE_USER_BY_ID, userID);
     }
 
