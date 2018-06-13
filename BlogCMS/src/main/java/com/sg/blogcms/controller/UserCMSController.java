@@ -124,7 +124,6 @@ public class UserCMSController {
         String hashPw = encoder.encode(clearPw);
         user.setPassword(request.getParameter(hashPw));
         user.setUserBio(request.getParameter("userBio"));
-        user.addAuthority("ROLE_USER");
         user.setIsEnabled(true);
         if (null != request.getParameter("isAdmin")) {
             user.addAuthority("ROLE_ADMIN");

@@ -49,8 +49,8 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     private static final String SQL_SELECT_ALL_CATEGORIES
             = "select * from Categories";
     private static final String SQL_INSERT_STATIC_PAGE
-            = "insert into StaticPage (title, description, content, author, createdDate, " 
-            + "publishDate, expirationDate,isActive,idUser ) values(?,?,?,?,?,?,?,?,?)";
+            = "insert into StaticPage (title, description, content, author, dateCreated, " 
+            + "publishedDate, expirationDate,isActive,idUser ) values(?,?,?,?,?,?,?,?,?)";
     
     private static final String SQL_APPROVE_STATIC_PAGE
             = "update StaticPage set isActive = 1 where idStaticPage = ?";

@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>Tags</h1>
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
@@ -93,7 +93,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <input type="submit" class="btn btn-success" value="${tagID}">
+                                            <input type="submit" class="btn btn-success" value="Submit">
                                         </div>
                                     </div>
 

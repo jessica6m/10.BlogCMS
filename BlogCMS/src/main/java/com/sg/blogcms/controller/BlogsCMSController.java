@@ -129,7 +129,11 @@ public class BlogsCMSController {
         bp.setUserId(user.getUserId());
         bp.setCatId(1);
         
+        String[] tagIds = request.getParameterValues("tags");
+        
         blogsService.createBlog(bp);
+        
+        blogsService.updateBlogAndTag(tagIds, bp);
         
         List<BlogPost> allBlogs;
         allBlogs = blogsService.selectAllBlogs();
@@ -141,6 +145,7 @@ public class BlogsCMSController {
     @RequestMapping(value="/displayBlog/{blogId}", method = RequestMethod.GET)
     public String displayBlog(HttpServletRequest request, Model model,@PathVariable int blogId){
         BlogPost bp = blogsService.selectBlog(blogId);
+        List<Tags> tagList = blogsService.selectTagByBlogId(blogId);
         model.addAttribute("bp",bp);
         
         return "blogpost";
@@ -200,28 +205,6 @@ public class BlogsCMSController {
         
         return "redirect:blogs";
     }
-    
-//    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)
-//    public String blogPostAddCategory(HttpServletRequest request, Model model,@PathVariable String viewType2) {
-//        
-//        List<Category> allCategories = blogsService.selectAllCategories();
-//
-//        model.addAttribute("viewType2",viewType2);
-//        model.addAttribute("allCategories",allCategories);
-//        return "createBlogPost";
-//    }
-//    
-//    @RequestMapping(value = {"/createBlogPost/{viewType}"}, method = RequestMethod.GET)
-//    public String blogPostAddTag(HttpServletRequest request, Model model,@PathVariable String viewType) {
-//        
-//        List<Tags> allTags = blogsService.selectAllTags();
-//        
-//        
-//        
-//        
-//        model.addAttribute("viewType",viewType);
-//        model.addAttribute("allTags",allTags);
-//        return "createBlogPost";
-//    }
+   
     
 }

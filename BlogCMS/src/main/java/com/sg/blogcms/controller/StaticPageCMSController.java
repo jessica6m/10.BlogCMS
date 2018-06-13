@@ -39,7 +39,7 @@ public class StaticPageCMSController {
     public String viewAllStaticPage(HttpServletRequest request, Model model) {
         
         List<StaticPage> sp = spService.selectAllStaticPages();
-        int calc = calculateNearestNthMultiple(sp.size(),3);
+        int calc = calculateNearestNthMultiple(sp.size(),4);
         model.addAttribute("sp",sp);
         model.addAttribute("calc",calc);
         return "allStaticPages";
@@ -98,33 +98,35 @@ public class StaticPageCMSController {
     
     @RequestMapping(value = "/createStaticPage", method = RequestMethod.POST)
     public String createStaticPage(HttpServletRequest request ,Model model) {
-        StaticPage sp = new StaticPage();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        StaticPage statpage = new StaticPage();
+        
         String username = request.getParameter("username");
         User user = spService.selectUserByUsername(username);
         
-        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Date date = new Date();
-	Date date2 = new Date("2099/12/31 12:00:00");
-        sp.setTitle(request.getParameter("title"));
-        sp.setDescription(request.getParameter("description"));
-        sp.setContent(request.getParameter("content"));
-        sp.setAuthor(username);
-        sp.setCreatedDate(date);
-        sp.setPublishDate(date);
-        sp.setExpirationDate(date2);
+        Date date2 = new Date("2099/12/31 12:00:00");
+
+	statpage.setTitle(request.getParameter("title"));
+        statpage.setDescription(request.getParameter("description"));
+        statpage.setContent(request.getParameter("content"));
+        statpage.setAuthor(username);
+        statpage.setCreatedDate(date);
+        statpage.setPublishDate(date);
+        statpage.setExpirationDate(date2);
         
-        if (!user.getAuthorityList().contains("ROLE_ADMIN")) {
-                sp.setIsActive(false);
+        if (user.getIsAdmin()) {
+                statpage.setIsActive(true);
         }
         
-        sp.setUserId(user.getUserId());
+        statpage.setUserId(user.getUserId());
         
-        spService.createStaticPage(sp);
+        spService.createStaticPage(statpage);
         
-        List<StaticPage> allStaticPages;
-        allStaticPages = spService.selectAllStaticPages();
-        model.addAttribute("allStaticPages", allStaticPages);
+        List<StaticPage> sp = spService.selectAllStaticPages();
+        int calc = calculateNearestNthMultiple(sp.size(),4);
+        model.addAttribute("sp",sp);
+        model.addAttribute("calc",calc);
         
         return "allStaticPages";
     }

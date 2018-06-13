@@ -77,4 +77,12 @@ public class BlogsCMSService {
     public List<StaticPage> selectAllInactiveStaticPages() {
         return blogsDao.selectAllInactiveStaticPages();
     }
+
+    public void updateBlogAndTag(String[] tagIds, BlogPost bp) {
+        blogsDao.updateBlogAndTag(tagIds, bp);
+    }
+
+    public List<Tags> selectTagByBlogId(int blogId) {
+        return blogsDao.selectTagsByBlogId(blogId);
+    }
 }

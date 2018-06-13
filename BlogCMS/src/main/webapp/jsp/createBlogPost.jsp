@@ -68,7 +68,7 @@
                 <div class=" col-md-12">
                     
                     <form action="createBlogPost" class="form-horizontal" role="form" method="POST">
-                        <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                        <input type="text" id="username" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
                         <div class = "form-group">
                             <label for="add-Title" class=" control-label">Title:</label> 
                             <br>
@@ -103,14 +103,14 @@
                             </div>
                             <div class="col-md-3 col-md-offset-6 dropdown" style="margin-bottom: 10px">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> TAGS </button>
-                                <div class="dropdown-menu" id="tagRest">
+                                <div class="dropdown-menu" id="tagRest" >
                                     
                                 </div>
                             </div>
                         </div>
                         <div class="form-group ">
                             <div class="col-md-4 col-md-offset-4">
-                                <input type="submit" class="btn btn-success" value="Submit">
+                                <input type="submit" id = "create-blog" class="btn btn-success" value="Submit">
                             </div>
                         </div>
                     </form>

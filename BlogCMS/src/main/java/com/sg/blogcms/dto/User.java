@@ -27,7 +27,7 @@ public class User {
     private List<BlogPost> associatedBlogs;
     private List<StaticPage> associatedStaticPages;
     private List<Category> associatedCategories;
-    private List<String> authorityList = new ArrayList<>(asList(""));
+    private List<String> authorityList = new ArrayList<>(asList("ROLE_USER"));
 
     public int getUserId() {
         return userId;

@@ -2,13 +2,8 @@ console.log("AT LEAST IT IS RUNNING???");
 $(document).ready(function () {
     loadCatsAndTags();
     
-    $('#newCatRest').click(function () {
-        loadCatsAndTags();
-        console.log("AT LEAST IT IS RUNNING???");
-    });
-    
-    $('#newTagRest').click(function () {
-        loadCatsAndTags();
+    $('#create-blog').click(function () {
+        addTagsToUser();
         console.log("AT LEAST IT IS RUNNING???");
     });
 
@@ -54,16 +49,10 @@ function loadCatsAndTags() {
         }
     });
     
-    function addCat() {
-        
-    }
-    
-    function addTag() {
-        
-    }
-    
-    
-    
-    
-    
+}
+
+ function addTagsToUser(){
+     var username = $('#username').val();
+     var tagIds = $('#tags').val();
+     
 }

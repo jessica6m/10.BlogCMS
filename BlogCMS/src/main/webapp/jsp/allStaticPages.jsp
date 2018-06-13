@@ -88,17 +88,18 @@
                             </c:forEach>
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
-                                    <a href="${pageContext.request.contextPath}/displayCreateStaticPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
+                                    <a href="${pageContext.request.contextPath}/displayCreateStaticPagePage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
                                 </td>
                             </sec:authorize>
                         </tbody>
                     </table>
                     
                 </div>
-                <c:forEach var="i" begin="0" end="${calc -1}">
+            </div>
+            <c:forEach var="i" begin="0" end="${calc -1}">
                     <c:choose>
                         <c:when test="${sp[i].title != null}">
-                            <div class="sosa col-md-4">
+                            <div class="sosa col-md-3">
                                 <br>
                                 <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].title}</a>
                                 <br>
@@ -112,14 +113,12 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <div class="sosa col-md-4">
+                            <div class="sosa col-md-3">
                                MORE CONTENT COMING SOON!!!
                             </div>
                         </c:otherwise>
                     </c:choose>
                 </c:forEach>
-               
-            </div>
             
             <div class="footer">
                 <button>Instagram</button>

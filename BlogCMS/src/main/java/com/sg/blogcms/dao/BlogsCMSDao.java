@@ -40,5 +40,8 @@ public interface BlogsCMSDao {
     public Tags selectTagById(int tagId);
 
     public List<StaticPage> selectAllInactiveStaticPages();
+
+    public void updateBlogAndTag(String[] tagIds, BlogPost bp);
     
+    public List<Tags> selectTagsByBlogId(int blogId);
 }

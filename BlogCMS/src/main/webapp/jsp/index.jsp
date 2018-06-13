@@ -67,11 +67,9 @@
                 </div>
                 
                 <div class = "col-md-6>">
-                    <p> TESTING GRID LAYOUT!!!</p>
+                    <h3>My PERSONAL Blog</h3>
+                    <p> Welcoming to my Personal Blog. First and foremost, let it be stated that this is a personal blog, and as such any views are my personal views and nothing more.</p>
                     
-                    <p> Blog Description Goes Here</p>
-                    
-                    <p> ${lastTenBlogs[0].getUser().firstName}</p>
                 
                 </div>
                 

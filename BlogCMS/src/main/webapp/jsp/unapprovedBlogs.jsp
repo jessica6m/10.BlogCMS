@@ -13,7 +13,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
-        <h1>Unapproved Blogs</h1>
+        <h1>Awaiting Approval</h1>
         <sec:authorize access="isAnonymous()">
             <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
@@ -58,6 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <h3>BLOGPOSTS</h3>
                             <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
                                 <tr >
                                     <td>
@@ -90,9 +91,27 @@
                                 </tr>
 
                             </c:forEach>
-                            <hr>
-                            <h4>STATIC PAGES</h4>
+                            
+                        </tbody>
+                    </table>
+                    <table class = "table">
+                        <thead>
+                            <tr>
+                                <th> Title </th>
+                                <th> Description </th>
+                                <th> Author </th>
+                                <th> Publish Date </th>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <th> APPROVE </th>
+                                    <th> EDIT</th>
+                                    <th> DELETE </th>
+                                </sec:authorize>
                                 
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <h3>STATIC PAGES</h3>
+                            
                             <c:forEach var="i" begin="0" end="${inactivePages.size()-1}">
                                 <tr >
                                     <td>
