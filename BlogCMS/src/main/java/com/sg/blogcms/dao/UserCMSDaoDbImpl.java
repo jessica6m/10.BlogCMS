@@ -128,6 +128,13 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
                 user.getIsAdmin(),
                 user.getIsEnabled(),
                 user.getUserId());
+        
+        if(user.getIsAdmin()){
+            jdbcTemplate.update(SQL_INSERT_AUTHORITY, 
+                                user.getUsername(), 
+                                "ROLE_ADMIN");
+        }
+        
         return user;
     }
 
