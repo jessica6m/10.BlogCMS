@@ -141,10 +141,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <input class ="enabledAdmin" type="checkbox" name="isEnabled" value="yes"/> : Enable?
+                                        <input class ="" type="checkbox" name="isEnabled" value="yes"/> : Enable?
                                     </div>
                                     <div>
-                                        <input class ="enabledAdmin" type="checkbox" name="isAdmin" value="yes"/> : Admin?
+                                        <input class ="" type="checkbox" name="isAdmin" value="yes"/> : Admin?
                                     </div>
                                     <div class="form-group">
                                         

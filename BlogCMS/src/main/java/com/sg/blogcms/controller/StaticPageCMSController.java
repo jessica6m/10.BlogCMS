@@ -86,6 +86,8 @@ public class StaticPageCMSController {
 
             sp.setUserId(user.getUserId());
             
+            spService.updateStaticPage(sp);
+            
         return "redirect:viewAllStaticPages";
     }
     

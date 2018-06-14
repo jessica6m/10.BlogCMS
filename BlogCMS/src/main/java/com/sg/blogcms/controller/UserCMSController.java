@@ -115,9 +115,12 @@ public class UserCMSController {
             }
             
             userService.updateUser(user);
+            
+            List<User> users = userService.selectAllUsers();
+            model.addAttribute("users", users);
         
         
-        return "redirect:users";
+        return "users";
     }
     
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)

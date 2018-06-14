@@ -57,5 +57,9 @@ public class StaticPageCMSService {
     public void deleteStaticPage(int spId) {
         spDao.deleteStaticPage(spId);
     }
+
+    public void updateStaticPage(StaticPage sp) {
+        spDao.updateStaticPage(sp);
+    }
     
 }

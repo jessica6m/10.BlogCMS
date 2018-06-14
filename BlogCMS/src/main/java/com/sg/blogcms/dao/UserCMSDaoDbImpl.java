@@ -101,8 +101,8 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
         List<User> userList = jdbcTemplate.query(SQL_SELECT_ALL_USERS,
                 new UserMapper());
         for(User user: userList){
-            user.addAuthority("ROLE_USER");
-            if(user.getIsAdmin()==true){
+            
+            if(user.getIsAdmin()){
                 user.addAuthority("ROLE_ADMIN");           
             }
         }
