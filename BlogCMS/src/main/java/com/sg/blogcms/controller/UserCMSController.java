@@ -101,6 +101,19 @@ public class UserCMSController {
             user.setPassword(hashPw);
             user.setUserBio(request.getParameter("userBio"));
             
+            if (null != request.getParameter("isAdmin")) {
+                user.addAuthority("ROLE_ADMIN");
+                user.setIsAdmin(true);
+            }else{
+                user.setIsAdmin(false);
+            }
+            
+            if (null != request.getParameter("isEnabled")) {
+                user.setIsEnabled(true);
+            }else{
+                user.setIsEnabled(false);
+            }
+            
             userService.updateUser(user);
         
         
