@@ -61,7 +61,7 @@ public class StaticPageCMSDaoDbImpl implements StaticPageCMSDao {
     
     private static final String SQL_UPDATE_SP
             = "update StaticPage set title = ?, description = ?  ,content = ?, author = ?,"
-                + " dateCreated = ?, publishedDate = ?, expirationDate = ?, isActive = ?, idUser = ?,  where idStaticPage =?";
+                + " dateCreated = ?, publishedDate = ?, expirationDate = ?, isActive = ?, idUser = ?  where idStaticPage =?";
     
 
 //    ----------------------------------------------------------------------------
