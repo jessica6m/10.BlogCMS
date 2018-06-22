@@ -96,7 +96,7 @@
                     
                 </div>
             </div>
-            <c:forEach var="i" begin="0" end="${calc -1}">
+            <c:forEach var="i" begin="0" end="9">
                     <c:choose>
                         <c:when test="${sp[i].title != null}">
                             <div class="sosa col-md-3">

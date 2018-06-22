@@ -98,7 +98,7 @@
                     </div>
                     
                     <div class="col-md-4 col-md-offset-1">
-                        <c:choose>
+                        <c:choose> 
                             <c:when test="${viewType == 'edit'}">
                                 <h2>Update User </h2>
                                 <hr>

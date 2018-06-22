@@ -13,7 +13,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
-        <h1>${bp.title} By: ${sp.author}</h1>
+        <h1>${bp.title} By: ${sp.username}</h1>
         <c:if test="${pageContext.request.userPrincipal.name == null}">
             <div class="login-btn"><a href="${pageContext.request.contextPath}/login">Login</a></div>
         </c:if>

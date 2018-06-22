@@ -252,7 +252,7 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
         for (String currentId : tagIds){
             jdbcTemplate.update(SQL_INSERT_INTO_BLOGS_TAGS,
                     bp.getId(),
-                    currentId);
+                    Integer.parseInt(currentId));
         }
     }
     

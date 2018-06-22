@@ -8,13 +8,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
-
-
-
 });
 
 function loadCatsAndTags() {

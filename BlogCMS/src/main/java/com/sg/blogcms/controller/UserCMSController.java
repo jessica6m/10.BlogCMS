@@ -78,6 +78,7 @@ public class UserCMSController {
         int userId = Integer.parseInt(request.getParameter("userId"));
         String viewType = request.getParameter("viewType");
         model.addAttribute("viewType",viewType);
+        
         User user = userService.selectUser(userId);
         model.addAttribute("user",user);
         model.addAttribute("userId",userId);
