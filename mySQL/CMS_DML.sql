@@ -1,17 +1,9 @@
 USE `CMS`;
 
-INSERT INTO `User`(firstName, lastName, username, userEmail, `password`,bio, enabled)
+INSERT INTO `User`(firstName, lastName, username, userEmail, `password`,bio, isAdmin,enabled)
 Values
-('Jose', 'Sosa', 'jsosa', 'jys5219@gmail.com', 'Eulelife0320','studious individual', 1),
-('Jess', 'Gross', 'jgross', 'jgross1989@gmail.com', 'JesseG0320','codeLife', 1),
-('John', 'Smith', 'jsmith', 'jsmith9976@gmail.com', 'jsmith9976','vet', 1),
-('James', 'Ortiz', 'jortiz', 'jjortiz334@gmail.com', 'jortiz334','doctor', 1),
-('Stephen', 'Sanchez', 'ssanchez', 'ssanchez445@gmail.com', 'ssanchez445','dentist', 1),
-('Daniel', 'Domingo', 'ddomingo', 'ddomingo453@yahoo.com', 'ddmingo453',' nurse', 1),
-('Stanley', 'Pitt', 'spitt', 'spitt123@yahoo.com', 'spitt123','Java Programmer', 1),
-('Micheal', 'Donovan', 'mdonovan', 'mdonovan123@yahoo.com', 'mdonovan123', 'C++ Programmer', 1),
-('empty','empty','admin','admin@mail.com','password','the admin',1),
-('empty','empty','user','user@mail.com','password','the user',1);
+('empty','empty','admin','admin@mail.com','$2a$10$AFaIfR/qIyYwSWnMVLO1I.4E9wb96BeqpGO6d2hrvjc63HwkQux9u','the admin',1,1),
+('empty','empty','user','user@mail.com','$2a$10$AFaIfR/qIyYwSWnMVLO1I.4E9wb96BeqpGO6d2hrvjc63HwkQux9u','the user',0,1);
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
 ('admin', 'ROLE_ADMIN'),
@@ -64,8 +56,8 @@ VALUES
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
 ('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1'),
-('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',True,'1', '1');
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',FALSE,'1', '1'),
+('Day at a Cafe', 'Coding with Rich', 'blah blah blah', 'Jose and Rich', '2018-04-20 12:30:30', '2018-04-20 12:30:30', '2018-04-20 12:30:30',FALSE,'1', '1');
 
 
 
@@ -75,9 +67,9 @@ VALUES
 ('How to Code HTML', 'beg html', '<h1></h1> eample of tage', 'Coder123', '2018-03-20 12:30:30', '2018-04-20 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
 ('How to Code Java', 'beg java', 'what is a method?', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
 ('How to Code C++', 'beg c++', 'cout<<"Hello World;', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
-('How to Code JavaScript', 'beg javaScript', 'console.log();', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
-('How to Code CSS', 'beg css', 'h1 { color: red }', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', TRUE, '1'),
-('How to Make a Cake', 'chocloate cake', 'recipe', 'Baker123', '2018-01-10 11:30:30', '2018-01-01 12:30:30', '2018-04-01 12:30:30', TRUE, '1');
+('How to Code JavaScript', 'beg javaScript', 'console.log();', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', FALSE, '1'),
+('How to Code CSS', 'beg css', 'h1 { color: red }', 'Coder567', '2018-03-10 11:30:30', '2018-04-11 12:30:30', '2018-04-10 12:30:30', FALSE, '1'),
+('How to Make a Cake', 'chocloate cake', 'recipe', 'Baker123', '2018-01-10 11:30:30', '2018-01-01 12:30:30', '2018-04-01 12:30:30', FALSE, '1');
 
 INSERT INTO `BlogpostTag` (idBlogPost, idTag)
 VALUES

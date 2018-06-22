@@ -8,6 +8,7 @@ package com.sg.blogcms.dao;
 import com.sg.blogcms.dto.Category;
 import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
+import com.sg.blogcms.dto.User;
 import java.util.List;
 
 /**
@@ -16,12 +17,17 @@ import java.util.List;
  */
 public interface StaticPageCMSDao {
     StaticPage createStaticPage(StaticPage sp);
-    void removeStaticPage(int spId);
     StaticPage updateStaticPage(StaticPage sp);
     StaticPage selectStaticPage(int spId);
     List<StaticPage> selectAllStaticPages();
     List<StaticPage> selectAllStaticPagesByUser(int userID);
     public List<Tags> selectAllTags();    
     public List<Category> selectAllCategories();
+
+    public User selectUserByUsername(String username);
+
+    public void approveStaticPage(int spId);
+
+    public void deleteStaticPage(int spId);
     
 }

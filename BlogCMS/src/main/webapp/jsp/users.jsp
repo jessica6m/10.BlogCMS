@@ -22,7 +22,7 @@
               <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
               <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
               <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -98,7 +98,7 @@
                     </div>
                     
                     <div class="col-md-4 col-md-offset-1">
-                        <c:choose>
+                        <c:choose> 
                             <c:when test="${viewType == 'edit'}">
                                 <h2>Update User </h2>
                                 <hr>
@@ -107,13 +107,13 @@
                                     <div class="form-group">
                                         <label for="add-user-firstname" class=" control-label">First Name: </label>
                                         <div class="    ">
-                                            <input type="text" name="userFirstName" placeholder="User's First Name : ${user.firstName}">
+                                            <input type="text" name="firstName" placeholder="User's First Name : ${user.firstName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="add-user-lastname" class=" control-label">Last Name:</label>
                                         <div class="">
-                                            <input type="text" name="userLastName" placeholder="User's Last Name : ${user.lastName}">
+                                            <input type="text" name="lastName" placeholder="User's Last Name : ${user.lastName}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -141,10 +141,10 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <input class ="enabledAdmin" type="checkbox" name="isEnabled" value="yes"/> : Enable?
+                                        <input class ="" type="checkbox" name="isEnabled" value="yes"/> : Enable?
                                     </div>
                                     <div>
-                                        <input class ="enabledAdmin" type="checkbox" name="isAdmin" value="yes"/> : Admin?
+                                        <input class ="" type="checkbox" name="isAdmin" value="yes"/> : Admin?
                                     </div>
                                     <div class="form-group">
                                         
@@ -158,17 +158,17 @@
                             <c:otherwise>
                                 <h2>Add New User </h2>
                                 <hr>
-                                <form action="adduser" class="form-horizontal" role="form" method="POST" >
+                                <form action="addUser" class="form-horizontal" role="form" method="POST" >
                                     <div class="form-group">
                                         <label for="add-user-firstname" class=" control-label">First Name: </label>
                                         <div class="    ">
-                                            <input type="text" name="userFirstName" placeholder="User's First Name : ">
+                                            <input type="text" name="firstName" placeholder="User's First Name : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="add-user-lastname" class=" control-label">Last Name:</label>
                                         <div class="">
-                                            <input type="text" name="userLastName" placeholder="User's Last Name : ">
+                                            <input type="text" name="lastName" placeholder="User's Last Name : ">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -195,9 +195,7 @@
                                             <textarea  class="form-control" rows="3" name="userBio" placeholder="User Biography : "></textarea>
                                         </div>
                                     </div>
-                                    <div>
-                                         <input type="checkbox" name="isEnabled" value="yes"/> : Enable?
-                                    </div>
+                                    
                                     <div>
                                          <input type="checkbox" name="isAdmin" value="yes"/> : Admin?
                                     </div>

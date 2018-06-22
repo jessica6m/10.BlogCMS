@@ -7,6 +7,7 @@ package com.sg.blogcms.controller;
 
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.BlogsCMSService;
@@ -71,6 +72,9 @@ public class BlogsCMSController {
                 .stream()
                 .filter(s -> s.getIsApproved() == false)
                 .collect(Collectors.toList());
+        List<StaticPage> inactivePages = blogsService.selectAllInactiveStaticPages();
+        
+        model.addAttribute("inactivePages",inactivePages);
         model.addAttribute("allBlogs", allBlogs);
         return "unapprovedBlogs";
     }
@@ -116,7 +120,7 @@ public class BlogsCMSController {
         bp.setPublishDate(date);
         bp.setExpirationDate(date2);
         
-        if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
+        if(user.getIsAdmin()){ 
             bp.setIsApproved(true);
         }else{
             bp.setIsApproved(false);
@@ -125,7 +129,11 @@ public class BlogsCMSController {
         bp.setUserId(user.getUserId());
         bp.setCatId(1);
         
+        String[] tagIds = request.getParameterValues("tags");
+        
         blogsService.createBlog(bp);
+        
+        blogsService.updateBlogAndTag(tagIds, bp);
         
         List<BlogPost> allBlogs;
         allBlogs = blogsService.selectAllBlogs();
@@ -137,13 +145,14 @@ public class BlogsCMSController {
     @RequestMapping(value="/displayBlog/{blogId}", method = RequestMethod.GET)
     public String displayBlog(HttpServletRequest request, Model model,@PathVariable int blogId){
         BlogPost bp = blogsService.selectBlog(blogId);
+        List<Tags> tagList = blogsService.selectTagByBlogId(blogId);
         model.addAttribute("bp",bp);
         
         return "blogpost";
     }
             
     @RequestMapping(value = "/chooseBlogPostToUpdate", method = RequestMethod.GET)
-    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+    public String chooseBlogPostToUpdate(HttpServletRequest request, Model model) {
         int blogId = Integer.parseInt(request.getParameter("blogId"));
         BlogPost bp = blogsService.selectBlog(blogId);
         model.addAttribute("bp", bp);
@@ -153,10 +162,9 @@ public class BlogsCMSController {
     @RequestMapping(value = "/updateBlogPost", method = RequestMethod.GET)
     public String updateBlogPost(HttpServletRequest request, Model model) {
         
-            int blogId = Integer.parseInt(request.getParameter("blogId"));
+            int blogId = Integer.parseInt(request.getParameter("bpId"));
             BlogPost bp = blogsService.selectBlog(blogId);
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//            Date date = new Date();
+            blogsService.removeTagsFromDB(bp);
             
             String username = request.getParameter("username");
             User user = blogsService.selectUserByUsername(username);
@@ -165,59 +173,21 @@ public class BlogsCMSController {
             bp.setDescription(request.getParameter("description"));
             bp.setContent(request.getParameter("content"));
             bp.setAuthor(username);
-//            bp.setCreatedDate(date);
-//            bp.setPublishDate(date);
-//            bp.setExpirationDate(date);
 
-            if(user.getAuthorityList().contains("ROLE_ADMIN")){ 
-                bp.setIsApproved(true);
-            }else{
-                bp.setIsApproved(false);
-            }
-
+            
             bp.setUserId(user.getUserId());
             //bp.setCatId(Integer.parseInt(request.getParameter("catId")));
-            bp.setCatId(1);
+            int catId = Integer.parseInt(request.getParameter("cats"));
+            bp.setCatId(catId);
             
-//            OPTION ONE FOR TAGS
-//            bp.setTags(null);
-//            for(Integer tagId: tags){
-//                bp.add(blogsService.getTagById(tagId));
-//            }
-
-
-//            OPTION TWO FOR TAGS
-//            bp.setTagIds(null);
-//            for(Integer tagId: tags){
-//                bp.addTagId(tagId);
-//            }
+            String[] tagIds = request.getParameterValues("tags");
+            blogsService.updateBlogAndTag(tagIds, bp);
             
+            blogsService.updateBlog(bp);
         
         
         return "redirect:blogs";
     }
-    
-//    @RequestMapping(value = {"/createBlogPost/{viewType2}"}, method = RequestMethod.GET)
-//    public String blogPostAddCategory(HttpServletRequest request, Model model,@PathVariable String viewType2) {
-//        
-//        List<Category> allCategories = blogsService.selectAllCategories();
-//
-//        model.addAttribute("viewType2",viewType2);
-//        model.addAttribute("allCategories",allCategories);
-//        return "createBlogPost";
-//    }
-//    
-//    @RequestMapping(value = {"/createBlogPost/{viewType}"}, method = RequestMethod.GET)
-//    public String blogPostAddTag(HttpServletRequest request, Model model,@PathVariable String viewType) {
-//        
-//        List<Tags> allTags = blogsService.selectAllTags();
-//        
-//        
-//        
-//        
-//        model.addAttribute("viewType",viewType);
-//        model.addAttribute("allTags",allTags);
-//        return "createBlogPost";
-//    }
+   
     
 }

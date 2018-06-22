@@ -23,7 +23,7 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -40,7 +40,7 @@
   <!-- ONLY ADDING A TAGS FOR PURPOSE OF MAYBE LINKING TO OTHER BLOGS-->
         <div class="container">
             <div class="row">
-<!--                <div class="col-md-12 "> 
+                <div class="col-md-12 "> 
                     <table class="table">
                         <thead>
                             <tr>
@@ -76,11 +76,11 @@
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?blogId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
+                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
                                             </td>
 
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/deletePage?blogId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
+                                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
                                             </td>
                                     </sec:authorize>
                                 </tr>
@@ -88,31 +88,37 @@
                             </c:forEach>
                             <sec:authorize access= "isAuthenticated()">
                                 <td>
-                                    //<button class = "btn-success">CREATE STATIC PAGE</button>
-                                        <a href="${pageContext.request.contextPath}/displayCreateStaticPage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
-                                    
+                                    <a href="${pageContext.request.contextPath}/displayCreateStaticPagePage?username=${pageContext.request.userPrincipal.name}" class = "btn btn-danger">CREATE</a>
                                 </td>
                             </sec:authorize>
                         </tbody>
                     </table>
                     
-                </div>-->
-                <c:forEach var="i" begin="0" end="${calc -1}">
-                        <c:choose>
-                            <c:when test="${sp[i].title != null}">
-                                <div class="sosa col-md-4">
-                                   ${sp[i].title}, ${sp[i].description}
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="sosa col-md-4">
-                                   MORE CONTENT SOON!!!
-                                </div>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-               
+                </div>
             </div>
+            <c:forEach var="i" begin="0" end="9">
+                    <c:choose>
+                        <c:when test="${sp[i].title != null}">
+                            <div class="sosa col-md-3">
+                                <br>
+                                <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].title}</a>
+                                <br>
+                                <a href="${pageContext.request.contextPath}/displayStaticPage/${sp[i].id}">${sp[i].description}</a>
+                                <br>
+                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${sp[i].id}" class = "btn btn-warning">EDIT</a>
+                                <br>
+                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${sp[i].id}" class = "btn btn-danger">DELETE</a>
+                                <br>     
+                                
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="sosa col-md-3">
+                               MORE CONTENT COMING SOON!!!
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
             
             <div class="footer">
                 <button>Instagram</button>

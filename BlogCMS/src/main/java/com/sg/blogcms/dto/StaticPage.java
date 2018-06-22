@@ -96,6 +96,10 @@ public class StaticPage {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
+    
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
 
     public int getUserId() {
         return userId;

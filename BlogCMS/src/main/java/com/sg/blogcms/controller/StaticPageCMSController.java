@@ -8,6 +8,9 @@ package com.sg.blogcms.controller;
 import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.service.StaticPageCMSService;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +39,7 @@ public class StaticPageCMSController {
     public String viewAllStaticPage(HttpServletRequest request, Model model) {
         
         List<StaticPage> sp = spService.selectAllStaticPages();
-        int calc = calculateNearestNthMultiple(sp.size(),3);
+        int calc = calculateNearestNthMultiple(sp.size(),4);
         model.addAttribute("sp",sp);
         model.addAttribute("calc",calc);
         return "allStaticPages";
@@ -51,7 +54,7 @@ public class StaticPageCMSController {
     }
     
     @RequestMapping(value = "/chooseStaticPageToUpdate", method = RequestMethod.GET)
-    public String chooseCategoryToUpdate(HttpServletRequest request, Model model) {
+    public String chooseStaticPageToUpdate(HttpServletRequest request, Model model) {
         int spId = Integer.parseInt(request.getParameter("spId"));
         StaticPage sp = spService.selectStaticPage(spId);
         model.addAttribute("sp", sp);
@@ -59,7 +62,7 @@ public class StaticPageCMSController {
     }
     
     @RequestMapping(value = "/updateStaticPage", method = RequestMethod.GET)
-    public String updateBlogPost(HttpServletRequest request, Model model) {
+    public String updateStaticPage(HttpServletRequest request, Model model) {
         
             int spId = Integer.parseInt(request.getParameter("spId"));
             StaticPage sp = spService.selectStaticPage(spId);
@@ -83,7 +86,65 @@ public class StaticPageCMSController {
 
             sp.setUserId(user.getUserId());
             
-        return "redirect:allStaticPages";
+            spService.updateStaticPage(sp);
+            
+        return "redirect:viewAllStaticPages";
+    }
+    
+    @RequestMapping(value= {"/displayCreateStaticPagePage"}, method = RequestMethod.GET)
+    public String displayCreateStaticPagePage(HttpServletRequest request,Model model) {
+            
+            
+        return "createStaticPage";
+    }
+    
+    @RequestMapping(value = "/createStaticPage", method = RequestMethod.POST)
+    public String createStaticPage(HttpServletRequest request ,Model model) {
+        StaticPage statpage = new StaticPage();
+        
+        String username = request.getParameter("username");
+        User user = spService.selectUserByUsername(username);
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date date = new Date();
+        Date date2 = new Date("2099/12/31 12:00:00");
+
+	statpage.setTitle(request.getParameter("title"));
+        statpage.setDescription(request.getParameter("description"));
+        statpage.setContent(request.getParameter("content"));
+        statpage.setAuthor(username);
+        statpage.setCreatedDate(date);
+        statpage.setPublishDate(date);
+        statpage.setExpirationDate(date2);
+        
+        if (user.getIsAdmin()) {
+                statpage.setIsActive(true);
+        }
+        
+        statpage.setUserId(user.getUserId());
+        
+        spService.createStaticPage(statpage);
+        
+        List<StaticPage> sp = spService.selectAllStaticPages();
+        int calc = calculateNearestNthMultiple(sp.size(),4);
+        model.addAttribute("sp",sp);
+        model.addAttribute("calc",calc);
+
+        return "allStaticPages";
+    }
+    
+    @RequestMapping(value = "/approveStaticPage", method = RequestMethod.GET)
+    public String approveStaticPage(HttpServletRequest request, Model model) {
+        int spId = Integer.parseInt(request.getParameter("spId"));
+        spService.approveStaticPage(spId);
+        return "redirect:viewAllStaticPages";
+    }
+    
+    @RequestMapping(value = "/deleteStaticPage", method = RequestMethod.GET)
+    public String deleteStaticPage(HttpServletRequest request, Model model) {
+        int spId = Integer.parseInt(request.getParameter("spId"));
+        spService.deleteStaticPage(spId);
+        return "redirect:viewAllStaticPages";
     }
     
     

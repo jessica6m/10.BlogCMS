@@ -13,7 +13,7 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
-        <h1>Unapproved Blogs</h1>
+        <h1>Awaiting Approval</h1>
         <sec:authorize access="isAnonymous()">
             <a href="${pageContext.request.contextPath}/login" class=" ">Login</a>
         </sec:authorize>
@@ -23,7 +23,7 @@
                 <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
                 <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                    <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                     <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                     <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                     <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -58,6 +58,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <h3>BLOGPOSTS</h3>
                             <c:forEach var="i" begin="0" end="${allBlogs.size()-1}">
                                 <tr >
                                     <td>
@@ -90,6 +91,60 @@
                                 </tr>
 
                             </c:forEach>
+                            
+                        </tbody>
+                    </table>
+                    <table class = "table">
+                        <thead>
+                            <tr>
+                                <th> Title </th>
+                                <th> Description </th>
+                                <th> Author </th>
+                                <th> Publish Date </th>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <th> APPROVE </th>
+                                    <th> EDIT</th>
+                                    <th> DELETE </th>
+                                </sec:authorize>
+                                
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <h3>STATIC PAGES</h3>
+                            
+                            <c:forEach var="i" begin="0" end="${inactivePages.size()-1}">
+                                <tr >
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].title}</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].description}</a>
+                                    </td>
+                                    
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].author}</a>
+                                    </td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/displayStaticPage/${inactivePages[i].id}">${inactivePages[i].publishDate}</a>
+                                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/approveStaticPage?spId=${inactivePages[i].id}" class = "btn btn-success">APPROVE</a>
+                                            </td>
+                                            
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/chooseStaticPageToUpdate?spId=${inactivePages[i].id}" class = "btn btn-warning">EDIT</a>
+                                            </td>
+
+                                            <td>
+                                                <a href="${pageContext.request.contextPath}/deleteStaticPage?spId=${inactivePages[i].id}" class = "btn btn-danger">DELETE</a>
+                                            </td>
+                                    </sec:authorize>
+                                </tr>
+
+                            </c:forEach>
+                            
                             
                         </tbody>
                     </table>

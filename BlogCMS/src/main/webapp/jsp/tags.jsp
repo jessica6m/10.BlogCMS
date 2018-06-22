@@ -12,13 +12,13 @@
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/eule2.png" type="image/x-icon">
     </head>
     <body>
-        <h1>My Blog</h1>
+        <h1>Tags</h1>
         <div class="nav">
           <ul>
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -93,7 +93,7 @@
 
                                     <div class="form-group">
                                         <div class="">
-                                            <input type="submit" class="btn btn-success" value="${tagID}">
+                                            <input type="submit" class="btn btn-success" value="Submit">
                                         </div>
                                     </div>
 

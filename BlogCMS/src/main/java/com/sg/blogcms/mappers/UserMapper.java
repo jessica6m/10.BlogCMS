@@ -25,8 +25,9 @@ public class UserMapper implements RowMapper<User>{
        user.setUserEmail(rs.getString("userEmail"));
        user.setPassword(rs.getString("password"));
        user.setUserBio(rs.getString("bio"));
+       user.setIsAdmin(rs.getBoolean("isAdmin"));
        user.setIsEnabled(rs.getBoolean("enabled"));
-
+       
        return user;
     }
 }

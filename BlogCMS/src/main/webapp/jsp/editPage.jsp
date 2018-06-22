@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create Blog</title>
+        <title>Edit Page</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
@@ -37,7 +37,7 @@
         
     </head>
     <body>
-        <h1>Create a Blog</h1>
+        <h1>Edit Page</h1>
             <c:if test="${pageContext.request.userPrincipal.name == null}">
                 <div class="login-btn"><a href="${pageContext.request.contextPath}/login">Login</a></div>
             </c:if>
@@ -46,7 +46,7 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -66,162 +66,107 @@
 
             <div class = "row">
                 <div class=" col-md-12">
-                    
-                    <form action="createBlogPost" class="form-horizontal" role="form" method="POST">
-                        <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
-                        <div class = "form-group">
-                            <label for="add-Title" class=" control-label">Title:</label> 
-                            <br>
-                            <div class="" style="margin-top:10px">
-                                <textarea id="tinymceTitle" name="title" >
-
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class = "form-group">
-                            <label for="add-Description" class=" control-label">Description: </label> 
-                            <textarea  name="description" >
-                            
-                            </textarea>
-                            
-                        </div>
-                        <div class = "form-group">
-                            <label for="is-Active" class=" control-label">Description: </label> 
-                                <div>
-                                        <input class ="" type="checkbox" name="isActive" value="yes"/> : Active?
+                    <c:choose>
+                        
+                        <c:when test="${bp.title != null}">
+                            <form action="updateBlogPost" class="form-horizontal" role="form" method="GET">
+                                <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <input type="text" name="bpId" value="${bp.id}" hidden>
+                                <div class = "form-group">
+                                    <label for="add-Title" class=" control-label">Title:</label> 
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymceTitle" name="title" >
+                                            ${bp.title}
+                                        </textarea>
+                                    </div>
                                 </div>
-                        </div>
-                        <div class = "form-group">
-                            <label for="add-Content" class=" control-label">Content:</label>
-                            <br>
-                            <div class="" style="margin-top:10px">
-                                <textarea id="tinymce" name="content" >
+                                <div class = "form-group">
+                                    <label for="add-Description" class=" control-label">Description: </label> 
+                                    <textarea  name="description" >
+                                        ${bp.description}
+                                    </textarea>
 
-                                </textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="">
-                                <input type="submit" class="btn btn-success" value="Submit">
-                            </div>
-                        </div>
-                    </form>
-                    
+                                </div>
+                                
+                                <div class = "form-group">
+                                    <label for="add-Content" class=" control-label">Content:</label>
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymce" name="content" >
+                                            ${bp.content}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class = " form-group row">
+                                    <div class="col-md-3 dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> CATEGORIES </button>
+                                        <div class="dropdown-menu radio" id="catRest">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-6 dropdown" style="margin-bottom: 10px">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> TAGS </button>
+                                        <div class="dropdown-menu" id="tagRest">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <form action="updateStaticPage" class="form-horizontal" role="form" method="GET">
+                                <input type="text" name="username" value="${pageContext.request.userPrincipal.name}" hidden>
+                                <input type="text" name="spId" value="${sp.id}" hidden>
+                                <div class = "form-group">
+                                    <label for="add-Title" class=" control-label">Title:</label> 
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymceTitle" name="title" >
+                                            ${sp.title}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for="add-Description" class=" control-label">Description: </label> 
+                                    <textarea  name="description" >
+                                        ${sp.description}
+                                    </textarea>
+
+                                </div>
+                                <div class = "form-group">
+                                    <label for="is-Active" class=" control-label">Leave Blank To Deactivate Page: </label> 
+                                        <div>
+                                                <input class ="" type="checkbox" name="isActive" value="yes"/> : Active?
+                                        </div>
+                                </div>
+                                <div class = "form-group">
+                                    <label for="add-Content" class=" control-label">Content:</label>
+                                    <br>
+                                    <div class="" style="margin-top:10px">
+                                        <textarea id="tinymce" name="content" >
+                                            ${sp.content}
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="">
+                                        <input type="submit" class="btn btn-success" value="Submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
                 
             </div>
         </div>
-        
-<!--        =========================== TAGS DROP DOWN   ==============================
-            <div class="row mt-3">
-                
-                <div class="col-md-10 dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        TAGS
-                    </button>
-                    <div class="dropdown-menu">
-                        
-                        <c:forEach var="i" begin="0" end="${allTags.size() - 1}">
-                            <tr>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                    <label class="custom-control-label" for="customCheck1">${allTags[i].tagName}</label>
-                                </div>
-                            </tr>
-                        </c:forEach>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck3">
-                            <label class="custom-control-label" for="customCheck1"> <a href="${pageContext.request.contextPath}/createBlogPost/addTag">Add New Tag</a></label>
-                        </div>
-                       
-                    </div>
-                </div>
-                
-            </div>
-            <div class='col-md-4'>
-                <c:choose>            
-                    <c:when test="${viewType=='addTag'}">
-                       <h2>Add New Tag </h2>
-                       <hr>
-                       <form action="createTagForBlog" class="form-horizontal" role="form" method="POST"> 
-                           <div class="form-group">
-                               <label for="tagName" class="col-sm-2 control-label">Tag Name</label>
-                               <div class="">
-                                   <input type="text" name="tagName" placeholder="Name">
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <label for="tagDescription" class="col-md-2 control-label">Description:</label>
-                               <div class="">
-                                   <textarea class="form-control" rows="3" name="tagDescription" placeholder="Description of tag"></textarea>
-                               </div>
-                           </div>
-                           <div class="form-group">
-                               <div class="">
-                                   <input type="submit" class="btn btn-default" value="Submit">
-                               </div>
-                           </div>
-                       </form>
-                   </c:when>    
-               </c:choose>
-            </div>                
-            
-            =========================== END TAGS DROP DOWN   ==============================    
-            
-             ==========================Category Dropdown =========================
-                <div class="row mt-3">
                     
-                    <div class="col-md-10 dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            CATEGORY
-                        </button>
-                        <div class="dropdown-menu">
-                            <c:forEach var="i" begin="0" end="${allCategories.size() - 1}">
-                                <tr>
-                                <div >
-                                    <input type="radio" class="custom-control-input" name="optradio" id="customCheck3">
-                                    <label class="custom-control-label" for="customCheck1">${allCategories[i].catName}</label>
-                                </div>
-                                </tr>
-                            </c:forEach>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                <label class="custom-control-label" for="customCheck1"> <a href="${pageContext.request.contextPath}/createBlogPost/addCategory">Add New Category</a></label>
-                            </div>
-                        </div>
-                    </div>
-                     ============================================   ADD CATEGORY ===========================================
-                <div class='col-md-4'>
-                    <c:choose>            
-                        <c:when test="${viewType2=='addCategory'}">
-                            <h2>Add New Category </h2>
-                            <hr>
-                            <form action="createCategoryForBlog" class="form-horizontal" role="form" method="POST">
-                                <div class="form-group">
-                                    <label for="categoryName" class="col-sm-2 control-label">Category Name</label>
-                                    <div class="">
-                                        <input type="text" name="CategoryName" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="categoryDescription" class="col-md-2 control-label">Description:</label>
-                                    <div class="">
-                                        <textarea class="form-control" rows="3" name="categoryDescription" placeholder="Description of category"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="">
-                                        <input type="submit" class="btn btn-default" value="Submit">
-                                    </div>
-                                </div>
-                            </form>
-                        </c:when>    
-                    </c:choose>
-                </div>
-            </div>-->
-        
-
-            
         <div class="footer">
             <button>Instagram</button>
             <button>FaceBook</button>
@@ -232,6 +177,7 @@
         
         <script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
     
     </body>

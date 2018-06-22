@@ -8,6 +8,7 @@ package com.sg.blogcms.service;
 import com.sg.blogcms.dao.BlogsCMSDao;
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import java.util.List;
@@ -71,5 +72,25 @@ public class BlogsCMSService {
     
     public Tags getTagById (int tagId){
         return blogsDao.selectTagById(tagId);
+    }
+
+    public List<StaticPage> selectAllInactiveStaticPages() {
+        return blogsDao.selectAllInactiveStaticPages();
+    }
+
+    public void updateBlogAndTag(String[] tagIds, BlogPost bp) {
+        blogsDao.updateBlogAndTag(tagIds, bp);
+    }
+
+    public List<Tags> selectTagByBlogId(int blogId) {
+        return blogsDao.selectTagsByBlogId(blogId);
+    }
+
+    public void updateBlog(BlogPost bp) {
+        blogsDao.updateBlog(bp);
+    }
+
+    public void removeTagsFromDB(BlogPost bp) {
+        blogsDao.removeTagsFromDB(bp);
     }
 }

@@ -7,10 +7,12 @@ package com.sg.blogcms.dao;
 
 import com.sg.blogcms.dto.BlogPost;
 import com.sg.blogcms.dto.Category;
+import com.sg.blogcms.dto.StaticPage;
 import com.sg.blogcms.dto.Tags;
 import com.sg.blogcms.dto.User;
 import com.sg.blogcms.mappers.BlogMapper;
 import com.sg.blogcms.mappers.CategoryMapper;
+import com.sg.blogcms.mappers.StaticPageMapper;
 import com.sg.blogcms.mappers.TagMapper;
 import com.sg.blogcms.mappers.UserMapper;
 import java.util.List;
@@ -39,11 +41,14 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
             = "insert into BlogPost (title, description, content, author, createdDate, " 
             + "publishDate, expirationDate,approved,idUser ,idCategories) values(?,?,?,?,?,?,?,?,?,?)";
     
+    private static final String SQL_INSERT_INTO_BLOGS_TAGS = " insert into BlogpostTag (idBlogPost, idTag) values (?,?)";
+    
     private static final String SQL_DELETE_BLOG
             = "delete from BlogPost where idBlogPost = ?";
     
     private static final String SQL_UPDATE_BLOG
-            = "update BlogPost set title = ?, content = ?, author = ? w ";
+            = "update BlogPost set title = ?, description = ?  ,content = ?, author = ?,"
+                + " createdDate = ?, publishDate = ?, expirationDate = ?, approved = ?, idUser = ?, idCategories = ? where idBlogPost =?";
     
     private static final String SQL_APPROVE_BLOG
             = "update BlogPost set approved = 1 where idBlogPost = ?";
@@ -80,6 +85,17 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
     
     private static final String SQL_SELECT_TAG_BY_ID
             = "select * from Tag where idTag = ?";
+    
+    private static final String SQL_SELECT_TAGS_BY_BLOGID = 
+            "Select tg.`idTag`, tg.`tagName`, tg.`tagDescription` from Tag tg Join  BlogpostTag bpt on tg.idTag = bpt.idTag where idBlogPost = ?";
+    
+    
+    private static final String SQL_SELECT_ALL_INACTIVE_STATIC_PAGES = 
+            "select * from StaticPage where isActive = 0";
+    
+    private static final String SQL_DELETE_TAGS_RELATIONSHIP
+        = "delete from BlogpostTag where idBlogPost = ?";
+    
     
     //==========================================================================
     //                                 METHODS
@@ -123,7 +139,8 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                 blog.getExpirationDate(),
                 blog.getIsApproved(),
                 blog.getUserId(),
-                blog.getCatId());
+                blog.getCatId(),
+                blog.getId());
          return blog;
     }
 
@@ -184,6 +201,15 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
                 new TagMapper());
         
     }
+    
+    @Override
+    public List<Tags> selectTagsByBlogId(int blogId){
+        return jdbcTemplate.query(SQL_SELECT_TAGS_BY_BLOGID,
+                new TagMapper(),
+                blogId);
+        
+    }
+    
     @Override
     public List<Category> selectAllCategories() {
         return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORIES,
@@ -212,6 +238,28 @@ public class BlogsCMSDaoDbImpl implements BlogsCMSDao{
         }
     }
     
+    
+    
+    @Override
+    public List<StaticPage> selectAllInactiveStaticPages() {
+        return jdbcTemplate.query(SQL_SELECT_ALL_INACTIVE_STATIC_PAGES,
+                new StaticPageMapper());
+    }
+    
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public void updateBlogAndTag(String[] tagIds, BlogPost bp){
+        for (String currentId : tagIds){
+            jdbcTemplate.update(SQL_INSERT_INTO_BLOGS_TAGS,
+                    bp.getId(),
+                    Integer.parseInt(currentId));
+        }
+    }
+    
+    @Override
+    public void removeTagsFromDB(BlogPost bp){
+        jdbcTemplate.update(SQL_DELETE_TAGS_RELATIONSHIP, bp.getId());
+    }
     
     //==========================================================================
     //                          HELPER METHODS

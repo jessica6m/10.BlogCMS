@@ -22,7 +22,8 @@
             <li><a href="${pageContext.request.contextPath}/index">Home </a></li>
             <li><a href="${pageContext.request.contextPath}/blogs"> Blogs </a></li>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Unapproved Blogs </a></li>
+                <li><a href="${pageContext.request.contextPath}/unapprovedBlogs"> Need Approval </a></li>
+                
                 <li><a href="${pageContext.request.contextPath}/categories"> Categories </a></li>
                 <li><a href="${pageContext.request.contextPath}/users"> Users </a></li>
                 <li><a href="${pageContext.request.contextPath}/tags"> Tags</a></li>
@@ -67,11 +68,9 @@
                 </div>
                 
                 <div class = "col-md-6>">
-                    <p> TESTING GRID LAYOUT!!!</p>
+                    <h3>My PERSONAL Blog</h3>
+                    <p> Welcoming to my Personal Blog. First and foremost, let it be stated that this is a personal blog, and as such any views are my personal views and nothing more.</p>
                     
-                    <p> Blog Description Goes Here</p>
-                    
-                    <p> ${lastTenBlogs[0].getUser().firstName}</p>
                 
                 </div>
                 

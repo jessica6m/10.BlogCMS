@@ -39,7 +39,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
             = "delete from User where idUser = ?";
     
     private static final String SQL_DELETE_USER
-        = "delete from users where username = ?";
+        = "delete from User where username = ?";
     
     private static final String SQL_DELETE_AUTHORITIES
         = "delete from authorities where username = ?";
@@ -48,13 +48,16 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
             = "select * from User";
 
     private static final String SQL_UPDATE_USER
-            = "update User set firstName = ?, lastName = ?, username = ?, userEmail = ?, password = ?, bio = ?, enabled = ? where idUser = ?";
+            = "update User set firstName = ?, lastName = ?, username = ?, userEmail = ?, password = ?, bio = ?, isAdmin = ? ,enabled = ? where idUser = ?";
 
     private static final String SQL_INSERT_USER
-            = "insert into User (firstName, lastName, username, userEmail, password, bio, enabled) values(?,?,?,?,?,?,?)";
+            = "insert into User (firstName, lastName, username, userEmail, password, bio, isAdmin,enabled) values(?,?,?,?,?,?,?,?)";
     
     private static final String SQL_INSERT_AUTHORITY
-        = "insert into authorities (username, authority) values (?, ?)";
+        = "insert into Authorities (username, authority) values (?, ?)";
+    
+    
+    
     
     
 
@@ -64,9 +67,14 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     @Override
     public User selectUser(int userID) {
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USER,
+            User user = jdbcTemplate.queryForObject(SQL_SELECT_USER,
                     new UserMapper(),
                     userID);
+            user.addAuthority("ROLE_USER");
+            if(user.getIsAdmin()==true){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+            return user;
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
@@ -75,22 +83,38 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
     @Override
     public User selectUserByUsername(String username){
         try {
-            return jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_USERNAME,
+            User user = jdbcTemplate.queryForObject(SQL_SELECT_USER_BY_USERNAME,
                     new UserMapper(),
                     username);
+            user.addAuthority("ROLE_USER");
+            if(user.getIsAdmin()==true){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+            return user;
         } catch (EmptyResultDataAccessException ex) {
             return null;
         }
     }
+    
+    
 
     @Override
     public List<User> selectAllUsers() {
-        return jdbcTemplate.query(SQL_SELECT_ALL_USERS,
+        List<User> userList = jdbcTemplate.query(SQL_SELECT_ALL_USERS,
                 new UserMapper());
+        for(User user: userList){
+            
+            if(user.getIsAdmin()){
+                user.addAuthority("ROLE_ADMIN");           
+            }
+        }
+        return userList;
     }
 
     @Override
     public void removeUser(int userID) {
+        
+        
         jdbcTemplate.update(SQL_DELETE_USER_BY_ID, userID);
     }
 
@@ -103,8 +127,16 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
                 user.getUserEmail(),
                 user.getPassword(),
                 user.getUserBio(),
+                user.getIsAdmin(),
                 user.getIsEnabled(),
                 user.getUserId());
+        
+        if(user.getIsAdmin()){
+            jdbcTemplate.update(SQL_INSERT_AUTHORITY, 
+                                user.getUsername(), 
+                                "ROLE_ADMIN");
+        }
+        
         return user;
     }
 
@@ -118,6 +150,7 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
                 user.getUserEmail(),
                 user.getPassword(),
                 user.getUserBio(),
+                user.getIsAdmin(),
                 user.getIsEnabled());
 
         int userId
@@ -142,7 +175,4 @@ public class UserCMSDaoDbImpl implements UserCMSDao {
         // second delete the user
         jdbcTemplate.update(SQL_DELETE_USER, username);
     }
-    
-    
-
 }

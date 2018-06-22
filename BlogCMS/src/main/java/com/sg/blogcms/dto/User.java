@@ -5,6 +5,8 @@
  */
 package com.sg.blogcms.dto;
 
+import java.util.ArrayList;
+import static java.util.Arrays.asList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,11 +22,12 @@ public class User {
     private String userEmail;
     private String password;
     private String userBio;
+    private Boolean isAdmin;
     private Boolean isEnabled;
     private List<BlogPost> associatedBlogs;
     private List<StaticPage> associatedStaticPages;
     private List<Category> associatedCategories;
-    private List<String> authorityList;
+    private List<String> authorityList = new ArrayList<>(asList("ROLE_USER"));
 
     public int getUserId() {
         return userId;
@@ -80,6 +83,14 @@ public class User {
 
     public void setUserBio(String userBio) {
         this.userBio = userBio;
+    }
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public Boolean getIsEnabled() {
